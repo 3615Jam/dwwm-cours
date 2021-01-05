@@ -1,0 +1,659 @@
+<!-- 
+
+// = = = = = = = = = = =
+//   JS et HTML
+// = = = = = = = = = = =
+
+-->
+
+
+
+<!--
+Plusieurs façons de mettre du JS dans un fichier HTML:
+
+1- <script> dont l'attribut src est utilisé pour spécifier le chemin
+d'accès au fichier js.
+Le path peut être local (chemin relatif) ou hébergé ailleurs
+(chemin absolu)
+-->
+
+<!-- Using a relative path -->
+<script src="./script.js"></script>
+
+<!-- Using an absolute path -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!--
+L'attribut defer d'une balise <script> est un attribut booléen utilisé
+pour indiquer que le script peut être chargé mais pas exécuté avant
+que le document HTML soit entièrement analysé. Il ne fonctionne que
+pour les scripts liés de façon externe (avec un attribut src), et n'a
+aucun effet s'il est appliqué à un script en ligne (dans le fichier html).
+
+Dans l'exemple de bloc de code, la balise <h1> sera chargée et
+analysée avant que le script ne soit exécuté en raison de l'attribut
+defer.
+-->
+
+<body>
+    <script src="main.js" defer></script>
+    <h1>Hello</h1>
+</body>
+
+<!--
+Les scripts sont chargés de manière synchrone tels qu'ils apparaissent
+dans un fichier HTML, avant que le HTML suivant ne soit chargé et analysé.
+L'attribut async peut être utilisé pour charger les scripts de manière
+asynchrone, de sorte qu'ils se chargent en arrière-plan sans empêcher
+l'analyseur HTML de continuer.
+
+Dans l'exemple de bloc de code, le script se chargera de manière
+asynchrone en arrière-plan, sans bloquer l'analyseur HTML.
+-->
+
+<body>
+    <script src="main.js" async></script>
+    <h1>Hello world!</h1>
+</body>
+
+<!--
+    2- La balise <script> peut aussi contenir du code JS.
+-->
+
+<script>
+    console.log("Hello world!");
+</script>
+
+<!--
+JavaScript et le DOM:
+Un nœud dans le DOM est l'intersection de deux branches contenant
+des données. Les nœuds peuvent représenter des éléments HTML, avec du texte,
+avec des attributs, etc. Le nœud racine est le nœud le plus haut de l'arbre.
+
+Le DOM est une interface entre les langages de script et la structure
+d'une page web. Le navigateur crée un Document Object Model ou DOM pour
+chacune des pages web qu'il affiche. Le DOM permet aux langages de script
+d'accéder à une page web, dela décortiquer et de la modifier. Avec l'aide du DOM,
+JavaScript a la capacité de créer du HTML dynamique ou de modifier de l'existant.
+
+C'est l'objet document qui nous servira de porte d'entrée au DOM.
+
+Les nœuds DOM de type Element donnent accès aux attributs des éléments
+déclarés dans l'HTML. Par exemple, si une balise HTML possède
+des attributs tels que id, class ou src, ces attributs sont accessibles
+par le DOM.
+-->
+<div id="madiv">
+<p id="intro">Welcome to my website</p>
+</div>
+<script>
+  const paragraph = document.querySelector('p');
+  console.log(paragraph.id) // "intro"
+</script>
+
+<!--
+    La propriété .parentNode d'un élément peut être utilisée pour obtenir
+    une référence à son nœud parent direct. .parentNode peut être utilisé
+    sur n'importe quel nœud.
+-->
+
+<div id="parent">
+    <p id ="first-child">Some child text</p>
+    <p id ="second-child">Some more child text</p>
+</div>
+<script>
+    const firstChild = document.getElementById('first-child');
+    firstChild.parentNode;  // reference to the parent element
+</script>
+
+<!--
+    La méthode document.createElement() crée et renvoie une référence à un nouveau nœud
+    avec le nom de balise spécifié.
+
+    document.createElement() n'ajoute pas réellement le nouvel élément au DOM,
+    il doit être attaché avec une méthode telle que element.appendChild().
+-->
+
+<!--
+    La stratégie générale si l'on veut ajouter/remplacer un gros bout de page, sera de créer
+    leur noeud racine, de le remplir, et une fois qu'on a terminé de remplir, on peut
+    le branche (le mettre) au DOM, à la place que l'on veut.
+-->
+
+<script>
+    const newButton = document.createElement("button");
+</script>
+
+<!--
+    La propriété element.innerHTML peut être utilisée pour accéder au balisage HTML
+    qui compose le contenu d'un élément.
+
+La propriété element.innerHTML peut être utilisée pour accéder à la valeur courante
+du contenu d'un élément ou pour le réassigner.
+-->
+
+<box>
+    <p>Hello there!</p>
+</box>
+
+<script>
+    const box = document.querySelector('p');
+    // Outputs '<p>Hello there!</p>':
+    console.log(box.innerHTML)
+    // Reassigns the value:
+    box.innerHTML = '<p>Goodbye</p>'
+</script>
+
+<!--
+    La méthode .querySelector() sélectionne le premier élément enfant/descendant
+    qui correspond à son argument de sélection.
+
+Elle peut être invoquée sur l'objet document pour rechercher le document entier ou
+sur une seule instance d'élément pour rechercher les descendants de cet élément.
+-->
+
+<script>
+    // Select the first <div>
+    const firstDiv = document.querySelector('div');
+
+    // Select the first .button element inside .main-navigation
+    const navMenu = document.getElementById('main-navigation');
+    const firstButtonChild = navMenu.querySelector('.button');
+</script>
+
+<!--
+    document.body renvoie une référence au contenu de l'élément <body>
+    d'un document/d'une page HTML. L'élément <body> englobe tout le contenu
+    visible de la page.
+
+    La propriété element.onclick peut être utilisée pour définir une fonction à
+    exécuter lorsqu'un élément est cliqué. Par exemple, le bloc de code donné
+    ajoutera un élément <li> chaque fois que l'utilisateur cliquera sur l'élément
+    avec l'ID addItem.
+-->
+
+<script>
+    let element = document.getElementById('addItem');
+    element.onclick = function() {
+      let newElement = document.createElement('li');
+      document.getElementById('list').appendChild(newElement);
+    };
+</script>
+
+<!--
+    La méthode parentElement.appendChild(childElement) ajoute un élément en tant que
+    dernier enfant du parent.
+
+Dans le bloc de code donné, un élément <li> nouvellement créé sera ajouté en tant que
+dernier enfant de l'élément HTML avec la liste d'ID.
+
+-->
+
+<script>
+    let node1 = document.createElement('li');
+    document.getElementById('list').appendChild(node1);
+</script>
+
+
+<!--
+    La propriété element.style peut être utilisée pour accéder ou définir les règles
+    de style CSS d'un élément.
+    L'attribut .style contient un objet de style. Lui même, pour chaque propriété de style CSS,
+    dispose d'un champ spécifique.
+
+    Dans l'exemple de code, blueElement contient les éléments HTML
+    avec l'ID colorful-element. En définissant l'attribut backgroundColor de la propriété
+    de style à blue, la propriété CSS background-color devient blue.
+
+Notez également que si la propriété CSS contient un trait d'union,
+tel que font-family ou background-color, la notation Camel Case est utilisée en
+Javascript pour le nom de l'attribut, donc background-color devient backgroundColor.
+-->
+
+<script>
+    let blueElement = document.getElementById('colorful-element');
+    blueElement.style.backgroundColor = 'blue';
+</script>
+
+<!--
+    Liste en vrac de méthodes utiles de l'objet window
+
+-->
+<script>
+    // Quelques informations:
+window.open() // Ouvre une nouvelle fenêtre.
+window.close() // Ferme la fenêtre en cours.
+window.prompt() // Ouvre la boîte de dialogue d'impression du document en cours.
+window.alert() // Affiche une boîte de message d'alerte.
+window.scroll() // Fait défiler la fenêtre à un endroit particulier dans le document.
+window.scrollTo() // Fait défiler à un jeu de coordonnées particulier dans le document.
+window.setInterval(() => console.log(5), 1000) // retourne un id
+window.clearInterval(id) // prend en paramètre l'id de setInterval
+window.setTimeout() // exécute la fonction après le timeout
+window.close // détermine si la fenêtre est fermée
+window.location // détermine sir quelle page on est (url)
+window.scrollY // position de l'axe vertical du scroll
+window.innerHeight // Hauteur de la fenêtre
+window.innerWidth // Largeur de la fenêtre
+</script>
+
+<!--
+    Liste en vrac de méthodes utiles de l'objet document
+    (document est un sous objet de window, il correspond à la page html)
+
+-->
+<script>
+    // Sélection des éléments html
+document.getElementById(id) // Retourne l'élèment possiédant l'id défini
+document.getElementsByClassName(classe) // Retourne un array possédant la classe définie
+document.getElementsByTagName(balise) // Retourne un array de la balise définie
+document.getElementsByName(valeur) // Retourne un array des éléments ayant pour attribut name la valeur définie
+document.querySelector(selecteur) // Retourne le premier élément qui correspond au sélécteur passé en paramètre (sélécteur css)
+document.querySelectorAll(selecteur) // Retourne un tableau
+// Création d'un élément
+document.createElement("div") // créer une balise div
+</script>
+
+<!--
+    Liste en vrac de méthodes utiles de l'objet Element
+    Remarque: pour un Element, on peut accéder aux attributs html avec le .id .src etc
+    Mais on peut avoir des attribut perso, hors html, pour passer de la donnée had hoc,
+    Pour ce genre d'attribut perso, on ne pourra pas y accéder avec le "." mais on devra passer
+    par ".attributes"
+-->
+
+<script>
+    // Sélection des éléments html
+element.classname // Permet de modifier la classe de l'élément
+element.classList // Retourne un array des classes de l'élément
+element.attributes // Permet de récupérer les attributs
+element.children // Retourne un array like des enfants de l'élément
+element.id // Retourne l'id de l'élément
+element.innerHTML // Permet de modifier l'html de l'élément
+element.innerText // Permet de modifier le texte de l'élément
+element.scrollTop // Définit ou obtient le nombre de pixels dont le contenu
+//de l'élément a défilé vers le haut.
+</script>
+
+<!--
+    Gestion d'évènements
+-->
+
+<!--
+    La méthode .addEventListener() attache un gestionnaire d'événement (un callback) à un
+    événement spécifique sur une cible d'événement. L'avantage de cette méthode est que vous
+    pouvez ajouter de nombreux gestionnaires d'événements à la cible d'événement sans écraser
+    les gestionnaires existants.
+    Deux arguments sont passés à cette méthode : un nom d'événement sous forme de chaîne
+    de caractères et le callback. Voici la syntaxe :
+-->
+
+<script>
+    eventTarget.addEventListener("event", eventHandlerFunction);
+</script>
+
+<!--
+    On peut signifier notre volonté d'être à l'affut de la survenue d'un évènement en
+    passant un callback à .addEventListener().
+
+    Et dès qu'on n'est plus intéressés par les déclenchement de l'event, on peut  demander
+    d'arrêter d'être prévenus, nous utiliserons pour ce la méthode .removeEventListener().
+
+    Cette méthode prend les deux mêmes arguments qui ont été passés à la méthode .addEventListener(),
+    à savoir le nom de l'événement sous forme de chaîne de caractères et la fonction
+    de traitement de l'événement.
+    Voir leurs similitudes dans la syntaxe :
+-->
+
+<script>
+    eventTarget.addEventListener("event", eventHandlerFunction);
+    eventTarget.removeEventListener("event", eventHandlerFunction);
+</script>
+
+
+<!--
+    Les fonctions de traitement d'événements (handlers) reçoivent un objet en argument appelé
+    objet d'événement, qui contient des informations sur l'événement qui a été déclenché.
+
+Les objets d'événement stockent des informations sur la cible de l'événement,
+le type d'événement et les auditeurs associés dans des propriétés et des méthodes.
+Par exemple, si nous voulons savoir quelle touche a été enfoncée,
+l'objet événement stocke ces informations.
+-->
+
+<script>
+    $('#button').on('click', event => {
+          $(event.currentTarget).css('background-color', 'blue');
+      });
+</script>
+
+<!--
+    Remarque: Le symbole $ est souvent utilisé comme raccourcis de document.getElementById()
+
+    Sur une page web, un déclencheur tel qu'une interaction avec l'utilisateur ou une
+    manipulation du navigateur peut provoquer la création d'un événement JavaScript
+    côté client. Les événements peuvent être utilisés pour manipuler le DOM en exécutant
+    une fonction JavaScript.
+
+Les événements peuvent aller d'un clic au survol (hover) d'un élément par la souris,
+en passant par le chargement ou le rafraîchissement d'une page web.
+Les événements sont définis dans le cadre de l'API JavaScript intégrée au navigateur web.
+-->
+
+<!--
+    On utilise JavaScript dans une page web pour la rendre dynamique,
+    ce qui signifie souvent qu'il faut répondre à certains événements (par exemple,
+    les clics de bouton, les défilements de l'utilisateur, etc.) ). Les éléments DOM
+    peuvent avoir des fonctions qui s'accrochent aux événements. Les fonctions
+    sont appelées gestionnaires d'événements (ou handler) et l'élément DOM est connu comme
+    cible d'événement (ou target).
+
+L'exemple de bloc de code montre comment enregistrer une fonction en tant que
+gestionnaire d'événements. Le nom de la propriété pour les gestionnaires d'événements
+commence par "on" et l'événement est ensuite ajouté. Exemples : onload, onclick,
+onfocus, onscroll.
+-->
+
+<script>
+    //Assuming there is an element with id='test' on the page
+
+    document.getElementById('test').onclick = function(e) {
+    alert('Element clicked!');
+};
+</script>
+
+
+
+
+
+
+
+
+
+
+<!--
+    Se balader dans le DOM:
+    Quelques
+    
+-->
+
+<script>
+    element.childNodes// permet d'avoir les noeuds enfants
+    element.firstChild// le premier enfant
+    element.lastChild
+    element.parentNode
+    element.previousSibling// le frère juste avant
+    element.nextSibling // le frère juste après
+</script>
+
+<!--
+    Changer le DOM:
+    Quelques
+    
+-->
+
+<script>
+    element.remove()
+    element.appendChild(newChild)
+    element.insertBefore(newChild, referenceChild)
+    element.replaceChild(newChild, referenceChild)
+</script>
+
+<!--
+    Attention, les méthodes qui retournent plein de noeud dans une sorte d'array,
+    ne retournent jamais un vrai array, et retournent souvent des arrays live:
+    si il y a changement dans ce qu'on voit dans le navigateur, l'array obtenu précédemment
+    changera aussi en direct!
+    Si on veut obtenir un vrai array, et qui sera détaché de la page html:
+    Array.from(ici mettre le pseudo array obtenu via une méthode du DOM)    
+-->
+
+
+
+
+
+
+<!--
+    Quelques propriétés pour connaître la taille d'un élément:
+    .offsetWidth  
+    .offsetHeight 
+    Qui donnent l'espace occupé y compris les border éventuels
+    
+    .clientWidth
+    .cleintHeight
+    Qui donnent la taille "dans" l'élément en ignorant les border
+-->
+
+
+<!--
+    Quand un évènement est déclenché sur un élément du DOM, il y a appel du handler 
+    attaché à cet élément, puis, successivement, de "parent" à "parent" jusqu'à la racine
+    les handler des parents sont appelé un à un.
+    Parfois on voudra stopper la propagation de l'évènement, on pourra le faire en appelant
+    la méthode .stopPropagation() sur l'évènement reçu en argument par le handler.
+    
+    Souvent des évènement enclenchent un comportement par défaut du navigateur, si on veut
+    empêcher le comportement par défaut, on peut appeler sur l'évènement reçu en argument
+    du handler la méthode: .preventDefault()
+-->
+
+
+
+
+
+
+
+
+
+<!--
+    Exercice (fait office de contrôle):
+    Créer une page html, disposant de 2 button et d'un <p>
+    Le paragraphe affichera la valeur d'un compteur, qui sera initialement 0
+    Le click sur le premier bouton, engendrera une décrémentation du compteur (si il était
+    à 0, après un click il passe à -1... -1 à chaque click)
+    Le click sur le deuxième bouton, engendrera une incrémentation du compteur ( +1)
+    La valeur affichée par le paragraphe devra refléter la valeur du compteur.
+
+    étapes (à titre indicatif):
+    1- Structurer le html (un p, deux button)
+    2- Choisir si mettre le JS dans une balise script ou dans un fichier à part.
+    3- Créer la variable compteur
+    4- Créer une fonction qui va incrémenter la variable lorsqu'elle est appelée et une
+    autre autre qui va décrémenter, ce sera nos handlers
+    5- Attacher chacun des handlers au bouton associer.
+    6- Faire en sorte que le contenu du p soit changé à la valeur adéquate à chaque click
+    sur un des boutons. (on pourra soit remplacer son texte, soit remplexe le p par un
+    autre qu'on créera nous même.)
+    
+    Vos réponses sont à envoyer par mail à: berbiche@gmail.com
+    Début 14h, réponses attendue pour 15h00
+    Ne pas oublier de mettre nom et prénom au début de chaque fichier (en commentaire)
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+    Pour aller plus loin dans JS:
+    - HTTP et les forms
+    - fetch
+    - hoisting // à partir du moment où on galère plus trop
+    - envent loop
+    - voir et revoir le bind du this
+    - tests unitaires et TDD: mocha ou jest // pas dans l'immédiat du tout
+
+    Pour des projets d'entrainement et un cours comprenant aussi bien
+    les aspect algo que web:
+    freecodecamp.org    "JavaScript Algorithms and Data Structures Certification"
+
+    Pour un cours avec un bon équilibre entre exemples et théorie:
+    https://eloquentjavascript.net/  (lire en anglais, la traduction française est out of date)
+
+    Faire  les chapitre dans cet ordre pour que ce soit plus utile dans le cadre de votre
+    formation:
+    1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 11 - 13 - 14 - 15 - 18 - 9 - 10 - 12 - 16 - 17 - 19 - 20 - 21.
+
+    Sur youtube, la chaîne de Grafikart est bien, la playlist JS ici:
+    https://www.youtube.com/playlist?list=PLjwdMgw5TTLVzD9Jq_WBd1crqDwXRn4cw
+    donne un bon compromis pratique/théorie aussi. Ne pas s'attarder sur lodash ni jQuery si pas
+    de besoin spécifique.
+
+-->
+
+
+
+
+
+
+
+
+<!-- 
+
+
+Code Mohamed : 
+
+
+
+js;;;
+
+let counter = 0;
+
+document.getElementById("btnincrement").addEventListener("click", (e) => {
+  counter++;
+  display();
+});
+
+document.getElementById("btndecrement").addEventListener("click", (e) => {
+  counter--;
+  display();
+});
+
+document.getElementById("btnReset").addEventListener("click", (e) => {
+  counter = 0;
+  display();
+});
+
+const display = () => {
+  document.getElementById(
+    "pcontainer"
+  ).innerText = `The value of counter : ${counter}`;
+};
+
+
+
+html;;;;
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 1</title>
+    <script src="Hussain_ABDUL_exercise.js" defer></script>
+    <style>
+      .center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Exercise 1</h1>
+    </div>
+    <div class="center">
+      <input
+        type="button"
+        name="Increment"
+        id="btnincrement"
+        value="Increment"
+      />
+      <input
+        type="button"
+        name="Decrement"
+        id="btndecrement"
+        value="Decrement"
+      />
+      <input
+      type="button"
+      name="Reset"
+      id="btnReset"
+      value="Reset"
+    />
+    </div>
+    <p class="center" id="pcontainer"></p>
+  </body>
+</html>
+
+
+
+-->
+
+
+
+<!--
+
+Code Nathan 
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compteur</title>
+</head>
+<body>
+<main>
+<input type="button" id="n1"></button>
+<p>0</p>
+<input type="button" id="n2"></button>
+</main>
+<script>
+const paragraph = document.querySelector('p').textContent;
+const Button = document.getElementById('n1');
+const Button2 = document.getElementById('n2');
+let result = 0;
+const increment = () => {
+result = result + 1
+paragraph = result;
+}
+const decrement = () => {
+result = result - 1;
+paragraph = result;
+}
+Button.onclick = increment;
+Button2.onclick = decrement;
+</script>
+</body>
+</html>
+
+
+-->
+
+
+
+<!--
+    Controle de rattrapage maison:
+    Refaire le jeu "deviner un nombre", sans prompt, sans alert ni confirm. Le refaire
+    de telle sorte que toutes les inputs soient des éléments de la page html.
+    L'interaction viendra ajouter du contenu.
+    Typiquement, l'utilisateur tape un nombre dans un input, la réponse du jeu vient
+    s'afficher après l'input, et au besoin un nouvel input est créé.
+    Bonus: faire en sorte que les inputs précédents (non actuels) soient en mode disabled.
+    
+    à rendre SVP par mail à : berbiche@gmail.com
+    au plus tard SVP la nuit de jeudi à vendredi. Vendredi matin je me lève, je corrige, 
+    j'envoie les notes :)
+    
+-->
+
+

@@ -1,0 +1,498 @@
+0000.000 (0) Opened log file at time: Thu, 17 Dec 2020 13:35:41 +0000 on http://localhost/colombes/cp4/jmwp
+0000.004 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.42 WP: 5.6 PHP: 7.4.3 (apache2handler, Linux msi-08 5.4.0-52-generic #57-Ubuntu SMP Thu Oct 15 10:57:00 UTC 2020 x86_64) MySQL: 8.0.22-0ubuntu0.20.04.2 WPLANG: fr_FR Server: Apache/2.4.41 (Ubuntu) safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 8.7M | 6M) multisite: N openssl: OpenSSL 1.1.1f  31 Mar 2020 mcrypt: N LANG: C ZipArchive::addFile: Y
+0000.009 (0) Free space on disk containing Updraft's temporary directory: 424568.9 MB
+0000.014 (0) Tasks: Backup files: 1 (schedule: every4hours) Backup DB:  (schedule: every4hours)
+0000.018 (0) Processed schedules. Combining jobs from identical schedules. Tasks now: Backup files: 1 Backup DB: 1
+0000.029 (0) Requesting semaphore lock (fd) (apparently via scheduler: last_scheduled_action_called_at=1608200172, seconds_ago=11969)
+0000.044 (0) Set semaphore last lock (fd) time to 2020-12-17 13:35:41
+0000.048 (0) Semaphore lock (fd) complete
+0000.061 (0) Backup run: resumption=0, nonce=fe13bb8f1ce0, file_nonce=fe13bb8f1ce0 begun at=1608212141 (0s ago), job type=backup
+0000.069 (0) Scheduling a resumption (1) after 300 seconds (1608212441) in case this run gets aborted
+0000.078 (0) Checking if we have a zip executable available
+0000.085 (0) Testing: /usr/bin/zip
+0000.090 (0) Output: zip warning: binziptest/test.zip not found or empty
+0000.094 (0) Output: adding: binziptest/subdir1/	(in=0) (out=0) (stored 0%)
+0000.098 (0) Output: adding: binziptest/subdir1/subdir2/	(in=0) (out=0) (stored 0%)
+0000.102 (0) Output: adding: binziptest/subdir1/subdir2/test.html	(in=131) (out=107) (deflated 18%)
+0000.106 (0) Output: total bytes=131, compressed=107 -> 18% savings
+0000.113 (0) Output: adding: binziptest/subdir1/subdir2/test2.html	(in=138) (out=113) (deflated 18%)
+0000.117 (0) Output: total bytes=269, compressed=220 -> 18% savings
+0000.122 (0) Working binary zip found: /usr/bin/zip
+0000.132 (0) Zip engine: found/will use a binary zip: /usr/bin/zip
+0000.136 (0) Creation of backups of directories: beginning
+0000.149 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0000.211 (0) Total entities for the zip file: 972 directories, 5691 files (0 skipped as non-modified), 67.1 MB
+0000.222 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 100 files added (on-disk size: 0 KB)
+0000.229 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 200 files added (on-disk size: 0 KB)
+0000.236 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 300 files added (on-disk size: 0 KB)
+0000.241 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 400 files added (on-disk size: 0 KB)
+0000.246 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 500 files added (on-disk size: 0 KB)
+0000.252 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 600 files added (on-disk size: 0 KB)
+0000.258 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 700 files added (on-disk size: 0 KB)
+0000.266 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 800 files added (on-disk size: 0 KB)
+0000.273 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 900 files added (on-disk size: 0 KB)
+0000.278 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1000 files added (on-disk size: 0 KB)
+0000.282 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (11.3 MB, 5691 files batched, 1001 (1001) added so far); re-opening (prior size: 0 KB)
+0000.622 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: size is now: 3.60 MB
+0000.634 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1100 files added (on-disk size: 3692.6 KB)
+0000.641 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1200 files added (on-disk size: 3692.6 KB)
+0000.648 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1300 files added (on-disk size: 3692.6 KB)
+0000.653 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1400 files added (on-disk size: 3692.6 KB)
+0000.659 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1500 files added (on-disk size: 3692.6 KB)
+0000.665 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1600 files added (on-disk size: 3692.6 KB)
+0000.671 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1700 files added (on-disk size: 3692.6 KB)
+0000.678 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1800 files added (on-disk size: 3692.6 KB)
+0000.685 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 1900 files added (on-disk size: 3692.6 KB)
+0000.690 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2000 files added (on-disk size: 3692.6 KB)
+0000.694 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (6.7 MB, 5691 files batched, 1001 (2002) added so far); re-opening (prior size: 3692.6 KB)
+0000.921 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: size is now: 6.50 MB
+0000.938 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2100 files added (on-disk size: 6636.5 KB)
+0000.947 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2200 files added (on-disk size: 6636.5 KB)
+0000.960 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2300 files added (on-disk size: 6636.5 KB)
+0000.969 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2400 files added (on-disk size: 6636.5 KB)
+0000.979 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2500 files added (on-disk size: 6636.5 KB)
+0000.990 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2600 files added (on-disk size: 6636.5 KB)
+0000.998 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2700 files added (on-disk size: 6636.5 KB)
+0001.005 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2800 files added (on-disk size: 6636.5 KB)
+0001.012 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 2900 files added (on-disk size: 6636.5 KB)
+0001.020 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 25 MB added on this batch (25.2 MB, 5691 files batched, 995 (2997) added so far); re-opening (prior size: 6636.5 KB)
+0001.663 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: size is now: 13.90 MB
+0001.673 (0) A useful amount of data was added after this amount of zip processing: 0.8 s (normalised: 0.8 s, rate: 33999.8 KB/s)
+0001.681 (0) Performance is good - will increase the amount of data we attempt to batch (time=0.75842809677124, normalised_time=0.75294549980362, max_time=1.676531791687, data points known=1, old_max_bytes=26214400, new_max_bytes=208894800)
+0001.689 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3000 files added (on-disk size: 14185.4 KB)
+0001.697 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3100 files added (on-disk size: 14185.4 KB)
+0001.702 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3200 files added (on-disk size: 14185.4 KB)
+0001.708 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3300 files added (on-disk size: 14185.4 KB)
+0001.714 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3400 files added (on-disk size: 14185.4 KB)
+0001.719 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3500 files added (on-disk size: 14185.4 KB)
+0001.725 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3600 files added (on-disk size: 14185.4 KB)
+0001.731 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3700 files added (on-disk size: 14185.4 KB)
+0001.737 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3800 files added (on-disk size: 14185.4 KB)
+0001.744 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 3900 files added (on-disk size: 14185.4 KB)
+0001.749 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (2.8 MB, 5691 files batched, 1001 (3998) added so far); re-opening (prior size: 14185.4 KB)
+0001.852 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4000 files added (on-disk size: 15341.7 KB)
+0001.858 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4100 files added (on-disk size: 15341.7 KB)
+0001.864 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4200 files added (on-disk size: 15341.7 KB)
+0001.871 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4300 files added (on-disk size: 15341.7 KB)
+0001.876 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4400 files added (on-disk size: 15341.7 KB)
+0001.882 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4500 files added (on-disk size: 15341.7 KB)
+0001.889 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4600 files added (on-disk size: 15341.7 KB)
+0001.894 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4700 files added (on-disk size: 15341.7 KB)
+0001.900 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4800 files added (on-disk size: 15341.7 KB)
+0001.905 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 4900 files added (on-disk size: 15341.7 KB)
+0001.915 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (13 MB, 5691 files batched, 1001 (4999) added so far); re-opening (prior size: 15341.7 KB)
+0002.252 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: size is now: 19.00 MB
+0002.263 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 5000 files added (on-disk size: 19434.9 KB)
+0002.269 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 5100 files added (on-disk size: 19434.9 KB)
+0002.276 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 5200 files added (on-disk size: 19434.9 KB)
+0002.282 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 5300 files added (on-disk size: 19434.9 KB)
+0002.289 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 5400 files added (on-disk size: 19434.9 KB)
+0002.295 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 5500 files added (on-disk size: 19434.9 KB)
+0002.301 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip.tmp: 5600 files added (on-disk size: 19434.9 KB)
+0002.679 (0) Created plugins zip (0) - 21529.9 KB in 2.5 s (8523.2 KB/s) (sha1: 1efec6ec437014c1c198a128e5c12cd4b5e200e4, sha256: b7824c97fc18ccb829dfb933868a50e3cbc3baf55315f3e484056894ee781e89)
+0002.689 (0) Beginning creation of dump of themes (split every: 400 MB)
+0002.703 (0) Total entities for the zip file: 108 directories, 425 files (0 skipped as non-modified), 8.4 MB
+0002.709 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip.tmp: 100 files added (on-disk size: 0 KB)
+0002.715 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip.tmp: 200 files added (on-disk size: 0 KB)
+0002.721 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip.tmp: 300 files added (on-disk size: 0 KB)
+0002.728 (0) Zip: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip.tmp: 400 files added (on-disk size: 0 KB)
+0002.833 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip.tmp: size is now: 5.90 MB
+0002.898 (0) Created themes zip (0) - 6031.1 KB in 0.2 s (29638.2 KB/s) (sha1: 1a34c24ff2300cddf0ff66f83252b70d600153ca, sha256: 051df1965538bd297dc89b1e64cf511978f7225b322a094877559e953d52e908)
+0002.909 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone,snapshots
+0002.913 (0) Looking for candidates to backup in: /var/www/html/colombes/cp4/jmwp/wp-content/uploads
+0002.917 (0) finding files: woocommerce-placeholder-1024x1024.png: adding to list (1)
+0002.921 (0) finding files: woocommerce-placeholder-150x150.png: adding to list (2)
+0002.926 (0) finding files: woocommerce_uploads: adding to list (3)
+0002.930 (0) finding files: 2020: adding to list (4)
+0002.933 (0) finding files: woocommerce-placeholder-768x768.png: adding to list (5)
+0002.937 (0) finding files: woocommerce-placeholder.png: adding to list (6)
+0002.942 (0) finding files: woocommerce-placeholder-300x300.png: adding to list (7)
+0002.945 (0) finding files: wc-logs: adding to list (8)
+0002.951 (0) Beginning creation of dump of uploads (split every: 400 MB)
+0002.960 (0) Total entities for the zip file: 4 directories, 86 files (0 skipped as non-modified), 3.7 MB
+0002.979 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-uploads.zip.tmp: size is now: 3.70 MB
+0003.023 (0) Created uploads zip (0) - 3834.6 KB in 0.1 s (57026.3 KB/s) (sha1: 54f160469333ed9fc05dfce0868d01c3410ea11c, sha256: 0cc5f94380dc9ffd43dcadc4b279649a95ed8d781933d947e9794598faf5883d)
+0003.032 (0) Beginning backup of other directories found in the content directory (index: 0)
+0003.036 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log
+0003.040 (0) Looking for candidates to backup in: /var/www/html/colombes/cp4/jmwp/wp-content
+0003.044 (0) finding files: index.php: adding to list (1)
+0003.049 (0) finding files: themes: skipping: this is the themes directory
+0003.053 (0) finding files: plugins: skipping: this is the plugins directory
+0003.056 (0) finding files: updraft: skipping: this is the updraft directory
+0003.060 (0) finding files: uploads: skipping: this is the uploads directory
+0003.064 (0) finding files: languages: adding to list (2)
+0003.073 (0) Total entities for the zip file: 3 directories, 68 files (0 skipped as non-modified), 2.5 MB
+0003.158 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-others.zip.tmp: size is now: 0.70 MB
+0003.201 (0) Created others zip (0) - 738 KB in 0.1 s (5545 KB/s) (sha1: 6d0d9d6615a555e064d2d97256e4285738d00e6b, sha256: 1f2e8ce62d9432549af47573222f113cfe45f68b433a3901c4227943793c97e3)
+0003.223 (0) Saving backup status to database (elements: 8)
+0003.231 (0) Beginning creation of database dump (WordPress DB)
+0003.235 (0) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+0003.243 (0) Testing potential mysqldump binary: /usr/bin/mysqldump
+0003.258 (0) Output: /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;\n/*!40103 SET TIME_ZONE='+00:00' */;\n/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;\n/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;\n/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;\n/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;\nDROP TABLE IF EXISTS `wp_options`;\n/*!40101 SET @saved_cs_client     = @@character_set_client */;\n/*!50503 SET character_set_client = utf8mb4 */;\n (truncated - 1075 bytes total)
+0003.263 (0) Testing potential mysqldump binary: /bin/mysqldump
+0003.276 (0) Output: /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;\n/*!40103 SET TIME_ZONE='+00:00' */;\n/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;\n/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;\n/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;\n/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;\nDROP TABLE IF EXISTS `wp_options`;\n/*!40101 SET @saved_cs_client     = @@character_set_client */;\n/*!50503 SET character_set_client = utf8mb4 */;\n (truncated - 1075 bytes total)
+0003.298 (0) Table wp_options: Total expected rows (approximate): 352
+0003.312 (0) Table wp_options: Rows added in this batch (next record: 1000): 353 (uncompressed bytes in this segment=139574) in 0.01 seconds
+0003.327 (0) Table wp_options: finishing file(s) (2, 23.3 KB)
+0003.340 (0) Table wp_users: Total expected rows (approximate): 2
+0003.345 (0) Table wp_users: Rows added in this batch (next record: 1000): 2 (uncompressed bytes in this segment=1500) in 0.00 seconds
+0003.359 (0) Table wp_users: finishing file(s) (2, 0.6 KB)
+0003.371 (0) Table wp_usermeta: Total expected rows (approximate): 44
+0003.377 (0) Table wp_usermeta: Rows added in this batch (next record: 1000): 44 (uncompressed bytes in this segment=13164) in 0.00 seconds
+0003.392 (0) Table wp_usermeta: finishing file(s) (2, 3.1 KB)
+0003.405 (0) Table wp_commentmeta: Total expected rows (approximate): 0
+0003.409 (0) Table wp_commentmeta: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=677) in 0.00 seconds
+0003.424 (0) Table wp_commentmeta: finishing file(s) (2, 0.4 KB)
+0003.436 (0) Table wp_comments: Total expected rows (approximate): 1
+0003.441 (0) Table wp_comments: Rows added in this batch (next record: 1000): 1 (uncompressed bytes in this segment=2260) in 0.00 seconds
+0003.455 (0) Table wp_comments: finishing file(s) (2, 0.8 KB)
+0003.468 (0) Table wp_links: Total expected rows (approximate): 0
+0003.473 (0) Table wp_links: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1298) in 0.00 seconds
+0003.486 (0) Table wp_links: finishing file(s) (2, 0.5 KB)
+0003.499 (0) Table wp_postmeta: Total expected rows (approximate): 197
+0003.505 (0) Table wp_postmeta: Rows added in this batch (next record: 1000): 197 (uncompressed bytes in this segment=29545) in 0.00 seconds
+0003.520 (0) Table wp_postmeta: finishing file(s) (2, 4.4 KB)
+0003.531 (0) Table wp_posts: Total expected rows (approximate): 139
+0003.540 (0) Table wp_posts: Rows added in this batch (next record: 1000): 139 (uncompressed bytes in this segment=181592) in 0.00 seconds
+0003.555 (0) Table wp_posts: finishing file(s) (2, 18.8 KB)
+0003.568 (0) Table wp_term_relationships: Total expected rows (approximate): 6
+0003.578 (0) Table wp_term_relationships: Rows added in this batch (next record: 100000): 6 (uncompressed bytes in this segment=759) in 0.01 seconds
+0003.597 (0) Table wp_term_relationships: finishing file(s) (2, 0.4 KB)
+0003.609 (0) Table wp_term_taxonomy: Total expected rows (approximate): 16
+0003.618 (0) Table wp_term_taxonomy: Rows added in this batch (next record: 1000): 16 (uncompressed bytes in this segment=1500) in 0.01 seconds
+0003.634 (0) Table wp_term_taxonomy: finishing file(s) (2, 0.6 KB)
+0003.647 (0) Table wp_termmeta: Total expected rows (approximate): 0
+0003.652 (0) Table wp_termmeta: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=650) in 0.00 seconds
+0003.668 (0) Table wp_termmeta: finishing file(s) (2, 0.4 KB)
+0003.682 (0) Table wp_terms: Total expected rows (approximate): 16
+0003.686 (0) Table wp_terms: Rows added in this batch (next record: 1000): 16 (uncompressed bytes in this segment=1283) in 0.00 seconds
+0003.701 (0) Table wp_terms: finishing file(s) (2, 0.6 KB)
+0003.711 (0) Table wp_actionscheduler_actions: Total expected rows (approximate): 1
+0003.716 (0) Table wp_actionscheduler_actions: Rows added in this batch (next record: 1000): 1 (uncompressed bytes in this segment=1876) in 0.00 seconds
+0003.731 (0) Table wp_actionscheduler_actions: finishing file(s) (2, 0.7 KB)
+0003.743 (0) Table wp_actionscheduler_claims: Total expected rows (approximate): 0
+0003.748 (0) Table wp_actionscheduler_claims: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=628) in 0.00 seconds
+0003.763 (0) Table wp_actionscheduler_claims: finishing file(s) (2, 0.4 KB)
+0003.775 (0) Table wp_actionscheduler_groups: Total expected rows (approximate): 1
+0003.780 (0) Table wp_actionscheduler_groups: Rows added in this batch (next record: 1000): 1 (uncompressed bytes in this segment=685) in 0.00 seconds
+0003.797 (0) Table wp_actionscheduler_groups: finishing file(s) (2, 0.4 KB)
+0003.809 (0) Table wp_actionscheduler_logs: Total expected rows (approximate): 1
+0003.813 (0) Table wp_actionscheduler_logs: Rows added in this batch (next record: 1000): 1 (uncompressed bytes in this segment=918) in 0.00 seconds
+0003.828 (0) Table wp_actionscheduler_logs: finishing file(s) (2, 0.5 KB)
+0003.841 (0) Table wp_wc_admin_note_actions: Total expected rows (approximate): 10
+0003.846 (0) Table wp_wc_admin_note_actions: Rows added in this batch (next record: 1000): 10 (uncompressed bytes in this segment=2328) in 0.00 seconds
+0003.861 (0) Table wp_wc_admin_note_actions: finishing file(s) (2, 0.9 KB)
+0003.874 (0) Table wp_wc_admin_notes: Total expected rows (approximate): 10
+0003.879 (0) Table wp_wc_admin_notes: Rows added in this batch (next record: 1000): 10 (uncompressed bytes in this segment=7093) in 0.00 seconds
+0003.894 (0) Table wp_wc_admin_notes: finishing file(s) (2, 1.9 KB)
+0003.908 (0) Table wp_wc_category_lookup: Total expected rows (approximate): 1
+0003.913 (0) Table wp_wc_category_lookup: Rows added in this batch (next record: 1000): 1 (uncompressed bytes in this segment=581) in 0.00 seconds
+0003.929 (0) Table wp_wc_category_lookup: finishing file(s) (2, 0.3 KB)
+0003.942 (0) Table wp_wc_customer_lookup: Total expected rows (approximate): 0
+0003.946 (0) Table wp_wc_customer_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1258) in 0.00 seconds
+0003.961 (0) Table wp_wc_customer_lookup: finishing file(s) (2, 0.5 KB)
+0003.973 (0) Table wp_wc_download_log: Total expected rows (approximate): 0
+0003.977 (0) Table wp_wc_download_log: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=914) in 0.00 seconds
+0003.992 (0) Table wp_wc_download_log: finishing file(s) (2, 0.5 KB)
+0004.005 (0) Table wp_wc_order_coupon_lookup: Total expected rows (approximate): 0
+0004.009 (0) Table wp_wc_order_coupon_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=709) in 0.00 seconds
+0004.024 (0) Table wp_wc_order_coupon_lookup: finishing file(s) (2, 0.4 KB)
+0004.037 (0) Table wp_wc_order_product_lookup: Total expected rows (approximate): 0
+0004.041 (0) Table wp_wc_order_product_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1203) in 0.00 seconds
+0004.057 (0) Table wp_wc_order_product_lookup: finishing file(s) (2, 0.5 KB)
+0004.069 (0) Table wp_wc_order_stats: Total expected rows (approximate): 0
+0004.073 (0) Table wp_wc_order_stats: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1106) in 0.00 seconds
+0004.088 (0) Table wp_wc_order_stats: finishing file(s) (2, 0.5 KB)
+0004.101 (0) Table wp_wc_order_tax_lookup: Total expected rows (approximate): 0
+0004.106 (0) Table wp_wc_order_tax_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=791) in 0.00 seconds
+0004.120 (0) Table wp_wc_order_tax_lookup: finishing file(s) (2, 0.4 KB)
+0004.133 (0) Table wp_wc_product_meta_lookup: Total expected rows (approximate): 0
+0004.137 (0) Table wp_wc_product_meta_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1349) in 0.00 seconds
+0004.152 (0) Table wp_wc_product_meta_lookup: finishing file(s) (2, 0.5 KB)
+0004.165 (0) Table wp_wc_reserved_stock: Total expected rows (approximate): 0
+0004.169 (0) Table wp_wc_reserved_stock: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=657) in 0.00 seconds
+0004.183 (0) Table wp_wc_reserved_stock: finishing file(s) (2, 0.4 KB)
+0004.197 (0) Table wp_wc_tax_rate_classes: Total expected rows (approximate): 2
+0004.202 (0) Table wp_wc_tax_rate_classes: Rows added in this batch (next record: 1000): 2 (uncompressed bytes in this segment=808) in 0.00 seconds
+0004.217 (0) Table wp_wc_tax_rate_classes: finishing file(s) (2, 0.4 KB)
+0004.229 (0) Table wp_wc_webhooks: Total expected rows (approximate): 0
+0004.232 (0) Table wp_wc_webhooks: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1215) in 0.00 seconds
+0004.248 (0) Table wp_wc_webhooks: finishing file(s) (2, 0.5 KB)
+0004.261 (0) Table wp_woocommerce_api_keys: Total expected rows (approximate): 0
+0004.265 (0) Table wp_woocommerce_api_keys: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1038) in 0.00 seconds
+0004.280 (0) Table wp_woocommerce_api_keys: finishing file(s) (2, 0.4 KB)
+0004.293 (0) Table wp_woocommerce_attribute_taxonomies: Total expected rows (approximate): 0
+0004.298 (0) Table wp_woocommerce_attribute_taxonomies: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=954) in 0.00 seconds
+0004.313 (0) Table wp_woocommerce_attribute_taxonomies: finishing file(s) (2, 0.4 KB)
+0004.328 (0) Table wp_woocommerce_downloadable_product_permissions: Total expected rows (approximate): 0
+0004.334 (0) Table wp_woocommerce_downloadable_product_permissions: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1518) in 0.00 seconds
+0004.350 (0) Table wp_woocommerce_downloadable_product_permissions: finishing file(s) (2, 0.5 KB)
+0004.362 (0) Table wp_woocommerce_log: Total expected rows (approximate): 0
+0004.367 (0) Table wp_woocommerce_log: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=715) in 0.00 seconds
+0004.383 (0) Table wp_woocommerce_log: finishing file(s) (2, 0.4 KB)
+0004.397 (0) Table wp_woocommerce_order_itemmeta: Total expected rows (approximate): 0
+0004.401 (0) Table wp_woocommerce_order_itemmeta: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=763) in 0.00 seconds
+0004.416 (0) Table wp_woocommerce_order_itemmeta: finishing file(s) (2, 0.4 KB)
+0004.428 (0) Table wp_woocommerce_order_items: Total expected rows (approximate): 0
+0004.433 (0) Table wp_woocommerce_order_items: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=731) in 0.00 seconds
+0004.449 (0) Table wp_woocommerce_order_items: finishing file(s) (2, 0.4 KB)
+0004.462 (0) Table wp_woocommerce_payment_tokenmeta: Total expected rows (approximate): 0
+0004.465 (0) Table wp_woocommerce_payment_tokenmeta: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=790) in 0.00 seconds
+0004.480 (0) Table wp_woocommerce_payment_tokenmeta: finishing file(s) (2, 0.4 KB)
+0004.493 (0) Table wp_woocommerce_payment_tokens: Total expected rows (approximate): 0
+0004.499 (0) Table wp_woocommerce_payment_tokens: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=833) in 0.00 seconds
+0004.513 (0) Table wp_woocommerce_payment_tokens: finishing file(s) (2, 0.4 KB)
+0004.525 (0) Table wp_woocommerce_sessions: Total expected rows (approximate): 1
+0004.530 (0) Table wp_woocommerce_sessions: Rows added in this batch (next record: 1000): 1 (uncompressed bytes in this segment=2114) in 0.00 seconds
+0004.556 (0) Table wp_woocommerce_sessions: finishing file(s) (2, 0.8 KB)
+0004.569 (0) Table wp_woocommerce_shipping_zone_locations: Total expected rows (approximate): 0
+0004.573 (0) Table wp_woocommerce_shipping_zone_locations: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=866) in 0.00 seconds
+0004.586 (0) Table wp_woocommerce_shipping_zone_locations: finishing file(s) (2, 0.4 KB)
+0004.597 (0) Table wp_woocommerce_shipping_zone_methods: Total expected rows (approximate): 0
+0004.601 (0) Table wp_woocommerce_shipping_zone_methods: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=763) in 0.00 seconds
+0004.616 (0) Table wp_woocommerce_shipping_zone_methods: finishing file(s) (2, 0.4 KB)
+0004.628 (0) Table wp_woocommerce_shipping_zones: Total expected rows (approximate): 0
+0004.633 (0) Table wp_woocommerce_shipping_zones: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=625) in 0.00 seconds
+0004.649 (0) Table wp_woocommerce_shipping_zones: finishing file(s) (2, 0.4 KB)
+0004.662 (0) Table wp_woocommerce_tax_rate_locations: Total expected rows (approximate): 0
+0004.667 (0) Table wp_woocommerce_tax_rate_locations: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=840) in 0.00 seconds
+0004.682 (0) Table wp_woocommerce_tax_rate_locations: finishing file(s) (2, 0.4 KB)
+0004.693 (0) Table wp_woocommerce_tax_rates: Total expected rows (approximate): 0
+0004.697 (0) Table wp_woocommerce_tax_rates: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1283) in 0.00 seconds
+0004.711 (0) Table wp_woocommerce_tax_rates: finishing file(s) (2, 0.4 KB)
+0004.724 (0) Table wp_yoast_indexable: Total expected rows (approximate): 24
+0004.729 (0) Table wp_yoast_indexable: Rows added in this batch (next record: 1000): 24 (uncompressed bytes in this segment=17045) in 0.00 seconds
+0004.743 (0) Table wp_yoast_indexable: finishing file(s) (2, 2.8 KB)
+0004.755 (0) Table wp_yoast_indexable_hierarchy: Total expected rows (approximate): 0
+0004.759 (0) Table wp_yoast_indexable_hierarchy: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=734) in 0.00 seconds
+0004.774 (0) Table wp_yoast_indexable_hierarchy: finishing file(s) (2, 0.4 KB)
+0004.786 (0) Table wp_yoast_migrations: Total expected rows (approximate): 18
+0004.790 (0) Table wp_yoast_migrations: Rows added in this batch (next record: 1000): 18 (uncompressed bytes in this segment=1070) in 0.00 seconds
+0004.804 (0) Table wp_yoast_migrations: finishing file(s) (2, 0.6 KB)
+0004.816 (0) Table wp_yoast_primary_term: Total expected rows (approximate): 0
+0004.821 (0) Table wp_yoast_primary_term: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=846) in 0.00 seconds
+0004.835 (0) Table wp_yoast_primary_term: finishing file(s) (2, 0.4 KB)
+0004.847 (0) Table wp_yoast_seo_links: Total expected rows (approximate): 1
+0004.851 (0) Table wp_yoast_seo_links: Rows added in this batch (next record: 1000): 1 (uncompressed bytes in this segment=1167) in 0.00 seconds
+0004.866 (0) Table wp_yoast_seo_links: finishing file(s) (2, 0.5 KB)
+0004.872 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_options.table.tmpr1001.gz (1/48): adding to final database dump
+0004.878 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_options.table.gz (2/48): adding to final database dump
+0004.882 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_users.table.tmpr1001.gz (3/48): adding to final database dump
+0004.886 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_users.table.gz (4/48): adding to final database dump
+0004.890 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_usermeta.table.tmpr1001.gz (5/48): adding to final database dump
+0004.895 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_usermeta.table.gz (6/48): adding to final database dump
+0004.898 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_commentmeta.table.tmpr1.gz (7/48): adding to final database dump
+0004.902 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_commentmeta.table.gz (8/48): adding to final database dump
+0004.906 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_comments.table.tmpr1001.gz (9/48): adding to final database dump
+0004.910 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_comments.table.gz (10/48): adding to final database dump
+0004.914 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_links.table.tmpr1.gz (11/48): adding to final database dump
+0004.918 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_links.table.gz (12/48): adding to final database dump
+0004.922 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_postmeta.table.tmpr1001.gz (13/48): adding to final database dump
+0004.927 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_postmeta.table.gz (14/48): adding to final database dump
+0004.930 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_posts.table.tmpr1001.gz (15/48): adding to final database dump
+0004.936 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_posts.table.gz (16/48): adding to final database dump
+0004.940 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_term_relationships.table.tmpr100001.gz (17/48): adding to final database dump
+0004.944 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_term_relationships.table.gz (18/48): adding to final database dump
+0004.949 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_term_taxonomy.table.tmpr1001.gz (19/48): adding to final database dump
+0004.953 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_term_taxonomy.table.gz (20/48): adding to final database dump
+0004.956 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_termmeta.table.tmpr1.gz (21/48): adding to final database dump
+0004.960 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_termmeta.table.gz (22/48): adding to final database dump
+0004.963 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_terms.table.tmpr1001.gz (23/48): adding to final database dump
+0004.969 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_terms.table.gz (24/48): adding to final database dump
+0004.973 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_actions.table.tmpr1001.gz (25/48): adding to final database dump
+0004.978 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_actions.table.gz (26/48): adding to final database dump
+0004.982 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_claims.table.tmpr1.gz (27/48): adding to final database dump
+0004.985 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_claims.table.gz (28/48): adding to final database dump
+0004.988 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_groups.table.tmpr1001.gz (29/48): adding to final database dump
+0004.992 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_groups.table.gz (30/48): adding to final database dump
+0004.996 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_logs.table.tmpr1001.gz (31/48): adding to final database dump
+0005.000 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_actionscheduler_logs.table.gz (32/48): adding to final database dump
+0005.004 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_admin_note_actions.table.tmpr1001.gz (33/48): adding to final database dump
+0005.008 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_admin_note_actions.table.gz (34/48): adding to final database dump
+0005.011 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_admin_notes.table.tmpr1001.gz (35/48): adding to final database dump
+0005.015 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_admin_notes.table.gz (36/48): adding to final database dump
+0005.019 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_category_lookup.table.tmpr1001.gz (37/48): adding to final database dump
+0005.023 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_category_lookup.table.gz (38/48): adding to final database dump
+0005.026 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_customer_lookup.table.tmpr1.gz (39/48): adding to final database dump
+0005.030 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_customer_lookup.table.gz (40/48): adding to final database dump
+0005.034 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_download_log.table.tmpr1.gz (41/48): adding to final database dump
+0005.038 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_download_log.table.gz (42/48): adding to final database dump
+0005.042 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_coupon_lookup.table.tmpr1.gz (43/48): adding to final database dump
+0005.045 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_coupon_lookup.table.gz (44/48): adding to final database dump
+0005.049 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_product_lookup.table.tmpr1.gz (45/48): adding to final database dump
+0005.053 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_product_lookup.table.gz (46/48): adding to final database dump
+0005.056 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_stats.table.tmpr1.gz (47/48): adding to final database dump
+0005.060 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_stats.table.gz (48/48): adding to final database dump
+0005.064 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_tax_lookup.table.tmpr1.gz (49/48): adding to final database dump
+0005.068 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_order_tax_lookup.table.gz (50/48): adding to final database dump
+0005.072 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_product_meta_lookup.table.tmpr1.gz (51/48): adding to final database dump
+0005.076 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_product_meta_lookup.table.gz (52/48): adding to final database dump
+0005.081 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_reserved_stock.table.tmpr1.gz (53/48): adding to final database dump
+0005.085 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_reserved_stock.table.gz (54/48): adding to final database dump
+0005.089 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_tax_rate_classes.table.tmpr1001.gz (55/48): adding to final database dump
+0005.094 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_tax_rate_classes.table.gz (56/48): adding to final database dump
+0005.098 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_webhooks.table.tmpr1.gz (57/48): adding to final database dump
+0005.102 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_wc_webhooks.table.gz (58/48): adding to final database dump
+0005.106 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_api_keys.table.tmpr1.gz (59/48): adding to final database dump
+0005.110 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_api_keys.table.gz (60/48): adding to final database dump
+0005.114 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_attribute_taxonomies.table.tmpr1.gz (61/48): adding to final database dump
+0005.120 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_attribute_taxonomies.table.gz (62/48): adding to final database dump
+0005.125 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_downloadable_product_permissions.table.tmpr1.gz (63/48): adding to final database dump
+0005.128 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_downloadable_product_permissions.table.gz (64/48): adding to final database dump
+0005.132 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_log.table.tmpr1.gz (65/48): adding to final database dump
+0005.136 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_log.table.gz (66/48): adding to final database dump
+0005.140 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_order_itemmeta.table.tmpr1.gz (67/48): adding to final database dump
+0005.144 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_order_itemmeta.table.gz (68/48): adding to final database dump
+0005.148 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_order_items.table.tmpr1.gz (69/48): adding to final database dump
+0005.152 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_order_items.table.gz (70/48): adding to final database dump
+0005.158 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_payment_tokenmeta.table.tmpr1.gz (71/48): adding to final database dump
+0005.162 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_payment_tokenmeta.table.gz (72/48): adding to final database dump
+0005.166 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_payment_tokens.table.tmpr1.gz (73/48): adding to final database dump
+0005.170 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_payment_tokens.table.gz (74/48): adding to final database dump
+0005.174 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_sessions.table.tmpr1001.gz (75/48): adding to final database dump
+0005.179 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_sessions.table.gz (76/48): adding to final database dump
+0005.183 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_shipping_zone_locations.table.tmpr1.gz (77/48): adding to final database dump
+0005.187 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_shipping_zone_locations.table.gz (78/48): adding to final database dump
+0005.191 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_shipping_zone_methods.table.tmpr1.gz (79/48): adding to final database dump
+0005.196 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_shipping_zone_methods.table.gz (80/48): adding to final database dump
+0005.202 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_shipping_zones.table.tmpr1.gz (81/48): adding to final database dump
+0005.207 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_shipping_zones.table.gz (82/48): adding to final database dump
+0005.211 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_tax_rate_locations.table.tmpr1.gz (83/48): adding to final database dump
+0005.215 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_tax_rate_locations.table.gz (84/48): adding to final database dump
+0005.219 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_tax_rates.table.tmpr1.gz (85/48): adding to final database dump
+0005.223 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_woocommerce_tax_rates.table.gz (86/48): adding to final database dump
+0005.227 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_indexable.table.tmpr1001.gz (87/48): adding to final database dump
+0005.231 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_indexable.table.gz (88/48): adding to final database dump
+0005.235 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_indexable_hierarchy.table.tmpr1.gz (89/48): adding to final database dump
+0005.241 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_indexable_hierarchy.table.gz (90/48): adding to final database dump
+0005.245 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_migrations.table.tmpr1001.gz (91/48): adding to final database dump
+0005.249 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_migrations.table.gz (92/48): adding to final database dump
+0005.253 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_primary_term.table.tmpr1.gz (93/48): adding to final database dump
+0005.257 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_primary_term.table.gz (94/48): adding to final database dump
+0005.261 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_seo_links.table.tmpr1001.gz (95/48): adding to final database dump
+0005.265 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db-table-wp_yoast_seo_links.table.gz (96/48): adding to final database dump
+0005.271 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db.gz: finished writing out complete database file (48 KB)
+0005.299 (0) Total database tables backed up: 48 (backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db.gz, size: 60888, sha1: b47ca4d2609e0777a08da30a55f9736aa8821813, sha256: 08422345e83ae392dba072dd6d3e0cd4023ce1a6974f912825897983956e417b)
+0005.321 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0005.326 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0005.330 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0005.334 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-others.zip: others: This file has not yet been successfully uploaded: will queue
+0005.338 (0) backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db.gz: db: This file has not yet been successfully uploaded: will queue
+0005.343 (0) Saving backup history. Total backup size: 31.4 MB
+0005.353 (0) Requesting upload of the files that have not yet been successfully uploaded (5)
+0005.368 (0) Cloud backup selection (1/1): googledrive with instance (1/1) (last)
+0005.371 (0) Beginning dispatch of backup to remote (googledrive) (instance identifier s-fe75f9896c5653f81c2442001532b414)
+0008.725 (0) Google Drive: quota usage: used=861.4 MB, total=15360 MB, available=14498.6 MB
+0008.729 (0) Google Drive: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip: Attempting to upload to Google Drive (into folder id: 1WW1YWtuP73v2F-FyeDVcPRrlTAk8NA6Z)
+0009.936 (0) Googledrive chunked upload: 4.8 % uploaded (1048576)
+0010.814 (0) Googledrive chunked upload: 9.5 % uploaded (2097152)
+0011.707 (0) Googledrive chunked upload: 14.3 % uploaded (3145728)
+0012.585 (0) Googledrive chunked upload: 19 % uploaded (4194304)
+0013.489 (0) Googledrive chunked upload: 23.8 % uploaded (5242880)
+0014.381 (0) Googledrive chunked upload: 28.5 % uploaded (6291456)
+0015.261 (0) Googledrive chunked upload: 33.3 % uploaded (7340032)
+0016.422 (0) Googledrive chunked upload: 38 % uploaded (8388608)
+0017.285 (0) Googledrive chunked upload: 42.8 % uploaded (9437184)
+0018.166 (0) Googledrive chunked upload: 47.6 % uploaded (10485760)
+0019.077 (0) Googledrive chunked upload: 52.3 % uploaded (11534336)
+0020.795 (0) Googledrive chunked upload: 57.1 % uploaded (12582912)
+0021.712 (0) Googledrive chunked upload: 61.8 % uploaded (13631488)
+0022.662 (0) Googledrive chunked upload: 66.6 % uploaded (14680064)
+0023.519 (0) Googledrive chunked upload: 71.3 % uploaded (15728640)
+0024.381 (0) Googledrive chunked upload: 76.1 % uploaded (16777216)
+0025.277 (0) Googledrive chunked upload: 80.9 % uploaded (17825792)
+0026.258 (0) Googledrive chunked upload: 85.6 % uploaded (18874368)
+0027.210 (0) Googledrive chunked upload: 90.4 % uploaded (19922944)
+0028.089 (0) Googledrive chunked upload: 95.1 % uploaded (20971520)
+0028.994 (0) Googledrive chunked upload: 99.9 % uploaded (22020096)
+0030.753 (0) Googledrive chunked upload: 100 % uploaded (22020096)
+0030.771 (0) Google Drive: OK: Archive backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip uploaded in 22.04 seconds
+0030.775 (0) Recording as successfully uploaded: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip
+0030.787 (0) Deleting local file: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-plugins.zip: OK
+0031.150 (0) Google Drive: quota usage: used=882.4 MB, total=15360 MB, available=14477.6 MB
+0031.155 (0) Google Drive: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip: Attempting to upload to Google Drive (into folder id: 1WW1YWtuP73v2F-FyeDVcPRrlTAk8NA6Z)
+0032.499 (0) Googledrive chunked upload: 17 % uploaded (1048576)
+0033.452 (0) Googledrive chunked upload: 34 % uploaded (2097152)
+0034.636 (0) Googledrive chunked upload: 50.9 % uploaded (3145728)
+0036.187 (0) Googledrive chunked upload: 67.9 % uploaded (4194304)
+0037.091 (0) Googledrive chunked upload: 84.9 % uploaded (5242880)
+0038.947 (0) Googledrive chunked upload: 100 % uploaded (5242880)
+0038.968 (0) Google Drive: OK: Archive backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip uploaded in 7.81 seconds
+0038.974 (0) Recording as successfully uploaded: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip
+0038.988 (0) Deleting local file: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-themes.zip: OK
+0039.448 (0) Google Drive: quota usage: used=888.3 MB, total=15360 MB, available=14471.7 MB
+0039.454 (0) Google Drive: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-uploads.zip: Attempting to upload to Google Drive (into folder id: 1WW1YWtuP73v2F-FyeDVcPRrlTAk8NA6Z)
+0040.748 (0) Googledrive chunked upload: 26.7 % uploaded (1048576)
+0041.628 (0) Googledrive chunked upload: 53.4 % uploaded (2097152)
+0042.472 (0) Googledrive chunked upload: 80.1 % uploaded (3145728)
+0044.367 (0) Googledrive chunked upload: 100 % uploaded (3145728)
+0044.382 (0) Google Drive: OK: Archive backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-uploads.zip uploaded in 4.92 seconds
+0044.386 (0) Recording as successfully uploaded: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-uploads.zip
+0044.397 (0) Deleting local file: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-uploads.zip: OK
+0044.774 (0) Google Drive: quota usage: used=892 MB, total=15360 MB, available=14468 MB
+0044.780 (0) Google Drive: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-others.zip: Attempting to upload to Google Drive (into folder id: 1WW1YWtuP73v2F-FyeDVcPRrlTAk8NA6Z)
+0046.963 (0) Googledrive chunked upload: 100 % uploaded
+0046.982 (0) Google Drive: OK: Archive backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-others.zip uploaded in 2.2 seconds
+0046.987 (0) Recording as successfully uploaded: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-others.zip
+0046.997 (0) Deleting local file: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-others.zip: OK
+0047.435 (0) Google Drive: quota usage: used=892.7 MB, total=15360 MB, available=14467.3 MB
+0047.443 (0) Google Drive: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db.gz: Attempting to upload to Google Drive (into folder id: 1WW1YWtuP73v2F-FyeDVcPRrlTAk8NA6Z)
+0049.207 (0) Googledrive chunked upload: 100 % uploaded
+0049.226 (0) Google Drive: OK: Archive backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db.gz uploaded in 1.78 seconds
+0049.233 (0) Recording as successfully uploaded: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db.gz
+0049.242 (0) Deleting local file: backup_2020-12-17-1435_JM_Greta_fe13bb8f1ce0-db.gz: OK
+0049.254 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=3, retain_db=3
+0049.257 (0) Number of backup sets in history: 5; groups (db): 1
+0049.262 (0) Examining (for databases) backup set with group_id=0, nonce=fe13bb8f1ce0, datestamp=1608212141 (Dec 17 2020 13:35:41)
+0049.266 (0) This backup set is the backup set just made, so will not be deleted.
+0049.266 (0) Examining (for databases) backup set with group_id=0, nonce=3bc672b27de5, datestamp=1608200172 (Dec 17 2020 10:16:12)
+0049.266 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0049.270 (0) Examining (for databases) backup set with group_id=0, nonce=31ee1d2c4f67, datestamp=1608194351 (Dec 17 2020 08:39:11)
+0049.270 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0049.270 (0) Examining (for databases) backup set with group_id=0, nonce=99b4f3ee00d6, datestamp=1608123596 (Dec 16 2020 12:59:56)
+0049.270 (0) 1608123596: db: this set includes a database (backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-db.gz); db count is now 3
+0049.270 (0) 1608123596: db: over retain limit (3); will delete this database
+0049.270 (0) Delete file: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-db.gz, service=googledrive
+0051.146 (0) Google Drive: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-db.gz: Deletion successful
+0051.163 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0051.169 (0) Examining (for databases) backup set with group_id=0, nonce=7bb18f2a7d4c, datestamp=1608024581 (Dec 15 2020 09:29:41)
+0051.169 (0) This backup set (1608024581) was an 'Always Keep' backup, so it will not be pruned. Skipping.
+0051.169 (0) Number of backup sets in history: 5; groups (files): 1
+0051.175 (0) Examining (for files) backup set with nonce=fe13bb8f1ce0, datestamp=1608212141 (Dec 17 2020 13:35:41)
+0051.175 (0) This backup set is the backup set just made, so will not be deleted.
+0051.180 (0) This backup set is the backup set just made, so will not be deleted.
+0051.180 (0) This backup set is the backup set just made, so will not be deleted.
+0051.180 (0) This backup set is the backup set just made, so will not be deleted.
+0051.180 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0051.185 (0) Examining (for files) backup set with nonce=3bc672b27de5, datestamp=1608200172 (Dec 17 2020 10:16:12)
+0051.185 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0051.185 (0) Examining (for files) backup set with nonce=31ee1d2c4f67, datestamp=1608194351 (Dec 17 2020 08:39:11)
+0051.185 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0051.185 (0) Examining (for files) backup set with nonce=99b4f3ee00d6, datestamp=1608123596 (Dec 16 2020 12:59:56)
+0051.185 (0) plugins: over retain limit (3); will delete this file entity
+0051.185 (0) themes: over retain limit (3); will delete this file entity
+0051.185 (0) uploads: over retain limit (3); will delete this file entity
+0051.185 (0) others: over retain limit (3); will delete this file entity
+0051.185 (0) Delete file: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-plugins.zip, service=googledrive
+0051.189 (0) Delete file: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-themes.zip, service=googledrive
+0051.196 (0) Delete file: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-uploads.zip, service=googledrive
+0051.200 (0) Delete file: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-others.zip, service=googledrive
+0052.656 (0) Google Drive: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-others.zip: Deletion successful
+0053.477 (0) Google Drive: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-uploads.zip: Deletion successful
+0054.294 (0) Google Drive: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-themes.zip: Deletion successful
+0054.909 (0) Google Drive: backup_2020-12-16-1359_JM_Greta_99b4f3ee00d6-plugins.zip: Deletion successful
+0054.923 (0) This backup set is now empty; will remove from history
+0054.930 (0) Deleting log file (log.99b4f3ee00d6.txt)
+0054.937 (0) Examining (for files) backup set with nonce=7bb18f2a7d4c, datestamp=1608024581 (Dec 15 2020 09:29:41)
+0054.944 (0) This backup set (1608024581) was an 'Always Keep' backup, so it will not be pruned. Skipping.
+0054.944 (0) This backup set (1608024581) was an 'Always Keep' backup, so it will not be pruned. Skipping.
+0054.944 (0) This backup set (1608024581) was an 'Always Keep' backup, so it will not be pruned. Skipping.
+0054.944 (0) This backup set (1608024581) was an 'Always Keep' backup, so it will not be pruned. Skipping.
+0054.945 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0054.951 (0) Retain: saving new backup history (sets now: 4) and finishing retain operation
+0054.969 (0) Resume backup (fe13bb8f1ce0, 0): finish run
+0054.984 (0) Decremented the semaphore (fd) by 1
+0054.992 (0) Semaphore (fd) unlocked
+0054.995 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0055.015 (0) No email will/can be sent - the user has not configured an email address.
+0055.019 (0) The backup apparently succeeded and is now complete

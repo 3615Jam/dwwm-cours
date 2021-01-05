@@ -1,0 +1,17 @@
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	min-height: 100vh;
+	font-family: monospace;
+	overflow: hidden;
+}
+
+h1 {
+	font-family: verdana;
+	font-size: 5em;
+	font-weight: bold;
+	color: blue;
+	top: 20px;
+}

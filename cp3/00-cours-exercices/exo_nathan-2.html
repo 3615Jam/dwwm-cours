@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur</title>
+</head>
+<body>
+    <main>
+        <input type="button" id="n1"></button>
+        <p>0</p>
+        <input type="button" id="n2"></button>
+    </main>
+    <script>
+        const paragraph = document.querySelector('p');
+        const Button = document.getElementById('n1');
+        const Button2 = document.getElementById('n2');
+        let result = 0;
+        const increment = () => {
+            result = result + 1
+            paragraph.textContent = result;
+        }
+        const decrement = () => {
+            result = result - 1;
+            paragraph.textContent = result;
+        }
+        Button.onclick = increment;
+        Button2.onclick = decrement;
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+== Changelog ==
+
+@Version 0.9
+* Fixed reviewer mentioned issues.
+
+@Version 0.2
+* Fixed "links within content must be underlined" issue.
+* Fixed Keyboard navigation issue for responsive layout.
+
+@Version 0.1
+* Initial release.
