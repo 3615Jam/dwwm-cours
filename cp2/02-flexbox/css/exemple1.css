@@ -1,0 +1,28 @@
+
+
+/* --- FLEXBOX - Exemple 1 --- */ 
+
+section {
+	display: flex;
+	border: 1px solid green;
+	align-items: center;
+}
+
+section > div {
+	background-color: yellow;
+	border: 1px solid red;
+	/*flex: 1 1 0;*/
+}
+
+section > div:first-child {
+	order: 1;
+}
+
+section > div:nth-child(2) {
+	/*flex-grow: 2;*/
+	align-self: flex-end;
+}
+
+section > div:last-child {
+	order: 2;
+}

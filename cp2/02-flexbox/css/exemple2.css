@@ -1,0 +1,19 @@
+
+
+/* --- FLEXBOX - Exemple 2 --- */ 
+
+section {
+	display: flex;
+	border: 1px solid red;
+	justify-content: flex-end;
+}
+
+section > div {
+	background-color: yellow;
+	border: 1px solid red;
+/*	flex: 0 1 0;*/
+}
+
+section > div:first-child {
+	flex-grow: 0;
+}

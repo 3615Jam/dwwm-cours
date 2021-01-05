@@ -1,0 +1,76 @@
+
+
+
+/* --- TP Flexbox - CSS --- */
+
+* {
+	border: 1px solid red;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 20vh;
+/*	position: sticky;
+	top: 0;
+	background-color: black; --- pour tester le header qui reste afficher même en scrollant vers le bas */
+}
+
+header img {
+	width: 250px;
+}
+
+/*header > * {
+	flex-basis: 1rem;
+}*/
+
+section {
+	display: flex;
+/*	justify-content: space-between; --- répartir les éléments à gauche, au centre et à droite mais je désactive parce que je choisis les dimensions manuellement plus bas*/
+}
+
+section > * {
+	flex: 1 1 0;
+}
+
+
+
+
+
+/* on choisit manuellement la largeur de chaque élément de section */
+nav {
+	flex-grow: 15; /* 15% de largeur du container */ 
+}
+
+main {
+	flex-grow: 60; /* 60% de largeur du container */ 
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+/*	align-content: space-around; --- ne fonctionne que s'il y a de la marge disponible, donc je mets un height 800 px juste au dessous */
+/*	height: 800px; --- les 2 dernières lignes sont désactivées car j'ai préféré rajouter des margin aux div de main */
+}
+
+aside {
+	flex-grow: 25; /* 25% de largeur du container */ 
+}
+
+main img {
+	width: 100px;
+} 
+
+main div {
+	margin: 1rem 0 1rem 0;
+}
+
+main figcaption {
+	text-align: center;
+}
+
+footer {
+	text-align: center;
+}
+
+
+

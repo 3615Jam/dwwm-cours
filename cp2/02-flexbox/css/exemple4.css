@@ -1,0 +1,23 @@
+
+
+/* --- FLEXBOX - Exemple 4 --- */ 
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	border: 1px solid red;
+	display: flex;
+	flex-direction: column;
+}
+
+body > * {
+	border: 1px solid green;
+	flex: 1 1 20vh;
+}
+
+main {
+	flex: 1 1 60vh;
+}

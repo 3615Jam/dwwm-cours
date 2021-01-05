@@ -1,0 +1,79 @@
+
+
+
+/* --- GENERAL --- */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+
+/* --- LIENS --- */
+a, a:link, a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+}
+
+
+
+/* --- HEADER --- */
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header img {
+	width: 150px;
+	max-width: 100%;
+} 
+
+
+
+/* --- MENU --- */
+nav {
+	width: 50%;
+	margin: auto;
+}
+
+nav > ul {
+	display: flex;
+	justify-content: space-around;
+	list-style-type: none;
+}
+
+
+
+/* --- SECTION (main + aside) --- */
+section {
+	display: flex;
+}
+
+
+
+/* --- FOOTER --- */
+footer {
+	text-align: center;
+}
+
+
+
+
+/* --- RWD - Mobiles --- */
+@media screen and (max-width: 767px;) {
+	aside {
+		display: none;
+	}	
+}
+
+
+
+
+
+/* --- RWD - Tablettes --- */

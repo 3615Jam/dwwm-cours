@@ -1,0 +1,238 @@
+
+
+
+/* Mettre les règles CSS ( @ ) en 1er pour le chargement */
+
+@keyframes neon {
+	from {
+		text-shadow: 2px 2px 2px white;
+	}
+	25% {
+		text-shadow: 2px 2px 2px red;
+		transform: rotate(1deg);
+	}
+	50% {
+		text-shadow: 2px 2px 2px blue;
+		transform: rotate(0deg);
+	}
+	75% {
+		text-shadow: 2px 2px 2px yellow;
+		transform: rotate(-1deg);
+	}
+	to {
+		text-shadow: 2px 2px 2px black;
+	}
+}
+
+
+
+
+* {
+	margin: 0; /* mise à 0 de toutes les marges de la page */
+}
+
+html, body {
+	width:100%; 
+	height: 100%;
+}
+
+body {
+	font-family: 'Verdana', 'Geneva', 'Tahoma', sans-serif; 
+	background-image: url(../pics/background.jpg);
+	background-size: cover;
+}
+
+#wrapper {
+	background-color: rgba(125, 125, 125, 0.3);
+	/*height: 100%;*/
+}
+
+/*#wrapper>* {
+	margin: 1rem; 
+}*/
+
+
+
+/*--- HEADER ---*/
+
+#myheader {
+	display: flex;
+	text-align: center;
+}
+
+#logo img {
+	width: 5rem;
+}
+
+#logo {
+	width: 20%;
+}
+
+#name {
+	width: 80%;
+}
+
+#name h1 {
+	height: 5rem;
+	line-height: 5rem; 
+	/* animation: 3s ease 0s infinite alternate neon; --- animation désactivée, c'était juste pour l'exemple mais le résultat est ... particulier */
+}
+
+
+
+/*--- NAV ---*/
+
+#menu .items {
+	margin: 2rem 0; 
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+#menu a {
+	color: white;
+	text-decoration: none;
+	/* border: 0.5rem solid black; */ 
+	background-color: black;
+	/* box-shadow: 0 0 1rem grey; */
+	padding: 1rem;
+	transition: all 0.25s ease 0s;
+}
+
+#menu a:hover {
+	color: black;
+	text-decoration: none;
+	/* border: 0.5rem solid black; */ 
+	background-color: white;
+	box-shadow: 0 0 0.5rem grey;
+	padding: 1rem;	
+}
+
+/*--- EMPS --- */
+
+#emps {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	border-radius: 1rem;
+	background-color: rgba(125, 125, 125, 0.3);
+	margin-bottom: 1rem;
+} 
+
+.emp {
+	margin        : 1rem;
+	width         : 175px;
+	height        : 175px;
+	color         : white;
+	font-weight   : bold;
+	text-align    : center;
+	text-transform: uppercase;
+}
+
+.member {
+	border-radius: 50%;
+	border-style : solid;
+	border-width : .75rem;
+	width        : 100px;
+	transition   : all 0.15s ease 0s;
+}
+
+.girl {
+	border-color: pink;	
+}
+
+.guy {
+	border-color: blue;	
+}
+
+.girl:hover {
+	transform: rotate(-5deg) scale(1.1);
+}
+
+.guy:hover {
+	transform: rotate(5deg) scale(1.1);
+}
+
+.member:hover {
+	border: .75rem solid black;
+	/* width: calc(100px*1.1);  --- calc = calcul 110% de la taille de l'image - remplacé plus haut par "transform/scale" */
+}
+
+
+
+/*--- MEDIA --- */
+
+#media {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	text-align: center;
+}
+
+.interview {
+	flex: 1 1 0;
+}
+
+#media article {
+	margin: .5rem;
+}
+
+#texte p {
+	text-align: justify;
+	padding: .5rem;
+}
+
+
+
+/*--- FOOTER --- */
+
+#bottom {
+	color: white;
+	background-color: black;
+}
+
+#bottom ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+.lvl1 {
+	display: flex;
+	justify-content: space-around;
+}
+
+.lvl1>li {
+	border-left: dotted;
+	padding: 1rem;
+}
+
+#bottom h2 {
+	text-transform: uppercase;
+	/*padding-bottom: 1rem;*/
+}
+
+#copy {
+	text-align: center;
+	color: grey;
+	padding: 1rem;
+}
+
+
+
+/*--- FORM --- */
+
+form div {
+	margin: .5rem 0;
+}
+
+form div>*:first-child {
+	display: inline-block;
+	width: 25%;
+	font-weight: bold;
+	text-align: right;
+}
+
+
+

@@ -1,0 +1,99 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body {
+	font-family: verdana;
+	background: scroll 100% 0% #F5F5F5 url(../pics/sun.png) url(../pics/baobab.webp) no-repeat;
+}
+
+h1 {
+	color: rgba(255,0,0);
+	text-shadow: 0 0 10px grey;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'anton', sans-serif;
+}
+
+pre {
+	color: rgb(0,0,255);
+	border-left: 2px solid blue; 
+	margin-left: 20px;
+	padding-left: 10px;
+}
+
+dt {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+dd {
+	margin-bottom: 2rem;
+	text-align: justify;
+}
+
+p {
+	text-align: justify;
+}
+
+figure>img {
+	/* border-radius: 2rem; */
+	box-shadow: 5px 5px 5px black; 
+	margin-bottom: 1rem;
+} 
+
+table {
+	width: 80%;
+}
+
+table, th, td {
+	border: 1px solid black; 
+}
+
+tbody tr:nth-child(even) {
+	background-color: #ddd; 
+}
+
+tbody tr:hover {
+	background-color: gold;
+	cursor: pointer;
+}
+
+thead, tfoot {
+	background-color: black;
+	color: white;
+}
+
+/* exercice : 	1) centrer le texte de la 2eme colonne de tous les tableaux
+				2) aligner à droite le texte de la dernière colonne de tous les tableaux */
+
+tbody tr td:nth-child(2) {
+	text-align: center;
+}
+
+tbody tr td:last-child {
+	text-align: right;
+}
+
+/* Même exercice mais seulement pour le 1er tableau de la page 
+
+table:first-of-type tr td:nth-child(2) {
+	text-align: center;
+}
+
+table:first-of-type tr td:last-child {
+	text-align: right;
+}
+
+*/ 
+
+
+
+ol ol {
+	list-style-type: upper-roman;
+}
+
+
+ul {
+	list-style-image: url(../pics/check-small.png);
+}
