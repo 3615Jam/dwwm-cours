@@ -1,7 +1,7 @@
-# DWWM-Colombes
+# DWWM - Cours et Exercices
 
-Titre Professionnel Développeur Web et Web Mobile
+Titre Professionnel 
+Développeur Web et Web Mobile
+Greta 92 
 
-Repo des exercices web
-
-© Jean-Marc Garcia 2020
+Oct 2020 - Jui 2021
