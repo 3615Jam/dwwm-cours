@@ -246,9 +246,40 @@ SELECT FROM
 
 
 
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+-- TP 5
+
+-- 1) 
 
 
 
 
 
+-- 2) 
 
+select 
+	a.code_client,
+	a.no_commande
+from 
+	commandes a
+where 
+	port > (select 
+				avg(port) 
+			from 
+				commandes b
+			where 
+				a.code_client = b.code_client)
+;
+
+
+-- 3) 
+
+select 
+	nom_produit
+from 
+	produits 
+where 
+unites_stock > (select max(unites_stock) from produits where code_categorie = 3);
+
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
