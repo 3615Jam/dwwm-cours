@@ -16,7 +16,7 @@ let members = [
 	{"fname":"Oihid", "sex":"M", "age":40, "married":false},
 	{"fname":"Remy", "sex":"M", "age":42, "married":false},
 	{"fname":"Nathan", "sex":"M", "age":23, "married":false},
-	{"fname":"Kevin", "sex":"M", "age"25:, "married":false},
+	{"fname":"Kevin", "sex":"M", "age":25, "married":false},
 	{"fname":"Hakim", "sex":"M", "age":24, "married":false},
 	{"fname":"Jean-Marc", "sex":"M", "age":38, "married":true},
 	{"fname":"Thomas", "sex":"M", "age":33, "married":false},
