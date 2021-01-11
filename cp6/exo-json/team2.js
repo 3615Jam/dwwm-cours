@@ -30,6 +30,8 @@ Fonction pour remplir le tableau HTML avec un array :
 function fillTable() {
 	// on déclare 2 variables, 1 pour les futures lignes, 1 pour les futures cellules
 	let oRow, oCell;
+	// on déclare une variable pour faire la somme des ages, qu'on utilisera plus loin pour la moyenne des ages
+	let iSum = 0;
 	// boucle pour traiter chaque élément de l'array Members  
 	for (let i = 0; i < members.length; i++) {
 		// on crée une nouvelle ligne
@@ -44,8 +46,10 @@ function fillTable() {
 		oCell.textContent = members[i].fname;
 		oRow.appendChild(oCell); 
 		// 2eme cellule pour l'age 
+		iSum += members[i].age;
 		oCell = document.createElement('td');
 		oCell.textContent = members[i].age;
+		oCell.contentEditable = true;
 		oRow.appendChild(oCell);
 		// 3eme cellule pour le statut 
 		// on veut que le texte soit différent en fonction du sexe   
@@ -56,7 +60,6 @@ function fillTable() {
 			} else {
 				oCell.textContent = "Marié";
 		 	}
-
 			// variante ternaire : 
 			// oCell.textContent = (members[i].sex === "F" ? "Mariée" : "Marié");
 			}
@@ -67,4 +70,6 @@ function fillTable() {
 		// 
 		document.getElementById('tblBody').appendChild(oRow);
 	}
+	// affiche la moyenne des ages 
+	document.getElementById('avgAge').textContent = (iSum / members.length).toFixed(2);
 }
