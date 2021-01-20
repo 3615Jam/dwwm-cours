@@ -71,7 +71,11 @@ function getCity() {
 
 // puis on branche des écouteurs d'évènements sur "pays" et sur "code postal" :
 
-// quand on utilise 'addEventListener()' 
+/* 
+quand on utilise 'addEventListener()', il y a 3 paramètres.
+pour le second, on peut utiliser une fonction nominative SANS les parenthèses (2eme partie, ci-dessous)
+OU bien mettre celle-ci à l'intérieur d'une fonction anonyme (1ere partie, ci-dessous)
+*/
 
 document.getElementById('land').addEventListener(
 	'change',

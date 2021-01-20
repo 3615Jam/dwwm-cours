@@ -12,13 +12,14 @@
 	<body class="container">
 		
 		<div class="jumbotron">
-  			<h1 class="display-4">Stockage Local</h1>
+			<h1 class="display-4">Stockage Local</h1>
+			<p class="lead">Ecriture</p>
   		</div>
 
   		<form action="showvalues.php" method="post">
 			<div class="form-group">
 				<label for="fname">Prénom : </label>
-				<input type="text" name="fname" id="fname" class="form-control">
+				<input type="text" name="fname" id="fname" class="form-control" required>
 			</div>
 			<div class="form-group">
 				<label for="land">Pays : </label>
@@ -37,7 +38,9 @@
             <input type="button" value="IndexedDB" id="saveIndexedDB" class="btn btn-success">
   		</form>
         <script type="text/javascript" src="ajax.js"></script>
-        <script type="text/javascript" src="cookie.js"></script>
+		<script type="text/javascript" src="cookie.js"></script>
+		<script type="text/javascript" src="indexeddb.js"></script>
+		<script type="text/javascript" src="webstorage.js"></script>
   	</body>
 
 </html>
