@@ -116,15 +116,33 @@ if(document.getElementById('readCookie')) {
     document.getElementById('readCookie').addEventListener(
         'click',
         function() {
+            // on récupère les cookies et on les split avec le séparateur ';'
             let aCookies = document.cookie.split(';');
+            // on crée 2 variables qui récupèreront les valeurs des cookies et qui les transmettront dans les cellules du tableau 
             let oRow, oCell;
-            document.getElementById('tblCookie').innerHTML = "";
-            for(let i = 0; xxxxxxxx ; i++) {
-
+            // on remet à 0 l'affichage, pour éviter qu'on affiche plusieurs fois le même cookie si on appuie plusieurs fois sur le bouton 
+            document.getElementById('tblCookies').innerHTML = "";
+            // boucle : pour chaque élément de aCookies, on le re-split avec le séparateur '='
+            for(let i = 0; i < aCookies.length; i++) {
+                let aCookie = aCookies[i].split("=");
+                // puis on crée une ligne de tableau html ('tr')
+                oRow = document.createElement('tr');
+                // puis on crée une 1ere cellule de tableau html ('td')
+                oCell = document.createElement('td');
+                // on remplit de texte la 1ere cellule avec la 1ere valeur trouvée dans le second split du cookie 
+                oCell.textContent = aCookie[0].trim();
+                // on attache la 1ere cellule à la ligne du tableau html 
+                oRow.appendChild(oCell);
+                // puis on crée une 2nde cellule de tableau html ('td')
+                oCell = document.createElement('td');
+                // on remplit de texte la 2eme cellule avec la 2eme valeur trouvée dans le second split du cookie 
+                oCell.textContent = aCookie[1];
+                // on attache la 2eme cellule à la ligne du tableau html 
+                oRow.appendChild(oCell);
+                // et enfin on attache la ligne (avec ses 2 cellules) au body tableau 
+                document.getElementById('tblCookies').appendChild(oRow);
             }
         },
         false
     );
 }
-
-

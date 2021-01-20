@@ -12,6 +12,7 @@ document.getElementById('saveLocal').addEventListener(
         for(let i = 0; i < aElements.length; i++) {
             localStorage.setItem(aElements[i].name, aElements[i].value);
         }
+        alert("localStorage effectué avec succès !")
     },
     false
 );
