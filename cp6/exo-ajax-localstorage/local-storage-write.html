@@ -11,6 +11,17 @@
 	
 	<body class="container">
 		
+		<div id="cookieAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>Cookies ;)</strong> Nous utilisons des cookies sur ce site web. 
+			<div>
+				<button type="button" class="">Je me casse !</button>
+				<button type="button" class="">Ok j'accepte et je reste ;)</button>
+			</div>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+
 		<div class="jumbotron">
 			<h1 class="display-4">Stockage Local</h1>
 			<p class="lead">Ecriture</p>
@@ -33,14 +44,28 @@
 				<label for="city">Ville : </label>
 				<input type="text" name="city" id="city" class="form-control" readonly>
 			</div>
+
+			<div class="form-group">
+				<label for="dob">Date de naissance : </label>
+				<input type="date" name="dob" id="dob" class="form-control">
+			</div>
+	
+			<div class="form-group">
+				<label for="age">Age : </label>
+				<input type="number" name="age" id="age" class="form-control" readonly>
+			</div>
+
             <input type="button" value="Cookie" id="saveCookie" class="btn btn-primary">
             <input type="button" value="LocalStorage" id="saveLocal" class="btn btn-warning">
             <input type="button" value="IndexedDB" id="saveIndexedDB" class="btn btn-success">
-  		</form>
+
+		</form>
+		
         <script type="text/javascript" src="ajax.js"></script>
 		<script type="text/javascript" src="cookie.js"></script>
 		<script type="text/javascript" src="indexeddb.js"></script>
-		<script type="text/javascript" src="webstorage.js"></script>
+		<script type="text/javascript" src="localstorage.js"></script>
+		<script type="text/javascript" src="global.js"></script>
   	</body>
 
 </html>

@@ -16,7 +16,7 @@
 			<p class="lead">Lecture</p>
   		</div>
         
-        <h2>Cookies</h2>
+        <h2 class="mt-5">Cookies</h2>
 
         <table class="table table-striped">
             <thead>
@@ -28,9 +28,35 @@
             <tbody id="tblCookies"></tbody>
         </table>
 
-        <input type="button" id="readCookie" value="Cookie" class="btn btn-primary">
+        <input type="button" id="readCookie" value="Cookies" class="btn btn-primary">
+
+        <h2 class="mt-5">Local Storage</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <th>Clé</th>
+                <th>Valeur</th>
+            </thead>
+            <tbody id="tblLocal"></tbody>
+        </table>
+
+        <input type="button" id="readLocal" value="Local Storage" class="btn btn-warning">
+
+        <h2 class="mt-5">IndexedDB</h2>
+        
+        <table class="table table-striped">
+            <thead>
+                <th>ID</th>
+                <th>Objet</th>
+            </thead>
+            <tbody id="tblIndexedDB"></tbody>
+        </table>
+
+        <input type="button" id="readIndexedDB" value="IndexedDB" class="btn btn-success">
 
         <script type="text/javascript" src="cookie.js"></script>
+        <script type="text/javascript" src="localstorage.js"></script>
+        <script type="text/javascript" src="indexeddb.js"></script>
   	</body>
 
 </html>
