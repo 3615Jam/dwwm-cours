@@ -40,11 +40,35 @@ document.getElementById('dob').addEventListener(
         }
 );
 
+/*
+Lesly's version : 
+
+document.getElementById('dob').addEventListener(
+    'change',
+    function () {
+        document.getElementById('age').value = datediff(this.value, new Date());
+    },
+    false
+);
+
+*/
+
 
 
 // message d'alerte pour les cookies : 
 
-document.getElementById('cookieAlert').addEventListener(
+// si on clique sur "stay", on ferme le message d'alerte des cookies 
+// et on empêche la redirection vers google (preventDefault)
+document.getElementById('stay').addEventListener(
+    'click',
+    function(evt) {
+        evt.preventDefault();
+        document.getElementById('cookieAlert').style.display = 'none';
+    }
+);
+
+// pareil si on clique sur l'icone "X" pour fermer 
+document.getElementById('close').addEventListener(
     'click',
     function(evt) {
         evt.preventDefault();
