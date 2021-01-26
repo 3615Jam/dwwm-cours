@@ -2,7 +2,7 @@
 
 $members = [
     ["Emma", 23, "F", false],
-    ["Asma", 30, "F", false],
+    ["Asma", 30, "F", true],
 	["Jeremy", 32, "M", false],
 	["Mohamed", 29, "M", true],
 	["Samir", 43, "M", true],
