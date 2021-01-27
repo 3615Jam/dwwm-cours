@@ -61,7 +61,7 @@ foreach( $projects as $key => $val ) {
     $html .= '<tr>';
     $html .= '<td>' . $key . ' - ' . $projects[$key]['name'] . '</td>';
     // on utilise un 'ternaire' pour vérifier si 'budget' contient une valeur 
-    $html .= '<td>' . ( array_key_exists('budget', $projects[$key]) ? $projects[$key]['budget'] : "test valeur vide") . '</td>';
+    $html .= '<td>' . ( array_key_exists('budget', $projects[$key]) ? number_format($projects[$key]['budget'], 2, ',', ' ') . ' €' : "(test valeur vide)") . '</td>';
     $html .= '<td><ul>';
     // on refait une seconde boucle pour parcourir le sous-tableau 
     foreach($projects[$key]['technos'] as $key2 => $val2) {
@@ -78,4 +78,25 @@ foreach( $projects as $key => $val ) {
 $html .= '</tbody></table>';
 // on affichage le résultat
 echo $html;
+
+
+/* formatage monétaire français /!\ ne fonctionne pas pour le moment ! 
+
+$fmt = numfmt_create( 'de_DE', NumberFormatter::DECIMAL );
+echo numfmt_format_currency($fmt, 1234567.891234567890000, "EUR")."\n";
+echo numfmt_format_currency($fmt, 1234567.891234567890000, "RUR")."\n";
+$fmt = numfmt_create( 'ru_RU', NumberFormatter::CURRENCY );
+echo numfmt_format_currency($fmt, 1234567.891234567890000, "EUR")."\n";
+echo numfmt_format_currency($fmt, 1234567.891234567890000, "RUR")."\n";
+
+*/
+
+
+
+
+
+
 ?>
+
+
+
