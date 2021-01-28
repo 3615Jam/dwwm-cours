@@ -80,23 +80,5 @@ $html .= '</tbody></table>';
 echo $html;
 
 
-/* formatage monétaire français /!\ ne fonctionne pas pour le moment ! 
-
-$fmt = numfmt_create( 'de_DE', NumberFormatter::DECIMAL );
-echo numfmt_format_currency($fmt, 1234567.891234567890000, "EUR")."\n";
-echo numfmt_format_currency($fmt, 1234567.891234567890000, "RUR")."\n";
-$fmt = numfmt_create( 'ru_RU', NumberFormatter::CURRENCY );
-echo numfmt_format_currency($fmt, 1234567.891234567890000, "EUR")."\n";
-echo numfmt_format_currency($fmt, 1234567.891234567890000, "RUR")."\n";
-
-*/
-
-
-
-
-
 
 ?>
-
-
-

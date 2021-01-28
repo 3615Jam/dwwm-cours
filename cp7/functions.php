@@ -82,4 +82,76 @@ function calculTtc($mtht, $taux = 0.2) {
 
 
 
+/**
+ * 
+ * fonction "pwGen" : 
+ * 
+ * génère un mot de passe aléatoire parmi une chaine de caractères prédéfinie 
+ * 
+ * @param   int     $len    nombre de caractères utilisés pour générer le mot de passe (8 par défaut)
+ * @return  string          chaine composée des $len premiers caractères  
+ * 
+ */
+
+function pwGen ($len = 8) {
+    $dico = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+*/$#";
+    if($len < 8) {
+        trigger_error("Attention, peu sécurisé ! Il est conseillé d'utiliser au moins 8 caractères.", E_USER_WARNING);
+    } elseif($len > strlen($dico)) {
+        trigger_error('Le mot de passe généré sera de ' . strlen($dico) . ' caractères maximum.', E_USER_WARNING);
+    }
+    return substr(str_shuffle($dico), 0,$len);
+}
+
+
+
+/**
+ * fonction "arrToSelect" : 
+ * 
+ * génère un 'select' html pour un tableau passé en paramètre 
+ * 
+ * @param   array   $arr 
+ * @return  string  $html 
+ * 
+ */
+
+function arrToSelect ($arr) {
+    $html = "";
+    $html .= '<select>';
+    foreach($arr as $key => $val) {
+        $html .= '<option value="'. $key .'">' . $val . '</option>';
+    }
+    $html .= '</select>';
+    return $html;
+}
+
+
+
+
+
+// in progress ........... 
+
+function average() {
+    $r = 0;
+    $compteur = 0;
+    $arr = [];
+
+    if( === 1 && is_array($arr)) {
+
+    }
+    foreach(func_get_args() as $val) {
+        if(is_numeric()) {
+            $r += $val;
+        }
+    }
+    $r /= func_num_args();
+    return $r;
+}
+
+
+
+
+
+
+
 ?>
