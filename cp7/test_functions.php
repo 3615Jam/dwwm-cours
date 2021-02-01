@@ -49,11 +49,11 @@ echo '<p>Test 24 (testTab2) : ' . arrToSelect($tabTest2) . '</p>';
 echo '<hr>';
 
 echo '<p>Test de la fonction "average" : </p>';
-echo '<p>Test xx : ' . average(10, 20, 30) . '</p>';
-echo '<p>Test xx : ' . average('10', '20', 30) . '</p>';
-echo '<p>Test xx : ' . average(10, 20, "Toto au ski") . '</p>';
-echo '<p>Test xx : ' . average(rand(1, 9), rand(10, 99), rand(100, 999)) . '</p>';
-echo '<p>Test xx : ' . average(10, array(20, 30)) . '</p>';
+echo '<p>Test 25 : ' . average(10, 20, 30) . '</p>';
+echo '<p>Test 26 : ' . average('10', '20', 30) . '</p>';
+echo '<p>Test 27 : ' . average(10, 20, "Toto au ski") . '</p>';
+echo '<p>Test 28 : ' . average(rand(1, 9), rand(10, 99), rand(100, 999)) . '</p>';
+echo '<p>Test 29 : ' . average(10, array(20, 30)) . '</p>';
 echo '<hr>';
 
 ?>

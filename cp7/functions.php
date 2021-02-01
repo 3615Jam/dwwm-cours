@@ -59,7 +59,7 @@ function isDate($arg) : bool {
  * 
  * fonction "calculTtc" :
  *  
- * calculer le montant TTC à partir d'un montant HT 
+ * calcule le montant TTC à partir d'un montant HT 
  * 
  * @param   int|float   $mtht   montant HT, nombre réel positif ou nul 
  * @param   float       $taux   taux de tva utilisé, parmi 3 définis (5.5, 10 et 20%, 20% étant la valeur par défaut)
@@ -127,30 +127,34 @@ function arrToSelect ($arr) {
 
 
 
-
-
-// in progress ........... 
+/**
+ * fonction "average" : 
+ * 
+ * calcule la moyenne de tous les paramètres passés 
+ *  
+ * @return  float  $r 
+ * 
+ */
 
 function average() {
     $r = 0;
     $compteur = 0;
     $arr = [];
 
-    if( === 1 && is_array($arr)) {
-
+    if(func_num_args() === 1 && is_array(func_get_arg(0))) {
+        $compteur = func_get_arg(0);
+    } else {
+        $compteur = func_get_args();
     }
+
     foreach(func_get_args() as $val) {
-        if(is_numeric()) {
+        if(is_numeric($val)) {
             $r += $val;
         }
     }
     $r /= func_num_args();
     return $r;
 }
-
-
-
-
 
 
 
