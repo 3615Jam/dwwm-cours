@@ -15,7 +15,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Catégories</li>
+            <li class="breadcrumb-item"><a href="edit_cat_list.php">Catégories</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edition</li>
         </ol>
     </nav>
 
@@ -26,16 +27,16 @@
         </div>
         <div class="form-group">
             <label for="NOM_CATEGORIE">Nom Catégorie :</label>
-            <input type="text" name="NOM_CATEGORIE" id="NOM_CATEGORIE" class="form-control" required patter>
+            <input type="text" name="NOM_CATEGORIE" id="NOM_CATEGORIE" class="form-control" pattern="[A-Za-z -éèà'\-]{1,25}" required>
         </div>
         <div class="form-group">
             <label for="DESCRIPTION">Description :</label>
             <textarea name="DESCRIPTION" id="DESCRIPTION" class="form-control" cols="30" rows="3" required></textarea>
         </div>
         <div class="custom-file mb-5">
-            <label class="custom-file-label" for="photo">Photo</label>
-            <input type="file" name="photo" id="photo" class="custom-file-input" accept=".jpg, .jpeg, .png, .gif, .webp">
-            <input type="hidden" name="MAX_FILE_SIZE" value="102400">
+            <label class="custom-file-label" for="PHOTO">Ajouter une image</label>
+            <input type="file" name="PHOTO" id="PHOTO" class="custom-file-input" accept=".jpg, .jpeg, .png, .gif, .webp">
+            <input type="hidden" name="MAX_FILE_SIZE" value="512000">
         </div>
         <div class="form-group">
             <input type="submit" value="Envoyer" class="btn btn-primary">
