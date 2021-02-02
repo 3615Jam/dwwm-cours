@@ -21,12 +21,12 @@
 
     <form action="edit_cat_proc.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="CODE_CATEGORIES">Code Catégorie :</label>
-            <input type="number" name="CODE_CATEGORIES" id="CODE_CATEGORIES" class="form-control" pattern="[0-9]{1,6}" required>
+            <label for="CODE_CATEGORIE">Code Catégorie :</label>
+            <input type="number" name="CODE_CATEGORIE" id="CODE_CATEGORIE" class="form-control" pattern="[0-9]{1,6}" required>
         </div>
         <div class="form-group">
-            <label for="NOM_CATEGORIES">Nom Catégorie :</label>
-            <input type="text" name="NOM_CATEGORIES" id="NOM_CATEGORIES" class="form-control" required patter>
+            <label for="NOM_CATEGORIE">Nom Catégorie :</label>
+            <input type="text" name="NOM_CATEGORIE" id="NOM_CATEGORIE" class="form-control" required patter>
         </div>
         <div class="form-group">
             <label for="DESCRIPTION">Description :</label>
