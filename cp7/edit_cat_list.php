@@ -50,11 +50,14 @@ $res = mysqli_query($cnn, 'SELECT * FROM categories');
             <?php
             // on affiche les datas de chaque colonne 
             $html = "";
-            while ($row = mysqli_fetch_assoc($res)) {
+            while ($row = mysqli_fetch_row($res)) {
                 $html .= '<tr>';
                 foreach ($row as $key => $val) {
+                    if ($key === 0) {
+                        $html .= '<td><a href="edit_cat_form.php?k=' . $val . '">' . $val . '</a></td>';
+                    }
                     // si c'est du BLOB 
-                    if (strpos($val, ";base64,")) {
+                    elseif (strpos($val, ";base64,")) {
                         $html .= '<td><img src="' . $val . '" width="150px" /></td>';
                     } else {
                         $html .= "<td>{$val}</td>";

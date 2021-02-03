@@ -1,3 +1,16 @@
+<?php
+// connexion à la BDD via MYSQLI (avec verif) 
+$cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
+if (mysqli_connect_errno()) {
+    printf("Erreur de connexion : %s", mysqli_connect_error());
+    exit();
+}
+// on récupère la liste des catégories de la BDD 'Northwind'
+$res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema.tables WHERE table_schema = 'northwind'");
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,7 +23,7 @@
 </head>
 
 <body class="container">
-    <div class="jumbotron">
+    <div class="jumbotron mb-5">
         <h1 class="display-4">Northwind Traders</h1>
 
         <?php
@@ -25,6 +38,19 @@
         <hr class="my-4">
         <p>Cliquer sur le bouton ci-dessous pour accéder au back-office :</p>
         <a class="btn btn-success btn-lg" href="#" role="button">Connexion</a>
+    </div>
+
+    <div class="mb-5" id="bo">
+        <h2>Back-Office</h2>
+        <section i1d="tables">
+            <?php
+            $html = "";
+            while ($row = mysqli_fetch_row($res)) {
+                $html .= '<a class="btn btn-secondary m-3" href="' . $row[0] . '.php">' . $row[0] . ' <span class="badge badge-light">' . $row[1] . '</span></a>';
+            }
+            echo $html;
+            ?>
+        </section>
     </div>
 
     <h2>Notre équipe</h2>
@@ -80,7 +106,7 @@
     <section id="projects">
 
         <?php
-            include_once('projects.php');
+        include_once('projects.php');
         ?>
 
     </section>
