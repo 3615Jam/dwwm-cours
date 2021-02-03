@@ -68,16 +68,37 @@ var_dump($params);
 
 
 
+// on vérifie si on fait un UPDATE ou un INSERT 
+if (isset($_GET['k']) && !empty($_GET['k'])) {
+    $update = true;     // UPDATE
+} else {
+    $update = false;    // INSERT 
+}
+
+
+
 // secu : step 3 
 // préparation de la requete SQL 
 $stmt = mysqli_stmt_init($cnn);
-$sql = "INSERT INTO categories(CODE_CATEGORIE, NOM_CATEGORIE, DESCRIPTION, PHOTO) VALUES(?, ?, ?, ?)";
+
+if ($update) {
+    $sql = "UPDATE categories SET CODE_CATEGORIE=?, NOM_CATEGORIE=?, DESCRIPTION=?, PHOTO=? WHERE CODE_CATEGORIE = ?";
+} else {
+    $sql = "INSERT INTO categories(CODE_CATEGORIE, NOM_CATEGORIE, DESCRIPTION, PHOTO) VALUES(?, ?, ?, ?)";
+}
+
 if (mysqli_stmt_prepare($stmt, $sql)) {
     // lie les paramètres à la requête préparée
-    mysqli_stmt_bind_param($stmt, "isss", $params[0], $params[1], $params[2], $params[3]);
+    if ($update) {
+        mysqli_stmt_bind_param($stmt, "isssi", $params[0], $params[1], $params[2], $params[3], $_GET['k']);
+    } else {
+        mysqli_stmt_bind_param($stmt, "isss", $params[0], $params[1], $params[2], $params[3]);
+    }
     // execute la requête préparée 
     mysqli_stmt_execute($stmt);
     // ferme le statement 
     mysqli_stmt_close($stmt);
 }
 mysqli_close($cnn);
+
+header('location: edit_cat_list.php');

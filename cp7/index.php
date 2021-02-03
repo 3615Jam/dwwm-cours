@@ -40,9 +40,9 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         <a class="btn btn-success btn-lg" href="#" role="button">Connexion</a>
     </div>
 
-    <div class="mb-5" id="bo">
+    <div class="jumbotron mb-5" id="bo">
         <h2>Back-Office</h2>
-        <section i1d="tables">
+        <section id="tables">
             <?php
             $html = "";
             while ($row = mysqli_fetch_row($res)) {
@@ -55,7 +55,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
     <h2>Notre équipe</h2>
 
-    <section id="team" class="d-flex flex-wrap justify-content-between">
+    <section id="team" class=" mb-5 d-flex flex-wrap justify-content-between">
 
         <?php
         // include_once('team.php');
@@ -103,7 +103,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
     <h2>Nos références</h2>
 
-    <section id="projects">
+    <section class="mb-5" id="projects">
 
         <?php
         include_once('projects.php');

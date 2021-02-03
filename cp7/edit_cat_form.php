@@ -1,3 +1,28 @@
+<?php
+
+// si dans l'URL, on trouve une query string ( "?k=xx" ) 
+//on récupère les infos de la table à éditer pour préremplir les inputs du formulaire 
+
+$row = [];
+if (isset($_GET['k']) && !empty($_GET['k'])) {
+    // connexion à la BDD via MYSQLI (avec verif) 
+    $cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
+    if (mysqli_connect_errno()) {
+        printf("Erreur de connexion : %s", mysqli_connect_error());
+        exit();
+    }
+    // on récupère la liste des catégories de la BDD 'Northwind' dont le code cat = $_GET['k]
+    $res = mysqli_query($cnn, "SELECT * FROM categories WHERE CODE_CATEGORIE =" . $_GET['k']);
+    // on remplit les champs 'values' des inputs 
+    $row = mysqli_fetch_assoc($res);
+}
+
+// var_dump($row);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -20,18 +45,18 @@
         </ol>
     </nav>
 
-    <form action="edit_cat_proc.php" method="post" enctype="multipart/form-data">
+    <form action="edit_cat_proc.php<?php echo ($_SERVER['QUERY_STRING'] ? '?' . $_SERVER['QUERY_STRING'] : ""); ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="CODE_CATEGORIE">Code Catégorie :</label>
-            <input type="number" name="CODE_CATEGORIE" id="CODE_CATEGORIE" class="form-control" pattern="[0-9]{1,6}" required>
+            <input type="number" name="CODE_CATEGORIE" id="CODE_CATEGORIE" class="form-control" pattern="[0-9]{1,6}" value="<?php echo (!empty($row) ? $row['CODE_CATEGORIE'] : "") ?>" required>
         </div>
         <div class="form-group">
             <label for="NOM_CATEGORIE">Nom Catégorie :</label>
-            <input type="text" name="NOM_CATEGORIE" id="NOM_CATEGORIE" class="form-control" pattern="[A-Za-z -éèà'\-]{1,25}" required>
+            <input type="text" name="NOM_CATEGORIE" id="NOM_CATEGORIE" class="form-control" pattern="[A-Za-z -éèà'\-]{1,25}" value="<?php echo (!empty($row) ? $row['NOM_CATEGORIE'] : "") ?>" required>
         </div>
         <div class="form-group">
             <label for="DESCRIPTION">Description :</label>
-            <textarea name="DESCRIPTION" id="DESCRIPTION" class="form-control" cols="30" rows="3" required></textarea>
+            <textarea name="DESCRIPTION" id="DESCRIPTION" class="form-control" cols="30" rows="3" required><?php echo (!empty($row) ? $row['DESCRIPTION'] : "") ?></textarea>
         </div>
         <div class="custom-file mb-5">
             <label class="custom-file-label" for="PHOTO">Ajouter une image</label>

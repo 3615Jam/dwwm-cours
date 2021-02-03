@@ -30,6 +30,8 @@ $res = mysqli_query($cnn, 'SELECT * FROM categories');
         </ol>
     </nav>
 
+    <a href="edit_cat_form.php" class="btn btn-success mt-5 mb-3">Ajouter une nouvelle catégorie</a>
+
     <table class="table table-dark table-striped">
         <thead>
             <tr>
