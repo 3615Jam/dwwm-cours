@@ -36,8 +36,10 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         ?>
 
         <hr class="my-4">
-        <p>Cliquer sur le bouton ci-dessous pour accéder au back-office :</p>
-        <a class="btn btn-success btn-lg" href="#" role="button">Connexion</a>
+        <p>Nouvel utilisateur ? Inscrivez-vous :</p>
+        <a class="btn btn-success btn-lg mb-5" href="register.php" role="button">Inscription</a>
+        <p>Déjà inscrit ? Connectez-vous pour accéder au back-office :</p>
+        <a class="btn btn-warning btn-lg" href="login.php" role="button">Connexion</a>
     </div>
 
     <div class="jumbotron mb-5" id="bo">

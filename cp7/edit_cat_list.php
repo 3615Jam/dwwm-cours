@@ -66,8 +66,6 @@ $res = mysqli_query($cnn, 'SELECT * FROM categories');
                     }
                 }
                 $html .= '</tr>';
-                // var_dump($row);
-                // $html .= "<th>{$col->name}</th>";
             }
             echo $html;
             ?>

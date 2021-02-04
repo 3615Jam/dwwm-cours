@@ -17,8 +17,6 @@ if (isset($_GET['k']) && !empty($_GET['k'])) {
     $row = mysqli_fetch_assoc($res);
 }
 
-// var_dump($row);
-
 ?>
 
 
@@ -52,7 +50,7 @@ if (isset($_GET['k']) && !empty($_GET['k'])) {
         </div>
         <div class="form-group">
             <label for="NOM_CATEGORIE">Nom Catégorie :</label>
-            <input type="text" name="NOM_CATEGORIE" id="NOM_CATEGORIE" class="form-control" pattern="[A-Za-z -éèà'\-]{1,25}" value="<?php echo (!empty($row) ? $row['NOM_CATEGORIE'] : "") ?>" required>
+            <input type="text" name="NOM_CATEGORIE" id="NOM_CATEGORIE" class="form-control" pattern="[0-9a-zA-Z\u00C0-\u00FF '\-]{1,25}" value="<?php echo (!empty($row) ? $row['NOM_CATEGORIE'] : "") ?>" required>
         </div>
         <div class="form-group">
             <label for="DESCRIPTION">Description :</label>
@@ -62,6 +60,7 @@ if (isset($_GET['k']) && !empty($_GET['k'])) {
             <label class="custom-file-label" for="PHOTO">Ajouter une image</label>
             <input type="file" name="PHOTO" id="PHOTO" class="custom-file-input" accept=".jpg, .jpeg, .png, .gif, .webp">
             <input type="hidden" name="MAX_FILE_SIZE" value="512000">
+            <input type="hidden" name="TEST_PHOTO" value="<?php echo (!empty($row) ? $row['PHOTO'] : "") ?>">
         </div>
         <div class="form-group">
             <input type="submit" value="Envoyer" class="btn btn-primary">

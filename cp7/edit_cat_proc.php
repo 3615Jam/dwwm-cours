@@ -10,8 +10,6 @@ foreach ($_POST as $key => $val) {
         $params[] = null;
     }
 }
-//var_dump($params);
-// exit();
 
 
 
@@ -26,9 +24,6 @@ if (mysqli_connect_errno()) {
 
 // traitement des images 
 // récupération de l'image à téléverser 
-
-var_dump($_FILES);
-
 if (isset($_FILES['PHOTO']) && ($_FILES['PHOTO']['error'] !== UPLOAD_ERR_NO_FILE)) {
     // variables du fichier à stocker : 
     // variable tableau pour les extensions de fichiers autorisées 
@@ -61,10 +56,8 @@ if (isset($_FILES['PHOTO']) && ($_FILES['PHOTO']['error'] !== UPLOAD_ERR_NO_FILE
         exit();
     }
 } else {
-    $params[3] = null;
+    $params[3] = $_POST['TEST_PHOTO'];
 }
-
-var_dump($params);
 
 
 
