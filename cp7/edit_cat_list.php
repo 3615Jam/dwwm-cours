@@ -1,13 +1,30 @@
 <?php
-// connexion à la BDD via MYSQLI (avec verif) 
+// pagination : on récupère la page active, s'il y en a une (sinon on le fixe à 1) 
+if (isset($_GET['pg']) && !empty($_GET['pg'])) {
+    $pg = (int) $_GET['pg'];
+} else {
+    $pg = 1;
+}
+
+// pagination #2 : on récupère le nb de lignes "visibles", si existe
+if (isset($_GET['nb']) && !empty($_GET['nb'])) {
+    $nb = (int) $_GET['nb'];
+} else {
+    $nb = 5;
+}
+
+// connexion à la BDD via MYSQLI (avec verif)
+$start = ($pg - 1) * $nb;
 $cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
 if (mysqli_connect_errno()) {
     printf("Erreur de connexion : %s", mysqli_connect_error());
     exit();
 }
 // on récupère la liste des catégories de la BDD 'Northwind'
-$res = mysqli_query($cnn, 'SELECT * FROM categories');
+$res = mysqli_query($cnn, "SELECT * FROM categories LIMIT {$start}, {$nb}");
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -72,6 +89,41 @@ $res = mysqli_query($cnn, 'SELECT * FROM categories');
 
         </tbody>
     </table>
+
+    <nav>
+        <ul class="pagination justify-content-center">
+
+            <?php
+
+            // calcul du nb de pages de la pagination 
+            $res = mysqli_query($cnn, "SELECT COUNT(*) AS total FROM categories");
+            $row = mysqli_fetch_assoc($res);
+            $pgs = ceil($row['total'] / $nb);
+
+            // affichage de la pagination calculée
+            $html = "";
+
+            // test previous / next #1
+            $href = $_SERVER['PHP_SELF'] . '?pg=' . ($pg - 1) . '&nb=' . $nb;
+            $html .= '<li class="page-item"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>';
+
+            for ($i = 1; $i <= $pgs; $i++) {
+                $href = $_SERVER['PHP_SELF'] . '?pg=' . $i  . '&nb=' . $nb;
+                $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+            }
+
+            // test previous / next #2 
+            $href = $_SERVER['PHP_SELF'] . '?pg=' . ($pg + 1) . '&nb=' . $nb;
+            $html .= '<li class="page-item"><a class="page-link ' . ($pg > $i ? 'disabled' : '') . '" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+
+            echo $html;
+
+
+            ?>
+
+        </ul>
+    </nav>
+
 
 </body>
 
