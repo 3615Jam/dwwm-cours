@@ -145,6 +145,22 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
                             <label for="check">Vérification du mot de passe : </label>
                             <input class="form-control" type="password" name="check" id="check" pattern="[A-Za-z0-9@$*!?]{8,}" required>
                         </div>
+
+                        <div class="form-group">
+                            <label for="land">Pays :</label>
+                            <select name="land" id="land" class="form-control">
+                                <?php
+                                $json = file_get_contents('https://restcountries.eu/rest/v2/lang/fr?fields=name;alpha2Code;translations');
+                                $obj = json_decode($json);
+                                $html = "";
+
+                                foreach ($obj as $val) {
+                                    $html .= '<option value="' . $val->alph2code . '">' . $val->translations->fr . '</option>';
+                                }
+                                echo $html;
+                                ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>

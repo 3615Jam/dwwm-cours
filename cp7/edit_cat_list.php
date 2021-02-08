@@ -103,21 +103,21 @@ $res = mysqli_query($cnn, "SELECT * FROM categories LIMIT {$start}, {$nb}");
             // affichage de la pagination calculée
             $html = "";
 
-            // test previous / next #1
+            // bouton page précédente
             $href = $_SERVER['PHP_SELF'] . '?pg=' . ($pg - 1) . '&nb=' . $nb;
-            $html .= '<li class="page-item"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>';
+            $html .= '<li class="page-item ' . ($pg === 1 ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>';
 
+            // boutons de pagination 
             for ($i = 1; $i <= $pgs; $i++) {
                 $href = $_SERVER['PHP_SELF'] . '?pg=' . $i  . '&nb=' . $nb;
                 $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
             }
 
-            // test previous / next #2 
+            // bouton page suivante 
             $href = $_SERVER['PHP_SELF'] . '?pg=' . ($pg + 1) . '&nb=' . $nb;
-            $html .= '<li class="page-item"><a class="page-link ' . ($pg > $i ? 'disabled' : '') . '" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+            $html .= '<li class="page-item ' . ($pg >= ($i - 1) ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
 
             echo $html;
-
 
             ?>
 
