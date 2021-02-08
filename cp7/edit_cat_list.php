@@ -115,7 +115,7 @@ $res = mysqli_query($cnn, "SELECT * FROM categories LIMIT {$start}, {$nb}");
 
             // bouton page suivante 
             $href = $_SERVER['PHP_SELF'] . '?pg=' . ($pg + 1) . '&nb=' . $nb;
-            $html .= '<li class="page-item ' . ($pg >= ($i - 1) ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+            $html .= '<li class="page-item ' . ($pg == $pgs ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
 
             echo $html;
 
