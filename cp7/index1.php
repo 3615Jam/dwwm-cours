@@ -39,10 +39,16 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         ?>
 
         <hr class="my-4">
-        <p>Nouvel utilisateur ? Inscrivez-vous :</p>
-        <a class="btn btn-success btn-lg mb-5" href="#" role="button" data-toggle="modal" data-target="#staticBackdrop">Inscription</a>
-        <p>Déjà inscrit ? Connectez-vous pour accéder au back-office :</p>
-        <a class="btn btn-info btn-lg" href="login.php" role="button">Connexion</a>
+        <div class="d-flex justify-content-around">
+            <div>
+                <p>Nouvel utilisateur ? Inscrivez-vous :</p>
+                <a class="btn btn-success btn-lg mb-5" href="#" role="button" data-toggle="modal" data-target="#staticBackdrop">Inscription</a>
+            </div>
+            <div>
+                <p>Déjà inscrit ? Connectez-vous pour accéder au back-office :</p>
+                <a class="btn btn-info btn-lg" href="login.php" role="button">Connexion</a>
+            </div>
+        </div>
     </div>
 
     <div class="jumbotron mb-5" id="bo">
