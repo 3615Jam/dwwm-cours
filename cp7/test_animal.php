@@ -1,6 +1,7 @@
 <?php
 
 include_once('animal.class.php');
+include_once('human.class.php');
 
 echo '<hr>';
 echo '<hr>';
@@ -70,9 +71,16 @@ echo '<p>Nombre d\'instances : ' . Animal::getNb() . '</p>';
 echo '<hr>';
 
 echo '<h2>Test 6 : Date of Birth</h2>';
-$obj6 = new Animal("Tigrou", Animal::TYPE_GROUND, "Orange et noir", 50000, "1882-02-13");
+$obj6 = new Animal("Tigrou", Animal::TYPE_GROUND, "Orange et noir", 50, "1882-02-13");
 var_dump($obj6);
-echo '<p>Age de Tigrou : ' . $obj6->getDob() . ' ans</p>';
+echo '<p>Age de Tigrou : ' . $obj6->getAge() . ' ans</p>';
+
+echo '<hr>';
+
+echo '<h2>Test 7 : Héritage</h2>';
+$obj7 = new Human("JM", "1982-02-13");
+$obj7->setWeight(70);
+var_dump($obj7);
 
 echo '<hr>';
 echo '<hr>';

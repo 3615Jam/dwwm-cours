@@ -1,7 +1,5 @@
 <?php
 
-include_once('functions.php');
-
 class Animal
 {
 
@@ -13,11 +11,11 @@ class Animal
     // propriétés privées 
     private $type = "";
     private $color = "";
-    private $weight = 0.0;
+    protected $weight = 0.0;
     private $dob = "";
 
     // propriétés statiques 
-    private static $nb = 0;
+    protected static $nb = 0;
 
     // - - - definition des constantes de classes - - - // 
 
@@ -35,14 +33,14 @@ class Animal
         string $newType = self::TYPE_ELSE,
         string $newColor = "Blanc",
         float $newWeight = 0.02,
-        string $newDob = "1970-01-01"
+        string $newDob = "1970-01-02"
     ) {
         // on assigne les valeurs des arguments aux propriétés 
         $this->name = $newName;
         $this->setType($newType);
-        $this->color = $newColor;
-        $this->weight = $newWeight;
-        $this->dob = $newDob;
+        $this->setColor($newColor);
+        $this->setWeight($newWeight);
+        $this->setDob($newDob);
         // on incrémente notre compteur d'instance ('$nb', propriété statique)
         self::$nb++;
     }
@@ -62,7 +60,6 @@ class Animal
         $this->type = self::TYPE_ELSE;
         $this->color = "";
         $this->weight = 0.0;
-        $this->dob = "";
         // on décrémente notre compteur d'instance ('$nb', propriété statique)
         self::$nb--;
     }
@@ -115,17 +112,22 @@ class Animal
     // getter pour la variable 'dob' :
     public function getDob(): string
     {
-        return calculAge($this->dob, date('Y-m-d'));
+        return $this->dob;
     }
     // setter pour la variable 'dob' :
     public function setDob(string $newDob)
     {
-        $this->dob = $newDob;
+        if ($this->isDate($newDob)) {
+            $this->dob = $newDob;
+        } else {
+            throw new Exception('L\'argument passé en paramètre n\'est pas une date !');
+        }
     }
 
 
-    // - - - definition des fonctions - - - // 
+    // - - - definition des méthodes - - - // 
 
+    // #1 : méthode pour le déplacement 
     public function move(): string
     {
         $type = $this->getType();
@@ -137,7 +139,7 @@ class Animal
                 return 'Je marche';
                 break;
             case self::TYPE_AIR:
-                return 'Je Vole';
+                return 'Je vole';
                 break;
             default:
                 return 'Je me déplace';
@@ -145,9 +147,31 @@ class Animal
         }
     }
 
+    // #2 : méthode pour l'alimentation 
     public function eat(Animal $proie)
     {
+        // un animal mange un autre animal : 
+        // le prédateur gagne le poids de la proie
         $this->weight += $proie->getWeight();
+        // la proie perd son poids
         $proie->weight = 0.0;
+    }
+
+
+    // - - - definition des fonctions - - - // 
+
+    // fonctions privées = pour usage interne
+    private function isDate($arg): bool
+    {
+        return (bool) strtotime($arg);
+    }
+
+    // fonctions publiques = pour tout le monde 
+    public function getAge(): int
+    {
+        $d1 = strtotime($this->getDob());
+        $d2 = strtotime(date('Y-m-d'));
+        $diff = $d2 - $d1;
+        return floor($diff / 60 / 60 / 24 / 365.25);
     }
 }
