@@ -1,4 +1,7 @@
 <?php
+
+include_once('functions.php');
+
 class Animal
 {
 
@@ -11,7 +14,10 @@ class Animal
     private $type = "";
     private $color = "";
     private $weight = 0.0;
+    private $dob = "";
 
+    // propriétés statiques 
+    private static $nb = 0;
 
     // - - - definition des constantes de classes - - - // 
 
@@ -28,13 +34,37 @@ class Animal
         string $newName = "",
         string $newType = self::TYPE_ELSE,
         string $newColor = "Blanc",
-        float $newWeight = 0.02
+        float $newWeight = 0.02,
+        string $newDob = "1970-01-01"
     ) {
         // on assigne les valeurs des arguments aux propriétés 
         $this->name = $newName;
-        $this->type = $newType;
+        $this->setType($newType);
         $this->color = $newColor;
         $this->weight = $newWeight;
+        $this->dob = $newDob;
+        // on incrémente notre compteur d'instance ('$nb', propriété statique)
+        self::$nb++;
+    }
+
+    // méthode statique pour afficher le nombre d'instances 
+    public static function getNb(): int
+    {
+        return self::$nb;
+    }
+
+
+    // - - - definition du destructeur - - - //
+
+    public function __destruct()
+    {
+        // on RAZ les propriétés privées de l'animal
+        $this->type = self::TYPE_ELSE;
+        $this->color = "";
+        $this->weight = 0.0;
+        $this->dob = "";
+        // on décrémente notre compteur d'instance ('$nb', propriété statique)
+        self::$nb--;
     }
 
 
@@ -82,6 +112,16 @@ class Animal
             throw new Exception('Le poids doit être compris entre 0.02 et 1100 kg');
         }
     }
+    // getter pour la variable 'dob' :
+    public function getDob(): string
+    {
+        return calculAge($this->dob, date('Y-m-d'));
+    }
+    // setter pour la variable 'dob' :
+    public function setDob(string $newDob)
+    {
+        $this->dob = $newDob;
+    }
 
 
     // - - - definition des fonctions - - - // 
@@ -107,11 +147,7 @@ class Animal
 
     public function eat(Animal $proie)
     {
-
         $this->weight += $proie->getWeight();
         $proie->weight = 0.0;
     }
 }
-
-// $weight = $this->getWeight();
-// $this->setWeight($weight += $proie->weight);
