@@ -6,7 +6,7 @@
 $row = [];
 if (isset($_GET['k']) && !empty($_GET['k'])) {
     // connexion à la BDD via MYSQLI (avec verif) 
-    $cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
+    $cnn = mysqli_connect('localhost', 'root', 'Midas2213', 'northwind');
     if (mysqli_connect_errno()) {
         printf("Erreur de connexion : %s", mysqli_connect_error());
         exit();
@@ -37,7 +37,7 @@ if (isset($_GET['k']) && !empty($_GET['k'])) {
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="index1.php">Accueil</a></li>
             <li class="breadcrumb-item"><a href="edit_cat_list.php">Catégories</a></li>
             <li class="breadcrumb-item active" aria-current="page">Edition</li>
         </ol>

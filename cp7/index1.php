@@ -1,6 +1,6 @@
 <?php
 // connexion à la BDD via MYSQLI (avec verif) 
-$cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
+$cnn = mysqli_connect('localhost', 'root', 'Midas2213', 'northwind');
 if (mysqli_connect_errno()) {
     printf("Erreur de connexion : %s", mysqli_connect_error());
     exit();
@@ -127,7 +127,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Inscription</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -137,7 +137,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
                         <div class="form-group">
                             <label for="fname">Prénom : </label>
-                            <input class="form-control" type="text" name="fname" id="fname" pattern="[A-Za-z\U00C0-\U00FF\-' ]" required>
+                            <input class="form-control" type="text" name="fname" id="fname" pattern="[A-Za-z\U00C0-\U00FF\-']" required>
                         </div>
                         <div class="form-group">
                             <label for="mail">Email : </label>

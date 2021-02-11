@@ -9,10 +9,10 @@ class Human extends Animal
 
 
     // - - - definition du constructeur - - - //
-    public function __construct(string $newFName, string $newDob)
+    public function __construct(string $newFname, string $newDob)
     {
         // on valorise les attributs
-        $this->setFName($newFName);
+        $this->setFName($newFname);
         $this->setDob($newDob);
         // on incrémente le nombre d'instances
         parent::$nb++;
@@ -22,7 +22,7 @@ class Human extends Animal
     // - - - definition des getters / setters - - - //
 
     // on "surcharge" le mutateur 'setWeight' de 'Animal' pour l'adapter à 'Human'
-    public function setWeight(float $newWeight)
+    public function setWeight($newWeight)
     {
         if (
             $newWeight >= 1 && $newWeight <= 300
@@ -40,8 +40,8 @@ class Human extends Animal
     }
 
     // setter pour 'fname'
-    public function setFName(string $newFName)
+    public function setFName(string $newFname)
     {
-        $this->fname = $newFName;
+        $this->fname = $newFname;
     }
 }
