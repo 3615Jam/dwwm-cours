@@ -42,7 +42,7 @@ $res = mysqli_query($cnn, "SELECT * FROM categories LIMIT {$start}, {$nb}");
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="index1.php">Accueil</a></li>
             <li class="breadcrumb-item active" aria-current="page">Catégories</a></li>
         </ol>
     </nav>
