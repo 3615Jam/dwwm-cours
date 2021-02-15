@@ -6,7 +6,7 @@
 $row = [];
 if (isset($_GET['k']) && !empty($_GET['k'])) {
     // connexion à la BDD via MYSQLI (avec verif) 
-    $cnn = mysqli_connect('localhost', 'root', 'Midas2213', 'northwind');
+    $cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
     if (mysqli_connect_errno()) {
         printf("Erreur de connexion : %s", mysqli_connect_error());
         exit();

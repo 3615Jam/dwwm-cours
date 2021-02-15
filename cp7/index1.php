@@ -1,6 +1,6 @@
 <?php
 // connexion à la BDD via MYSQLI (avec verif) 
-$cnn = mysqli_connect('localhost', 'root', 'Midas2213', 'northwind');
+$cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
 if (mysqli_connect_errno()) {
     printf("Erreur de connexion : %s", mysqli_connect_error());
     exit();
@@ -176,6 +176,8 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 
 </body>
 

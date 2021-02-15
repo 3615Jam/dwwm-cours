@@ -15,7 +15,7 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
 
 // connexion à la BDD via MYSQLI (avec verif)
 $start = ($pg - 1) * $nb;
-$cnn = mysqli_connect('localhost', 'root', 'Midas2213', 'northwind');
+$cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
 if (mysqli_connect_errno()) {
     printf("Erreur de connexion : %s", mysqli_connect_error());
     exit();
