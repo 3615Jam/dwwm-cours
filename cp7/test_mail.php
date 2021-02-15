@@ -27,8 +27,8 @@
  * https://www.google.com/settings/security/lesssecureapps
  */
 
-$to = "jmg.pub@gmail.com";
-$subject = "Test mail PHP";
+$to = "daronscodeurs@gmail.com";
+$subject = "Test mail PHP - JM";
 $message = "
 <html>
 <head>
@@ -46,7 +46,7 @@ $headers .= "Content-type:text/html;charset=UTF-8 \r\n";
 
 // Plus d'en-tête : From est requis, le reste est optionnel
 $headers .= "From: pere.noel@laponie.fi \r\n";
-$headers .= "Cc: pere.fouettard@hell.org \r\n";
+$headers .= "Cc:  \r\n";
 
 // Envoi du mail
 $res = mail($to, $subject, $message, $headers);

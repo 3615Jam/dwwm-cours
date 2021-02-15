@@ -45,20 +45,22 @@ if ($nb === 1) {
         // Envoi d'un mail pour confirmation si succès
         if ($res) {
             // Corps du mail
-            $html = '<h1>Inscription Northwind Traders</h1>';
-            $html .= '<p>Bonjour ' . $_POST['fname'] . ' et bienvenu(e) sur notre site.';
-            $html .= '<p>Clique sur le lien suivant pour valider ton inscription : http://' . $_SERVER['HTTP_HOST'] . '/colombes/cp7/register2.php?m=' . $mail;
+            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/jam-web/cp7/register2.php?m=' . $mail;
+            $html = '';
+            $html .= '<h1>Inscription Darons Codeurs</h1>';
+            $html .= '<p>Bonjour ' . $_POST['fname'] . ' ! Bienvenue chez les Darons Codeurs.';
+            $html .= '<p>Clique sur le lien suivant pour valider ton inscription : <a href="' . $url . '">' . $url . '</a>';
             $html .= '<p>A très bientôt';
             // En-tête du mail
             $header = "MIME-Version: 1.0 \n"; // Version MIME
             $header .= "Content-type: text/html; charset=utf-8 \n"; // Format du mail
-            $header .= "From: marie@noelle.fr \n"; // Expéditeur
-            $header .= "Reply-to: manu@elysees.gouv.fr \n"; // Destinataire de la réponse
-            $header .= "Disposition-Notification-To: info@baobab-ingenierie.fr \n"; // Accusé de réception
+            $header .= "From: contact@daronscodeurs.fr \n"; // Expéditeur
+            $header .= "Reply-to: daronscodeurs@gmail.com \n"; // Destinataire de la réponse
+            $header .= "Disposition-Notification-To: daronscodeurs@gmail.com \n"; // Accusé de réception
             $header .= "X-Priority: 1 \n"; // Activation importance
             $header .= "X-MSMail-Priority: High \n"; // MS
             // Envoi du mail
-            $res2 = mail($_POST['mail'], 'Northwind Traders', $html, $header);
+            $res2 = mail($_POST['mail'], 'Darons Codeurs', $html, $header);
             echo ($res2 ? 'Succès' : 'Echec');
         } else {
             echo 'Echec dans l\'ajout du user.';

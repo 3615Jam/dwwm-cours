@@ -145,7 +145,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
                         </div>
                         <div class="form-group">
                             <label for="pwd">Mot de passe : </label>
-                            <input class="form-control" type="password" name="pwd" id="pwd" pattern="[A-Za-z0-9@$*!?]{8,}" required>
+                            <input class="form-control" type="password" name="pass" id="pass" pattern="[A-Za-z0-9@$*!?]{8,}" required>
                         </div>
                         <div class="form-group">
                             <label for="check">Vérification du mot de passe : </label>
