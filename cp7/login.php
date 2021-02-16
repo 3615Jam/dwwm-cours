@@ -2,13 +2,16 @@
 include_once('constants.php');
 
 try {
-    // verif $_POST 
+    // verif et sécurisation des variables 'mail' et 'pass' de $_POST 
     if (isset($_POST['mail']) && !empty($_POST['mail'])) {
+        $mail = htmlspecialchars($_POST['mail']);
     }
 
+    if (isset($_POST['pass']) && !empty($_POST['mail'])) {
+        $pass = htmlspecialchars($_POST['pass']);
+    }
 
-
-
+    // si on a bien nos $mail et $pass, on peut les encrypter avant comparaison avec infos BDD 
 
 
 
