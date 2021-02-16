@@ -1,6 +1,6 @@
 <?php
 
-// accès BDD mysqli : 
+// accès BDD : 
 const HOST = 'localhost';
 const USER = 'root';
 const PASS = 'greta';

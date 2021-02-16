@@ -61,7 +61,7 @@ if ($nb === 1) {
             $header .= "X-MSMail-Priority: High \n"; // MS
             // Envoi du mail
             $res2 = mail($_POST['mail'], 'Darons Codeurs', $html, $header);
-            echo ($res2 ? 'Succès' : 'Echec');
+            echo ($res2 ? 'succès' : 'échec');
         } else {
             echo 'Echec dans l\'ajout du user.';
         }
@@ -69,3 +69,5 @@ if ($nb === 1) {
 }
 
 mysqli_close($cnn);
+
+header('location:index.php?user=ok');

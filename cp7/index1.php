@@ -27,7 +27,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
 <body class="container">
     <div class="jumbotron mt-3 mb-5">
-        <h1 class="display-4">Northwind Traders</h1>
+        <h1 class="display-4">Darons Codeurs</h1>
 
         <?php
 
@@ -49,6 +49,22 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
                 <a class="btn btn-info btn-lg" href="login.php" role="button">Connexion</a>
             </div>
         </div>
+
+        <!-- bandeau d'alerte succès ou échec création user  -->
+        <?php
+        $success = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> L\'utilisateur a été crée avec succès.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        // $fail = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oups !</strong> L\'utilisateur n\'a pas pu être crée.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+
+        if (isset($_GET['user']) && !empty($_GET['user'])) {
+            if ($_GET['user'] === 'ok') {
+                echo $success;
+            }
+            // elseif ($_GET['user'] === 'ko') {
+            //     echo $fail;
+            // }
+        }
+        ?>
+
     </div>
 
     <div class="jumbotron mb-5" id="bo">
@@ -66,7 +82,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
     <h2>Notre équipe</h2>
 
-    <section id="team" class=" mb-5 d-flex flex-wrap justify-content-between">
+    <section id="team" class="mb-5 d-flex flex-wrap justify-content-between">
 
         <?php
         // include_once('team.php');
