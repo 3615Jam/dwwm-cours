@@ -42,27 +42,32 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         <div class="d-flex justify-content-around">
             <div>
                 <p>Nouvel utilisateur ? Inscrivez-vous :</p>
-                <a class="btn btn-success btn-lg mb-5" href="#" role="button" data-toggle="modal" data-target="#staticBackdrop">Inscription</a>
+                <a class="btn btn-success btn-lg mb-5" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
             </div>
             <div>
                 <p>Déjà inscrit ? Connectez-vous pour accéder au back-office :</p>
-                <a class="btn btn-info btn-lg" href="login.php" role="button">Connexion</a>
+                <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
             </div>
         </div>
 
-        <!-- bandeau d'alerte succès ou échec création user  -->
-        <?php
-        $success = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> L\'utilisateur a été crée avec succès.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-        // $fail = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oups !</strong> L\'utilisateur n\'a pas pu être crée.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 
+        <?php
+        // bandeau d'alerte succès création user
+        $success = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> L\'utilisateur a été crée avec succès.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
         if (isset($_GET['user']) && !empty($_GET['user'])) {
             if ($_GET['user'] === 'ok') {
                 echo $success;
             }
-            // elseif ($_GET['user'] === 'ko') {
-            //     echo $fail;
-            // }
         }
+
+        // bandeau d'alerte échec connexion user
+        $fail = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oups !</strong> Le mail ou le mot de passe est erroné.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        if (isset($_GET['user']) && !empty($_GET['user'])) {
+            if ($_GET['user'] === 'ko') {
+                echo $fail;
+            }
+        }
+
         ?>
 
     </div>
@@ -138,8 +143,8 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
     </section>
 
-    <!-- MODAL  -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- MODAL Inscription -->
+    <div class="modal fade" id="register" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -160,7 +165,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
                             <input class="form-control" type="email" name="mail" id="mail" required>
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Mot de passe : </label>
+                            <label for="pass">Mot de passe : </label>
                             <input class="form-control" type="password" name="pass" id="pass" pattern="[A-Za-z0-9@$*!?]{8,}" required>
                         </div>
                         <div class="form-group">
@@ -187,6 +192,37 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                         <input type="submit" class="btn btn-primary" value="S'inscrire">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL Connexion -->
+    <div class="modal fade" id="login" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Connexion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="login.php" method="post">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="mail">Email : </label>
+                            <input class="form-control" type="email" name="mail" id="mail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Mot de passe : </label>
+                            <input class="form-control" type="password" name="pass" id="pass" pattern="[A-Za-z0-9@$*!?]{8,}" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <input type="submit" class="btn btn-primary" value="Se connecter">
                     </div>
                 </form>
             </div>
