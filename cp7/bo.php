@@ -1,3 +1,12 @@
+<?php
+// vérification si user est connecté ou pas, sinon redirige vers index1.php avec message pour éviter un accès manuel aux autres pages du site
+session_start();
+if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
+    header('location:index1.php?c=2');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -14,41 +23,63 @@
 
 <body class="container">
 
-
-    <div class="jumbotron mt-3 mb-5" id="bo">
-        <h2>Back-Office</h2>
-        <section id="tables" class="mb-5 d-flex flex-wrap justify-content-between">
-
-            <?php
-            // on récupère les constantes 
-            include_once('constants.php');
-
-            // on se connecte à la BDD via PDO
-            try {
-                $cnn = new PDO('mysql:host=' . HOST . ';dbname=' . DB, USER, PASS);
-                $cnn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                // on prépare la requête 
-                $res = $cnn->query("SELECT table_name, table_rows FROM information_schema.tables WHERE table_schema = 'northwind'");
-                // on parcours la requête 
-                $res->setFetchMode(PDO::FETCH_ASSOC);
-                $html = '';
-                foreach ($res as $row) {
-                    $html .= '<div class="card m-3 text-center" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' . $row['TABLE_NAME'] . '</h5>';
-                    // $html .= '<p class="card-text">Clé primaire : ' . $row['COLUMN_NAME'] . '</p>';
-                    $html .= '<p class="card-text">Lignes : ' . $row['TABLE_ROWS'] . '</p>';
-                    $html .= '<a class="btn btn-secondary m-1" href="list.php?t=' . $row['TABLE_NAME'] . '&k=' . $row['COLUMN_NAME'] . '.php">Détails</a>';
-                    $html .= '</div></div>';
-                }
-                echo $html;
-                // déconnexion BDD 
-                unset($cnn);
-            } catch (Exception $e) {
-                echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
-            }
-            ?>
-
-        </section>
+    <div class="jumbotron mt-3 mb-3">
+        <h1>Back-Office</h1>
     </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index1.php">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Back-Office</li>
+        </ol>
+    </nav>
+
+    <section id="tables" class="mb-5 d-flex flex-wrap justify-content-between">
+
+        <?php
+        // on récupère les constantes 
+        include_once('constants.php');
+
+        try {
+            // on se connecte à la BDD via PDO
+            $cnn = new PDO('mysql:host=' . HOST . ';dbname=' . DB, USER, PASS);
+            $cnn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $cnn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+            // on prépare la requête
+            $sql = "
+                    SELECT t.TABLE_NAME, t.TABLE_ROWS, c.COLUMN_NAME
+                    FROM information_schema.tables t
+                    JOIN information_schema.columns c
+                    ON t.TABLE_SCHEMA = c.TABLE_SCHEMA
+                    AND t.TABLE_NAME = c.TABLE_NAME
+                    WHERE t.TABLE_SCHEMA = ?
+                    AND c.COLUMN_KEY = ?
+                    AND t.TABLE_ROWS < ?
+                ";
+            $qry = $cnn->prepare($sql);
+            $vals = array(DB, 'PRI', 1000);
+            $qry->execute($vals);
+
+            // on parcours la requête 
+            $html = '';
+            foreach ($qry as $row) {
+                $html .= '<div class="card m-3 text-center" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' . $row['TABLE_NAME'] . '</h5>';
+                $html .= '<p class="card-text">Clé primaire : </p>';
+                $html .= '<p class="card-text">' . $row['COLUMN_NAME'] . '</p>';
+                $html .= '<p class="card-text">Lignes : ' . $row['TABLE_ROWS'] . '</p>';
+                $html .= '<a class="btn btn-secondary m-1" href="list.php?t=' . $row['TABLE_NAME'] . '&k=' . $row['COLUMN_NAME'] . '.php">Détails</a>';
+                $html .= '</div></div>';
+            }
+            echo $html;
+            // déconnexion BDD 
+            unset($cnn);
+        } catch (Exception $e) {
+            echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
+        }
+        ?>
+
+    </section>
 
 </body>
 

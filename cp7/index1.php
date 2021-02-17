@@ -39,50 +39,51 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         ?>
 
         <hr class="my-4">
+
+        <!-- boutons 'enregistrement' / 'connexion' / 'deconnexion'  -->
         <div class="d-flex justify-content-around">
-            <div>
+            <div id="button-register">
                 <p>Nouvel utilisateur ? Inscrivez-vous :</p>
                 <a class="btn btn-success btn-lg mb-5" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
             </div>
-            <div>
+            <div id="button-connect">
                 <p>Déjà inscrit ? Connectez-vous pour accéder au back-office :</p>
                 <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
+            </div>
+            <div id="button-disconnect">
+                <p>Deconnexion :</p>
+                <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
             </div>
         </div>
 
 
         <?php
-        // bandeau d'alerte succès création user
+        // bandeaux d'alertes 
+
         $success = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> L\'utilisateur a été crée avec succès.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-        if (isset($_GET['user']) && !empty($_GET['user'])) {
-            if ($_GET['user'] === 'ok') {
+
+        $fail = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oups !</strong> Le mail ou le mot de passe est erroné.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+
+        $logout = '<div class="alert alert-warning alert-dismissible fade show" role="alert">Déconnexion OK<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+
+        if (isset($_GET['c']) && !empty($_GET['c'])) {
+            // echec connexion 
+            if ($_GET['c'] === '1') {
+                echo $fail;
+            }
+            // déconnexion   
+            elseif ($_GET['c'] === '2') {
+                echo $logout;
+            }
+            // création user ok
+            elseif ($_GET['c'] === '3') {
                 echo $success;
             }
         }
 
-        // bandeau d'alerte échec connexion user
-        $fail = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oups !</strong> Le mail ou le mot de passe est erroné.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-        if (isset($_GET['user']) && !empty($_GET['user'])) {
-            if ($_GET['user'] === 'ko') {
-                echo $fail;
-            }
-        }
 
         ?>
 
-    </div>
-
-    <div class="jumbotron mb-5" id="bo">
-        <h2>Back-Office</h2>
-        <section id="tables">
-            <?php
-            $html = "";
-            while ($row = mysqli_fetch_row($res)) {
-                $html .= '<a class="btn btn-secondary m-3" href="' . $row[0] . '.php">' . $row[0] . ' <span class="badge badge-light">' . $row[1] . '</span></a>';
-            }
-            echo $html;
-            ?>
-        </section>
     </div>
 
     <h2>Notre équipe</h2>

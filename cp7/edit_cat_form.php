@@ -33,7 +33,9 @@ if (isset($_GET['k']) && !empty($_GET['k'])) {
 
 <body class="container">
 
-    <h1>Edition des catégories</h1>
+    <div class="jumbotron mt-3 mb-3">
+        <h1>Edition des catégories</h1>
+    </div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">

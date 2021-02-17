@@ -70,4 +70,4 @@ if ($nb === 1) {
 
 mysqli_close($cnn);
 
-header('location:index.php?user=ok');
+header('location:index.php?c=3');

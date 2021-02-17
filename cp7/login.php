@@ -11,31 +11,41 @@ try {
         $pass = htmlspecialchars($_POST['pass']);
     }
 
-    // si on a bien nos $mail et $pass, on peut les encrypter avant comparaison avec infos BDD 
-
-
-
+    // si on a bien $mail et $pass, on les encrypte avant comparaison avec infos BDD 
+    $mail = MD5($mail);
+    $pass = hash('sha512', sha1($pass) . $mail);
 
     // connexion BDD via PDO 
-    $cnn = new PDO('mysql:host=' . HOST . ';dbname=' . DB, USER, PASS);
-    $cnn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $cnn = new PDO(
+        'mysql:host=' . HOST . ';dbname=' . DB . ';charset=utf8',
+        USER,
+        PASS,
+        array(
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        )
+    );
 
-    // query select count * = 1 
-
-
-
-
-
-
-
-    // si user connu --> bo.php
-    if ("user existe") {
+    // on prépare de la requête 
+    $sql = "SELECT * FROM users WHERE mail=? AND pass=?";
+    $qry = $cnn->prepare($sql);
+    $vals = array($mail, $pass);
+    // on execute la requête
+    $qry->execute($vals);
+    // si 1 ligne est retournée --> match ok ! on se connecte
+    if ($qry->rowCount() === 1) {
+        // démarrage (ou récupération si existe) de session 
+        session_start();
+        $_SESSION['connected'] = true;
+        $_SESSION['session_id'] = session_id();
+        $_SESSION['fname'] = $row['fname'];
+        $_SESSION['mail'] = $_POST['mail'];
+        // routage vers bo.php
         header('location:bo.php');
-    }
-    // sinon --> index.php?user=ko 
-    else {
-        header('location:index.php?user=ko');
+    } else {
+        // routage vers index1.php avec infos 
+        header('location:index1.php?c=1');
     }
 } catch (Exception $e) {
-    echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
+    echo $e->getMessage();
 }
