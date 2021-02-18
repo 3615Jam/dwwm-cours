@@ -1,4 +1,15 @@
 <?php
+
+// appels des constantes 
+include_once('constants.php');
+
+// démarrage ou récup session 
+session_start();
+$connected = false;
+if (isset($_SESSION['connected']) && ($_SESSION['connected'])) {
+    $connected = $_SESSION['connected'];
+}
+
 // connexion à la BDD via MYSQLI (avec verif) 
 $cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
 if (mysqli_connect_errno()) {
@@ -17,7 +28,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northwind Traders | Accueil</title>
+    <title>Darons Codeurs | Accueil</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -38,53 +49,102 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
         ?>
 
-        <hr class="my-4">
+        <hr class="my-5">
+
+
 
         <!-- boutons 'enregistrement' / 'connexion' / 'deconnexion'  -->
-        <div class="d-flex justify-content-around">
-            <div id="button-register">
-                <p>Nouvel utilisateur ? Inscrivez-vous :</p>
-                <a class="btn btn-success btn-lg mb-5" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
-            </div>
-            <div id="button-connect">
-                <p>Déjà inscrit ? Connectez-vous pour accéder au back-office :</p>
-                <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
-            </div>
-            <div id="button-disconnect">
-                <p>Deconnexion :</p>
-                <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
-            </div>
-        </div>
-
-
         <?php
-        // bandeaux d'alertes 
-
-        $success = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> L\'utilisateur a été crée avec succès.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-
-        $fail = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Oups !</strong> Le mail ou le mot de passe est erroné.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-
-        $logout = '<div class="alert alert-warning alert-dismissible fade show" role="alert">Déconnexion OK<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-
-        if (isset($_GET['c']) && !empty($_GET['c'])) {
-            // echec connexion 
-            if ($_GET['c'] === '1') {
-                echo $fail;
-            }
-            // déconnexion   
-            elseif ($_GET['c'] === '2') {
-                echo $logout;
-            }
-            // création user ok
-            elseif ($_GET['c'] === '3') {
-                echo $success;
-            }
+        if ($connected) {
+            echo '
+            <div class="text-center d-flex justify-content-around">
+            <a class="btn btn-info btn-lg" href="bo.php" role="button">Back-Office</a>
+            <div>
+            <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
+            </div>
+            </div>
+            ';
+        } else {
+            echo '
+            <p class="mb-5 lead">Vous devez vous connecter pour accéder au back-office des Darons Codeurs</p>
+            <div class="text-center d-flex justify-content-around">
+            <div>
+            <h5>Nouvel utilisateur ?</h5>
+            <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
+            </div>
+            <div>
+            <h5>Déjà inscrit ?</h5>
+            <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
+            </div>
+            </div>
+            ';
         }
-
-
         ?>
 
+        <!-- 
+            ancien code pour gérer les boutons enregistrement / connexion / deconnexion
+            et leur affichage en fonction de la valeur de $connected (si on est connecté ou pas)
+            mais j'ai finalement opté pour un if/else (voir ci-dessus)
+
+            <div class="text-center d-flex justify-content-around">
+            <div class="<?php echo (!$connected ? '' : 'd-none') ?>">
+                <h5>Nouvel utilisateur ?</h5>
+            <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
+            </div>
+            <div class="<?php echo (!$connected ? '' : 'd-none') ?>">
+            <h5>Déjà inscrit ?</h5>
+            <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
+            </div>
+            <div class="<?php echo ($connected ? '' : 'd-none') ?>">
+            <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
+            </div>
+            </div> 
+        -->
+
     </div>
+
+
+    <?php
+    // bandeaux d'alertes et codes erreurs 
+
+    /*
+    // au départ, on fonctionnait avec un if / elseif, finalement transformé plus bas en switch 
+    if (isset($_GET['c']) && !empty($_GET['c'])) {
+        // creation user ok 
+        if ($_GET['c'] === '1') {
+            echo C1;
+        }
+        // pb mail / mot de passe  
+        elseif ($_GET['c'] === '2') {
+            echo C2;
+        }
+        // doit se connecter
+        elseif ($_GET['c'] === '3') {
+            echo C3;
+        }
+        // deco succès 
+        elseif ($_GET['c'] === '4') {
+            echo C4;
+        }
+    }
+    */
+
+    if (isset($_GET['c']) && !empty($_GET['c'])) {
+        switch ($_GET['c']) {
+            case '1':
+                echo C1;
+                break;
+            case '2':
+                echo C2;
+                break;
+            case '3':
+                echo C3;
+                break;
+            case '4':
+                echo C4;
+        }
+    }
+    ?>
 
     <h2>Notre équipe</h2>
 

@@ -22,6 +22,7 @@ include_once('pdo_connect.php');
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index1.php">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="bo.php">Back-Office</a></li>
             <li class="breadcrumb-item active" aria-current="page">Consultation de table</li>
         </ol>
     </nav>

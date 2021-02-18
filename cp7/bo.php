@@ -1,10 +1,14 @@
 <?php
+/*
 // vérification si user est connecté ou pas, sinon redirige vers index1.php avec message pour éviter un accès manuel aux autres pages du site
 session_start();
 if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
     header('location:index1.php?c=2');
     exit();
 }
+*/
+// la verif ci-dessus a été remplacée par le script 'session-active' qu'on invoque ci-dessous
+include_once('session_active.php');
 ?>
 
 <!DOCTYPE html>
@@ -64,12 +68,16 @@ if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
             // on parcours la requête 
             $html = '';
             foreach ($qry as $row) {
-                $html .= '<div class="card m-3 text-center" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' . $row['TABLE_NAME'] . '</h5>';
-                $html .= '<p class="card-text">Clé primaire : </p>';
-                $html .= '<p class="card-text">' . $row['COLUMN_NAME'] . '</p>';
-                $html .= '<p class="card-text">Lignes : ' . $row['TABLE_ROWS'] . '</p>';
-                $html .= '<a class="btn btn-secondary m-1" href="list.php?t=' . $row['TABLE_NAME'] . '&k=' . $row['COLUMN_NAME'] . '.php">Détails</a>';
-                $html .= '</div></div>';
+                $html .= '
+                <div class="card my-3 text-center" style="width: 18rem;">
+                <h4 class="card-header">' . $row['TABLE_NAME'] . '</h4>
+                <div class="card-body">
+                <p class="card-text"><strong>Clé primaire : </strong><br>' . $row['COLUMN_NAME'] . '</p>
+                <p class="card-text"><strong>Lignes : </strong>' . $row['TABLE_ROWS'] . '</p>
+                <a class="btn btn-secondary m-2" href="list.php?t=' . $row['TABLE_NAME'] . '&k=' . $row['COLUMN_NAME'] . '.php">Détails</a>
+                </div>
+                </div>
+                ';
             }
             echo $html;
             // déconnexion BDD 

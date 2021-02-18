@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../github-tiers"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "jam-web"
+	}
+}

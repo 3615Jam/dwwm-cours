@@ -44,7 +44,7 @@ try {
         header('location:bo.php');
     } else {
         // routage vers index1.php avec infos 
-        header('location:index1.php?c=1');
+        header('location:index1.php?c=2');
     }
 } catch (Exception $e) {
     echo $e->getMessage();

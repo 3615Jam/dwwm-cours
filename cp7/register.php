@@ -70,4 +70,4 @@ if ($nb === 1) {
 
 mysqli_close($cnn);
 
-header('location:index.php?c=3');
+header('location:index.php?c=1');

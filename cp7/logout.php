@@ -10,4 +10,4 @@ session_unset();    // équivalent à 'unset($_SESSION);'
 session_destroy();
 
 // routage vers page d'acceuil avec message 
-header('location:index1.php?c=2');
+header('location:index1.php?c=4');
