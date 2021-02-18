@@ -87,15 +87,18 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
             mais j'ai finalement opté pour un if/else (voir ci-dessus)
 
             <div class="text-center d-flex justify-content-around">
-            <div class="<?php echo (!$connected ? '' : 'd-none') ?>">
+            <div class="<?php // echo (!$connected ? '' : 'd-none') 
+                        ?>">
                 <h5>Nouvel utilisateur ?</h5>
             <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
             </div>
-            <div class="<?php echo (!$connected ? '' : 'd-none') ?>">
+            <div class="<?php // echo (!$connected ? '' : 'd-none') 
+                        ?>">
             <h5>Déjà inscrit ?</h5>
             <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
             </div>
-            <div class="<?php echo ($connected ? '' : 'd-none') ?>">
+            <div class="<?php // echo ($connected ? '' : 'd-none') 
+                        ?>">
             <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
             </div>
             </div> 
