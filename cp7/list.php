@@ -31,72 +31,105 @@ include_once('pdo_connect.php');
 
         <?php
         try {
-            // cette page est appelée via 'bo.php' avec une query string 't' = le nom de la table
-            // donc on vérifie si on a bien un 't' dans la query string de l'URL  
+            // cette page est appelée via 'bo.php' avec 't' (= le nom de la table) 
+            // et 'k' (= clé primaire de la table) dans la query string de l'URL
+            // donc on vérifie si on a bien un 't' et un 'k' et s'ils sont bien définis
+            // sinon on affiche un message et un bouton de redirection 
+            if (!isset($_GET['t']) || empty($_GET['t']) || !isset($_GET['k']) || empty($_GET['k'])) {
+                echo '
+                <div class="text-center">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Oups !</strong> Il n\'y a rien à afficher ici.
+                </div>
+                <a class="justify-content-center btn btn-info" href="bo.php">Retour au back-office</a>
+                </div>
+                ';
+            }
+            // si 'k' existe et qu'il est défini, on attribue sa valeur (= la clé primaire de la table) à la variable '$primkey'
             if (isset($_GET['k']) && !empty($_GET['k'])) {
                 $primkey = $_GET['k'];
             }
+            // pareil pour 't' (= la table)
             if (isset($_GET['t']) && !empty($_GET['t'])) {
                 $table = $_GET['t'];
+            }
 
+            // pagination : on récupère la page active, s'il y en a une (sinon on le fixe à 1) 
+            if (isset($_GET['pg']) && !empty($_GET['pg'])) {
+                $pg = (int) $_GET['pg'];
+            } else {
+                $pg = 1;
+            }
+
+            // pagination #2 : on récupère le nb de lignes "visibles", si existe
+            if (isset($_GET['nb']) && !empty($_GET['nb'])) {
+                $nb = (int) $_GET['nb'];
+            } else {
+                $nb = 5;
+            }
+
+            // connexion à la BDD via MYSQLI (avec verif)
+            $start = ($pg - 1) * $nb;
+
+            // on récupère la liste des catégories de la BDD 'Northwind'
+            $sql = "SELECT * FROM $table LIMIT {$start}, {$nb}";
+            $qry = $cnn->prepare($sql);
+            $qry->execute();
+
+            /*
                 // on prépare la requête
                 $sql = 'SELECT * FROM ' . $table;
                 $qry = $cnn->prepare($sql);
                 $qry->execute();
+                */
 
-                // on parcours la requête 
-                $html = '';
-                $types = [];
-                $html .= '<table class="table table-dark table-striped"><thead><tr>';
-                // on compte le nb de colonnes 
-                for ($i = 0; $i < $qry->columnCount(); $i++) {
-                    // on récupère les infos des colonnes dans un tableau associatif 
-                    $meta = $qry->getColumnMeta($i);
-                    // on récupère les types des colonnes
-                    $types[$meta['name']] = $meta['native_type'];
-                    // puis on va chercher l'élément 'name' du tableau associatif pour le mettre dans les 'th' générées dynamiquement 
-                    $html .= '<th>' . $meta['name'] . '</th>';
-                }
-
-                // var_dump($types);
-                // exit();
-
-                $html .= '</tr></thead><tbody>';
-
-                // on parcours chaque ligne
-                while ($row = $qry->fetch()) {
-                    $html .= '<tr>';
-                    foreach ($row as $key => $val) {
-
-                        switch ($types[$key]) {
-                            case 'LONG':
-                            case 'NEWDECIMAL':
-                                $align = 'right';
-                                break;
-                            case 'DATE':
-                                $align = 'center';
-                                break;
-                            default:
-                                $align = 'left';
-                        }
-                        if ($types[$key] == 'BLOB') {
-                            $html .= '<td><img src="' . $val . '" width="150px" /></td>';
-                        } else {
-                            $html .= '<td>' . $val . '</td>';
-                        }
-                    }
-                    $html .= '</tr>';
-                }
-                // on ferme le tableau
-                $html .= '</tbody></table>';
-                // puis on l'affiche
-                echo $html;
-                // déconnexion BDD 
-                unset($cnn);
-            } else {
-                // sinon on a pas de 't' dans la query string de l'URL, on affiche une info
-                echo '<p class="alert alert-warning">Cette table ne contient aucune ligne</p>';
+            // on parcours la requête 
+            $html = '';
+            $types = [];
+            $html .= '<table class="table table-dark table-striped"><thead><tr>';
+            // on compte le nb de colonnes 
+            for ($i = 0; $i < $qry->columnCount(); $i++) {
+                // on récupère les infos des colonnes dans un tableau associatif 
+                $meta = $qry->getColumnMeta($i);
+                // on récupère les types des colonnes
+                $types[$meta['name']] = $meta['native_type'];
+                // puis on va chercher l'élément 'name' du tableau associatif pour le mettre dans les 'th' générées dynamiquement 
+                $html .= '<th>' . $meta['name'] . '</th>';
             }
+
+            // var_dump($types);
+            // exit();
+
+            $html .= '</tr></thead><tbody>';
+
+            // on parcours chaque ligne
+            while ($row = $qry->fetch()) {
+                $html .= '<tr>';
+                foreach ($row as $key => $val) {
+
+                    switch ($types[$key]) {
+                        case 'LONG':
+                        case 'NEWDECIMAL':
+                            $align = 'right';
+                            break;
+                        case 'DATE':
+                            $align = 'center';
+                            break;
+                        default:
+                            $align = 'left';
+                    }
+                    if ($types[$key] == 'BLOB') {
+                        $html .= '<td><img src="' . $val . '" width="150px" /></td>';
+                    } else {
+                        $html .= '<td>' . $val . '</td>';
+                    }
+                }
+                $html .= '</tr>';
+            }
+            // on ferme le tableau
+            $html .= '</tbody></table>';
+            // puis on l'affiche
+            echo $html;
         } catch (Exception $e) {
             echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
         }
@@ -111,28 +144,6 @@ include_once('pdo_connect.php');
             <?php
 
             try {
-                // pagination : on récupère la page active, s'il y en a une (sinon on le fixe à 1) 
-                if (isset($_GET['pg']) && !empty($_GET['pg'])) {
-                    $pg = (int) $_GET['pg'];
-                } else {
-                    $pg = 1;
-                }
-
-                // pagination #2 : on récupère le nb de lignes "visibles", si existe
-                if (isset($_GET['nb']) && !empty($_GET['nb'])) {
-                    $nb = (int) $_GET['nb'];
-                } else {
-                    $nb = 5;
-                }
-
-                // connexion à la BDD via MYSQLI (avec verif)
-                $start = ($pg - 1) * $nb;
-
-                // on récupère la liste des catégories de la BDD 'Northwind'
-                $sql = "SELECT * FROM $table LIMIT {$start}, {$nb}";
-                $qry = $cnn->prepare($sql);
-                $qry->execute();
-
                 // calcul du nb de pages de la pagination 
                 $res = $cnn->query("SELECT COUNT(*) AS total FROM $table");
 
@@ -157,6 +168,8 @@ include_once('pdo_connect.php');
                 $html .= '<li class="page-item ' . ($pg == $pgs ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
 
                 echo $html;
+                // déconnexion BDD 
+                unset($cnn);
             } catch (Exception $e) {
                 echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
             }
@@ -168,69 +181,3 @@ include_once('pdo_connect.php');
 </body>
 
 </html>
-
-
-
-
-<?php
-
-/*
-
-            
-            // on affiche la liste des colonnes
-            $html = "";
-            while ($col = mysqli_fetch_field($res)) {
-                $html .= "<th>{$col->name}</th>";
-            }
-            echo $html;
-            
-
-        </tr>
-    </thead>
-    <tbody>
-
-        
-        // on affiche les datas de chaque colonne 
-        $html = "";
-        while ($row = mysqli_fetch_row($res)) {
-            $html .= '<tr>';
-            foreach ($row as $key => $val) {
-                if ($key === 0) {
-                    $html .= '<td><a href="edit_cat_form.php?k=' . $val . '">' . $val . '</a></td>';
-                }
-                // si c'est du BLOB 
-                elseif (strpos($val, ";base64,")) {
-                    $html .= '<td><img src="' . $val . '" width="150px" /></td>';
-                } else {
-                    $html .= "<td>{$val}</td>";
-                }
-            }
-            $html .= '</tr>';
-        }
-        echo $html;
-        
-
-    </tbody>
-</table>
-
-
-
-
-
-    // * * * * * * * * * * 
-
-/*
-
-    $html = '';
-    foreach ($qry as $row) {
-        $html .= '<div class="card m-3 text-center" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' . $row['TABLE_NAME'] . '</h5>';
-        $html .= '<p class="card-text">Clé primaire : </p>';
-        $html .= '<p class="card-text">' . $row['COLUMN_NAME'] . '</p>';
-        $html .= '<p class="card-text">Lignes : ' . $row['TABLE_ROWS'] . '</p>';
-        $html .= '<a class="btn btn-secondary m-1" href="list.php?t=' . $row['TABLE_NAME'] . '&k=' . $row['COLUMN_NAME'] . '.php">Détails</a>';
-        $html .= '</div></div>';
-    }
-
-*/
-
-?>
