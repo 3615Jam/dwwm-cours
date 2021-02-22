@@ -21,34 +21,46 @@ try {
     $primkey = $_GET['k'];
     $id_row = $_GET['id'];
 
-    // avec les données récupérées du formulaire, on prépare un tableau de paramètres pour les requêtes 
-    $params = [];
-    foreach ($_POST as $key => $val) {
-        if (isset($_POST[$key]) && !empty($_POST[$key])) {
-            $params[] = htmlspecialchars($_POST[$key]);
-        } else {
-            $params[] = null;
+    // on prépare les tableaux de paramètres (1 pour le nom des colonnes, 1 pour la valeur des colonnes) pour les requêtes 
+    $cols = [];
+    $vals = [];
+
+    // UPDATE ou INSERT
+    if (empty($id_row)) {
+        // si '$id_row' est vide = création de ligne (INSERT)
+        // on prépare la requête SQL
+        $sql = "INSERT INTO $table(%s) VALUES(%s)";
+        // avec les données récupérées du formulaire, on remplit les 2 tableaux de paramètres pour les requêtes 
+        foreach ($_POST as $key => $val) {
+            $cols[] = $key;
+            $vals[":$key"] = htmlspecialchars($val);
         }
-    }
-
-    // préparation de la requête
-
-    if (empty($_GET['id'])) {
-        // si 'id' est vide = création de ligne (INSERT) 
-        $update = true;
+        // on lie les paramètres à la requête préparée
+        $sql = sprintf(
+            $sql,
+            implode(',', $cols),
+            implode(',', array_keys($vals))
+        );
     } else {
-        // sinon, 'id' n'est pas vide = mise à jour de ligne (UPDATE)
-        $update = false;
+        // sinon, '$id_row' n'est pas vide = mise à jour de ligne (UPDATE)
+        // on prépare la requête
+        $sql = "UPDATE $table SET %s WHERE $primkey = :newid";
+        // comme ci-dessus, on remplit les tableaux de paramètres 
+        foreach ($_POST as $key => $val) {
+            $cols[] = $key . '=:' . $key;
+            $vals[":$key"] = htmlspecialchars($val);
+        }
+        // cas particulier de la modif de l'ID 
+        $vals[':newid'] = $id_row;
+        // on lie les paramètres à la requête préparée
+        $sql = sprintf($sql, implode(',', $cols));
     }
+    // prepare et execute la requête 
+    $qry = $cnn->prepare($sql);
+    $qry->execute($vals);
 
-    // on lie les paramètres à la requête préparée 
-    if (update) {
-        // requete update 
-    } else {
-        // requete insert 
-    }
-
-    // on execute la requête préparée 
+    // redirection vers list.php avec message de confirmation 
+    header("location:list.php?t=$table&k=$primkey&c=6");
 
     // déconnexion BDD 
     unset($cnn);

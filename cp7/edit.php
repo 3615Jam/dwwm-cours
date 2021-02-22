@@ -28,6 +28,20 @@ $id_row = $_GET['id'];
 
     <div class="jumbotron mt-3 mb-3">
         <h1>Modification des tables</h1>
+        <hr class="my-4">
+        <?php
+        echo '
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">Base de données : <strong>' . DB . '</strong></p>
+                <p class="card-text">Table : <strong>' . $table . '</strong></p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-success" href="list.php?t=' . $table . '&k=' . $primkey . '">Retour</a>
+            </div>
+        </div>
+        ';
+        ?>
     </div>
 
     <nav aria-label="breadcrumb">

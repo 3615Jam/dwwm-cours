@@ -44,8 +44,34 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
     <div class="jumbotron my-3">
         <h1>Consultation des tables</h1>
         <hr class="my-4">
-        <p>Base de données : <strong><?php echo DB ?></strong></p>
-        <p>Table : <strong><?php echo $table ?></strong></p>
+        <?php
+        echo '
+        <div class="d-flex justify-content-between">
+    
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">Base de données : <strong>' . DB . '</strong></p>
+                    <p class="card-text">Table : <strong>' . $table . '</strong></p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">Nouvelle entrée</a>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">Exportation des données : </p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-danger" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">PDF</a>
+                    <a class="btn btn-warning" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">CSV</a>
+                    <a class="btn btn-info" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">XML</a>
+                </div>
+            </div>
+
+        </div>
+        ';
+        ?>
     </div>
 
     <nav aria-label="breadcrumb">
@@ -55,6 +81,12 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
             <li class="breadcrumb-item active" aria-current="page">Consultation des tables</li>
         </ol>
     </nav>
+
+    <?php
+    if (isset($_GET['c']) && !empty($_GET['c'])) {
+        echo C6;
+    }
+    ?>
 
     <section>
 
@@ -108,7 +140,7 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                     }
                 }
                 $html .= '<td align="center"><a class="btn btn-warning btn-sm" href="edit.php?t=' . $table . '&k=' . $primkey . '&id=' . $row[$primkey] . '">⟳</a></td>';
-                $html .= '<td align="center"><a class="btn btn-danger btn-sm" href="delete.php?t=' . $table . '&k=' . $primkey . '&id=' . $row[$primkey] . '">⨂</a></td>';
+                $html .= '<td align="center"><a class="delete btn btn-danger btn-sm" href="delete.php?t=' . $table . '&k=' . $primkey . '&id=' . $row[$primkey] . '">⨂</a></td>';
                 $html .= '</tr>';
             }
             // on ferme le tableau
@@ -162,6 +194,8 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
 
         </ul>
     </nav>
+
+    <script src="list.js"></script>
 
 </body>
 
