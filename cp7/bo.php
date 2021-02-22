@@ -70,11 +70,11 @@ include_once('session_active.php');
             foreach ($qry as $row) {
                 $html .= '
                 <div class="card my-3 text-center" style="width: 18rem;">
-                <h4 class="card-header">' . $row['TABLE_NAME'] . '</h4>
+                <h3 class="card-header">' . $row['TABLE_NAME'] . '</h3>
                 <div class="card-body">
                 <p class="card-text"><strong>Clé primaire : </strong><br>' . $row['COLUMN_NAME'] . '</p>
                 <p class="card-text"><strong>Lignes : </strong>' . $row['TABLE_ROWS'] . '</p>
-                <a class="btn btn-secondary m-2" href="list.php?t=' . $row['TABLE_NAME'] . '&k=' . $row['COLUMN_NAME'] . '.php">Détails</a>
+                <a class="btn btn-primary m-2" href="list.php?t=' . $row['TABLE_NAME'] . '&k=' . $row['COLUMN_NAME'] . '">Détails</a>
                 </div>
                 </div>
                 ';
