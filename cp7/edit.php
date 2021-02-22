@@ -39,7 +39,7 @@ $id_row = $_GET['id'];
         </ol>
     </nav>
 
-    <form class="mb-5" action="" method="POST">
+    <form class="mb-5" action="save.php?<?php echo $_SERVER['QUERY_STRING'] ?>" method="POST">
 
         <?php
         try {
@@ -72,6 +72,8 @@ $id_row = $_GET['id'];
             $html .= '<input type="submit" value="Mettre à jour" class="btn btn-primary"/>';
             // affiche formulaire 
             echo $html;
+            // déconnexion BDD 
+            unset($cnn);
         } catch (Exception $e) {
             echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
         }
