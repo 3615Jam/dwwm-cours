@@ -31,7 +31,7 @@ $id_row = $_GET['id'];
         <hr class="my-4">
         <?php
         echo '
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card bg-light mb-3 text-center" style="width: 25rem;">
             <div class="card-body">
                 <p class="card-text">Base de données : <strong>' . DB . '</strong></p>
                 <p class="card-text">Table : <strong>' . $table . '</strong></p>
