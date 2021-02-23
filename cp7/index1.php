@@ -161,6 +161,12 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         $html = "";
         for ($i = 0; $i < count($members); $i++) {
             $html .= '<div class="card mb-3 ' . ($members[$i][2] === "F" ? "girl" : "boy") . '" style="width: 18rem;">';
+            $html .= '
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <img src="img/user-' . ($members[$i][2] === "F" ? "f" : "m") . '.png" width="64 px" alt="logo user">
+                    </div>
+            ';
             $html .= '<div class="card-body">';
             $html .= '<h5 class="card-title">' . $members[$i][0] . '</h5>';
             $html .= '<p class="card-text">' . $members[$i][1] . ' ans</p>';
@@ -191,7 +197,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
             // variante de mon if en mode 'ternaire' dans un 'ternaire' pour éliminer le 'if' :
             $html .= '<p class="card-text"> ' . ($members[$i][3] ? ($members[$i][2] === "F" ? "Mariée" : "Marié") : "Célibataire") . '</p>';
 
-            $html .= '</div></div>';
+            $html .= '</div></div></div>';
         }
         echo $html;
 

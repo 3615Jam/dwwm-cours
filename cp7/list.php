@@ -48,7 +48,7 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
         echo '
         <div class="d-flex justify-content-between">
     
-            <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card bg-light mb-3" style="width: 25rem;">
                 <div class="card-body">
                     <p class="card-text">Base de données : <strong>' . DB . '</strong></p>
                     <p class="card-text">Table : <strong>' . $table . '</strong></p>
@@ -58,14 +58,15 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                 </div>
             </div>
 
-            <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card bg-light mb-3 text-center" style="width: 25rem;">
                 <div class="card-body">
                     <p class="card-text">Exportation des données : </p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-danger" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">PDF</a>
-                    <a class="btn btn-warning" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">CSV</a>
-                    <a class="btn btn-info" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">XML</a>
+                    <a class="btn btn-danger" href="export_pdf.php?t=' . $table . '" target="_blank">PDF</a>
+                    <a class="btn btn-warning" href="export_csv.php?t=' . $table . '">CSV</a>
+                    <a class="btn btn-info" href="export_xml.php?t=' . $table . '">XML</a>
+                    <a class="btn btn-secondary" href="export_json.php?t=' . $table . '">JSON</a>
                 </div>
             </div>
 
