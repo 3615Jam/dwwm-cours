@@ -1,22 +1,26 @@
 <?php
+
+// on veut faire un graphique fonction des ventes des employés de 'northwind' par mois 
+
 include_once('session_active.php');
 include_once('pdo_connect.php');
 
 try {
+    // vérif si présence de 'employé' ( = 'e') dans URL et si pas vide, sinon on fixe arbitrairement à 5
     if (isset($_GET['e']) && !empty($_GET['e'])) {
         $e = $_GET['e'];
     } else {
         $e = 5;
     }
-
+    // vérif si présence de 'année' ( = 'a') dans URL et si pas vide, sinon on fixe arbitrairement à 2019
     if (isset($_GET['a']) && !empty($_GET['a'])) {
         $a = $_GET['a'];
     } else {
         $a = 2019;
     }
 
-    $sql = "
-    SELECT e.NO_EMPLOYE, e.NOM, YEAR(c.DATE_COMMANDE) as annee, MONTH(c.DATE_COMMANDE) as mois, SUM(d.PRIX_UNITAIRE * d.QUANTITE) * (1 - d.REMISE)) as ca
+    // requête SQL 
+    $sql = "SELECT e.NO_EMPLOYE, e.NOM, YEAR(c.DATE_COMMANDE) as annee, MONTH(c.DATE_COMMANDE) as mois, SUM((d.PRIX_UNITAIRE * d.QUANTITE) * (1 - d.REMISE)) as ca
     FROM employes e
     JOIN commandes c
     ON e.NO_EMPLOYE = c.NO_EMPLOYE
@@ -24,30 +28,27 @@ try {
     ON c.NO_COMMANDE = d.NO_COMMANDE
     WHERE e.NO_EMPLOYE = ? 
     AND YEAR(c.DATE_COMMANDE) = ?
-    GROUP BY e.NO_EMPLOYE, e.NOM, YEAR(c.DATE_COMMANDE), MONTH(c.DATE_COMMANDE)
-    ";
+    GROUP BY e.NO_EMPLOYE, e.NOM, YEAR(c.DATE_COMMANDE), MONTH(c.DATE_COMMANDE)";
 
+    // prépare requête 
     $qry = $cnn->prepare($sql);
-
+    // execute requête 
     $qry->execute(array($e, $a));
-
+    // parcours les données 
     $data = $qry->fetchAll();
-
-
 
     // définition de la zone de dession 
     $w = 800;
     $h = 600;
-    // 
-    // $img = imagecreatetruecolor($w, $h);
+    // si on veut une image à fond noir : 
+    // $img = imagecreatetruecolor($w, $h); 
+    // sinon on importe une image existante : 
     $img = imagecreatefromjpeg('img/bg.jpg');
 
     // crayons de couleur 
     $black = imagecolorallocate($img, 0, 0, 0);
     $white = imagecolorallocate($img, 255, 255, 255);
     $alpha = imagecolorallocatealpha($img, 255, 255, 255, 63);
-    $alea = imagecolorallocatealpha($img, rand(0, 255), rand(0, 255), rand(0, 255), 31);
-
     // $alpha = imagecolortransparent($img, $white);
 
     // fond transparent 
@@ -64,6 +65,7 @@ try {
         // on calcule la hauteur de chaque barre 
         $hbar = round(($data[$i]['ca'] * ($hmax - $gap)) / $val_max);
         // on remplit la barre avec une couleur aléatoire 
+        $alea = imagecolorallocatealpha($img, rand(0, 255), rand(0, 255), rand(0, 255), 31);
         imagefilledrectangle(
             $img,
             $gap + ($i * $wbar),
@@ -82,9 +84,32 @@ try {
             $white
         );
         // on rajoute des labels 
-        imagestring($img, 5, $gap + ($i * $wbar) + $wbar / 2, $h - $hbar, round($data[$i]['ca'] / 1000) . ' K Euros', $black);
+        // imagestring($img, 5, $gap + ($i * $wbar) + 10, $h - $hbar - (3 * $gap), round($data[$i]['ca'] / 1000) . ' KE', $black);
+        // on ne peut pas ajouter le symbole € avec la fonction précédente, on utilise donc la fonction suivante qui gère les caractères spéciaux 
+        imagettftext(
+            $img,                                   // image 
+            10,                                     // font size 
+            0,                                      // angle 
+            $gap + ($i * $wbar) + 10,               // x
+            // alternative à tester pour centrer 
+            // le texte par rapport à la colonne 
+            // $str_ca = round($data[$i]['ca'] / 1000) . ' K€';
+            // $wfont = imagefontwidth(10) * strlen($str_ca);
+            // ($w / 2) - ($wfont / 2)
+            $h - $hbar - (3 * $gap),                // y 
+            $black,                                 // font color 
+            'font/Arial.ttf',                       // font file 
+            round($data[$i]['ca'] / 1000) . ' K€'   // text 
+        );
         // graduation bas de barres 
-        imagestring($img, 5, $gap + ($i * $wbar) + $wbar / 2, $h - $hbar, $data[$i]['mois'], $black);
+        imagestring(
+            $img,
+            5,
+            $gap + ($i * $wbar) + $wbar / 2,
+            $h - $gap,
+            $data[$i]['mois'],
+            $black
+        );
     }
 
     // on définit le format de l'image 
@@ -94,5 +119,5 @@ try {
     // on supprime l'image générée 
     imagedestroy($img);
 } catch (PDOException $e) {
-    $e->getMessage();
+    echo $e->getMessage();
 }

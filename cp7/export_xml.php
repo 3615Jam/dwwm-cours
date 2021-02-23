@@ -18,15 +18,14 @@ try {
                 $child->addChild(strtolower($key), $val);
             }
         }
+        // déconnexion BDD 
+        unset($cnn);
+        header('Content-Type: text/xml');
+        header('Content-Disposition: attachment; filename="export.xml"');
+        echo $root->asXML();
     } else {
         echo 'ERROR : Table not found';
     }
 } catch (PDOException $e) {
-    $e->getMessage();
+    echo $e->getMessage();
 }
-
-// déconnexion BDD 
-unset($cnn);
-
-header('Content-Type: text/xml');
-echo $root->asXML();

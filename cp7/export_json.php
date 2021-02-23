@@ -13,13 +13,13 @@ try {
         // lit et renvoie les datas
         $obj = $qry->fetchAll(PDO::FETCH_OBJ);
         header('Content-Type: application/json');
+        header('Content-Disposition: attachment; filename="export.json"');
         echo json_encode($obj);
+        // déconnexion BDD 
+        unset($cnn);
     } else {
         echo 'ERROR : Table not found';
     }
 } catch (PDOException $e) {
-    $e->getMessage();
+    echo $e->getMessage();
 }
-
-// déconnexion BDD 
-unset($cnn);

@@ -58,24 +58,24 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         if ($connected) {
             echo '
             <div class="text-center d-flex justify-content-around">
-            <a class="btn btn-info btn-lg" href="bo.php" role="button">Back-Office</a>
-            <div>
-            <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
-            </div>
+                <a class="btn btn-info btn-lg" href="bo.php" role="button">Back-Office</a>
+                <div>
+                    <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
+                </div>
             </div>
             ';
         } else {
             echo '
             <p class="mb-5 lead">Vous devez vous connecter pour accéder au back-office des Darons Codeurs</p>
             <div class="text-center d-flex justify-content-around">
-            <div>
-            <h5>Nouvel utilisateur ?</h5>
-            <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
-            </div>
-            <div>
-            <h5>Déjà inscrit ?</h5>
-            <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
-            </div>
+                <div>
+                    <h5>Nouvel utilisateur ?</h5>
+                    <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
+                </div>
+                <div>
+                    <h5>Déjà inscrit ?</h5>
+                    <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
+                </div>
             </div>
             ';
         }

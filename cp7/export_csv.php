@@ -21,13 +21,12 @@ try {
             $meta = $qry->getColumnMeta($i);
             $row[] = $meta['name'];
         }
-
+        fputcsv($stream, $row, ';');
         // lit et renvoie les datas 
         while ($row = $qry->fetch()) {
-            for ($i = 0; $i < $nb; $i++) {
-                $pdf->Cell($width, 5, utf8_decode($row[$i]), 1, 0);
-            }
+            fputcsv($stream, $row, ';');
         }
+        fclose($stream);
     } else {
         'ERROR : Table not found';
     }
@@ -37,5 +36,3 @@ try {
 
 // déconnexion BDD 
 unset($cnn);
-
-$pdf->Output('I', 'export.pdf');
