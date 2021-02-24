@@ -173,19 +173,34 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                 // affichage de la pagination calculée
                 $html = "";
 
+                // bouton 1ere page (n'apparait que quand nb de pages > 10)
+                $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=1&nb=' . $nb;
+                $html .= '<li class="page-item ' . ($pg === 1 ? 'disabled' : '') . ' ' . ($pgs < 10 ? 'd-none' : '') . '"><a class="page-link" href="' . $href . '" aria-label="First"><span aria-hidden="true">Première</span></a></li>';
+
                 // bouton page précédente
                 $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . ($pg - 1) . '&nb=' . $nb;
                 $html .= '<li class="page-item ' . ($pg === 1 ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>';
 
-                // boutons de pagination 
-                for ($i = 1; $i <= $pgs; $i++) {
-                    $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
-                    $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+                // boutons de pagination (... test en cours : quand il nb de pages > 10 ...)
+                if ($pgs < 10) {
+                    for ($i = 1; $i <= $pgs; $i++) {
+                        $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
+                        $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+                    }
+                } else {
+                    for ($i = $pg; $i <= $pg + 10; $i++) {
+                        $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
+                        $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+                    }
                 }
 
                 // bouton page suivante 
                 $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . ($pg + 1) . '&nb=' . $nb;
                 $html .= '<li class="page-item ' . ($pg == $pgs ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+
+                // bouton dernière page (n'apparait que quand nb de pages > 10)
+                $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $pgs . '&nb=' . $nb;
+                $html .= '<li class="page-item ' . ($pg == $pgs ? 'disabled' : '') . ' ' . ($pgs < 10 ? 'd-none' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Last"><span aria-hidden="true">Dernière</span></a></li>';
 
                 echo $html;
                 // déconnexion BDD 
