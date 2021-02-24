@@ -54,60 +54,94 @@ try {
     // fond transparent 
     imagefilledrectangle($img, 0, 0, $w, $h, $alpha);
 
-    // variable de calcul 
-    $gap = 20;
-    $wbar = ($w - ($gap * 2)) / count($data);   // on divise par le nb de colonnes pour que les barres soient correctement réparties
-    $hmax = ($h - ($gap * 2));
-    $val_max = 150000;                          // CA max pour avoir le "haut" du graphique 
-
-    // dessine l'histogramme via requête 
-    for ($i = 0; $i < count($data); $i++) {
-        // on calcule la hauteur de chaque barre 
-        $hbar = round(($data[$i]['ca'] * ($hmax - $gap)) / $val_max);
-        // on remplit la barre avec une couleur aléatoire 
-        $alea = imagecolorallocatealpha($img, rand(0, 255), rand(0, 255), rand(0, 255), 31);
-        imagefilledrectangle(
-            $img,
-            $gap + ($i * $wbar),
-            $hmax - $hbar,
-            $gap + ($i * $wbar) + $wbar,
-            $h - $gap,
-            $alea
-        );
-        // on fait un contour blanc autour de chaque barre
-        imagerectangle(
-            $img,
-            $gap + ($i * $wbar),
-            $hmax - $hbar,
-            $gap + ($i * $wbar) + $wbar,
-            $h - $gap,
-            $white
-        );
-        // on rajoute des labels 
-        // imagestring($img, 5, $gap + ($i * $wbar) + 10, $h - $hbar - (3 * $gap), round($data[$i]['ca'] / 1000) . ' KE', $black);
-        // on ne peut pas ajouter le symbole € avec la fonction précédente, on utilise donc la fonction suivante qui gère les caractères spéciaux 
-        imagettftext(
-            $img,                                   // image 
-            10,                                     // font size 
-            0,                                      // angle 
-            $gap + ($i * $wbar) + 10,               // x
-            // alternative à tester pour centrer 
-            // le texte par rapport à la colonne 
-            // $str_ca = round($data[$i]['ca'] / 1000) . ' K€';
-            // $wfont = imagefontwidth(10) * strlen($str_ca);
-            // ($w / 2) - ($wfont / 2)
-            $h - $hbar - (3 * $gap),                // y 
-            $black,                                 // font color 
-            'font/Arial.ttf',                       // font file 
-            round($data[$i]['ca'] / 1000) . ' K€'   // text 
-        );
-        // graduation bas de barres 
+    // si data est vide (aucune donnée à afficher) on affiche un message d'alerte 
+    if (!$data) {
         imagestring(
             $img,
             5,
-            $gap + ($i * $wbar) + $wbar / 2,
-            $h - $gap,
-            $data[$i]['mois'],
+            $w / 3,
+            $h / 3,
+            'Aucune donnee a afficher',
+            $black
+        );
+    } else {
+
+        // variable de calcul 
+        $gap = 50;
+        $wbar = ($w - ($gap * 2)) / count($data);   // on divise par le nb de colonnes pour que les barres soient correctement réparties
+        $hmax = ($h - ($gap * 2));
+        $val_max = 150000;                          // CA max pour avoir le "haut" du graphique 
+
+        // dessine l'histogramme via requête 
+        for ($i = 0; $i < count($data); $i++) {
+            // on calcule la hauteur de chaque barre 
+            $hbar = round(($data[$i]['ca'] * ($hmax - $gap)) / $val_max);
+            // on remplit la barre avec une couleur aléatoire 
+            $alea = imagecolorallocatealpha($img, rand(0, 255), rand(0, 255), rand(0, 255), 31);
+            imagefilledrectangle(
+                $img,
+                $gap + ($i * $wbar),
+                $hmax - $hbar,
+                $gap + ($i * $wbar) + $wbar,
+                $h - $gap,
+                $alea
+            );
+            // on fait un contour blanc autour de chaque barre
+            imagerectangle(
+                $img,
+                $gap + ($i * $wbar),
+                $hmax - $hbar,
+                $gap + ($i * $wbar) + $wbar,
+                $h - $gap,
+                $white
+            );
+            // on rajoute des labels 
+            // imagestring($img, 5, $gap + ($i * $wbar) + 10, $h - $hbar - (3 * $gap), round($data[$i]['ca'] / 1000) . ' KE', $black);
+            // on ne peut pas ajouter le symbole € avec la fonction précédente (pb de police), 
+            // on utilise donc la fonction suivante qui gère les caractères spéciaux 
+            imagettftext(
+                $img,                                   // image 
+                10,                                     // font size 
+                0,                                      // angle 
+                $gap + ($i * $wbar) + 10,               // x
+                // alternative à tester pour centrer 
+                // le texte par rapport à la colonne 
+                // $str_ca = round($data[$i]['ca'] / 1000) . ' K€';
+                // $wfont = imagefontwidth(10) * strlen($str_ca);
+                // ($w / 2) - ($wfont / 2)
+                $h - $hbar - (3 * $gap),                // y 
+                $black,                                 // font color 
+                'font/arial.ttf',                       // font file 
+                round($data[$i]['ca'] / 1000) . ' K€'   // text 
+            );
+            // graduation bas de barres 
+            imagestring(
+                $img,
+                5,
+                $gap + ($i * $wbar) + $wbar / 2,
+                $h - ($gap / 2),
+                $data[$i]['mois'],
+                $black
+            );
+        }
+
+        // axe des abscisses 
+        imageline(
+            $img,
+            $gap / 2,
+            $h - ($gap / 2),
+            $w - ($gap / 2),
+            $h - ($gap / 2),
+            $black
+        );
+
+        // axe des ordonnées 
+        imageline(
+            $img,
+            $gap / 2,
+            $h - ($gap / 2),
+            ($gap / 2),
+            ($gap / 2),
             $black
         );
     }
