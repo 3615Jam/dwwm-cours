@@ -49,7 +49,8 @@ class Model extends Singleton
     public function getRows(): array
     {
         try {
-            $qry = $this->db->query('SELECT * FROM ' . $this->table);
+            $sql = 'SELECT * FROM ' . $this->table;
+            $qry = $this->db->query($sql);
             return $qry->fetchAll();
         } catch (PDOException $e) {
             throw new PDOException(__CLASS__ . ' : ' . $e->getMessage());
@@ -68,7 +69,8 @@ class Model extends Singleton
     public function getRow(string $pk, string $id): array
     {
         try {
-            $qry = $this->db->prepare('SELECT * FROM ' . $this->table . ' WHERE ' . $pk . '=?');
+            $sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $pk . '=?';
+            $qry = $this->db->prepare($sql);
             $qry->execute(array($id));
             return $qry->fetch();
         } catch (PDOException $e) {
@@ -77,28 +79,80 @@ class Model extends Singleton
     }
 
 
-    // requete INSERT 
-    public function insert(array $post = array())
+    /**
+     * Méthode qui insère une ligne dans la table
+     * 
+     * @param array $post - tableau du type $_POST
+     */
+
+    public function insert(array $post = array()): int
     {
-        if empty($post) {
+        if (empty($post)) {
             throw new Exception(__CLASS__ . ' : Le tableau ne doit pas être vide.');
         } else {
-            foreach($post as $key=>$val) {
+            foreach ($post as $key => $val) {
                 $vals[":$key"] = $val;
             }
-            $sql = 'INSERT INTO ' . $this->table .' VALUES ';
-            implode(',', array_keys($vals))
-            
+            $sql = 'INSERT INTO ' . $this->table . '(' . implode(',', array_keys($post)) . ') VALUES(' . implode(',', array_keys($vals)) . ')';
+            // $sql = sprintf(
+            //     $sql,
+            //     implode(',', array_keys($post)),
+            //     implode(',', array_keys($vals))
+            // );
+            try {
+                $qry = $this->db->prepare($sql);
+                $qry->execute($vals);
+                return $qry->rowCount();
+            } catch (PDOException $err) {
+                throw new PDOException(__CLASS__ . ' : ' . $err->getMessage());
+            }
         }
     }
 
 
 
+    /**
+     * Méthode qui met à jour une ligne dans la table 
+     * 
+     * @param   array   $post   Tableau du type $_POST
+     * @param   string  $pk     Colonne clé primaire
+     * @param   string  $id     Valeur de la l'ID recherché
+     * 
+     * @return  int             Nombre de lignes impactées (défaut 1)
+     */
 
-
-    // requete UPDATE 
-    public function update(array $post = array()) {
-
+    public function update(array $post, string $pk, string $id): int
+    {
+        foreach ($post as $key => $val) {
+            $vals[":$key"] = $val;
+            $set[] = $key . '=:' . $key;
+        }
+        $vals[':id'] = $id;
+        $sql = 'UPDATE ' . $this->table . ' SET ' . implode(',', $set) . ' WHERE ' . $pk . '=:id';
+        try {
+            $qry = $this->db->prepare($sql);
+            $qry->execute($vals);
+            return $qry->rowCount();
+        } catch (PDOException $err) {
+            throw new PDOException(__CLASS__ . ' : ' . $err->getMessage());
+        }
     }
-    
+
+    /**
+     * Méthode qui supprime une ligne dans la table 
+     * 
+     * @param   string  $pk     Colonne clé primaire
+     * @param   string  $id     Valeur de la l'ID recherché
+     */
+
+    public function delete(string $pk, string $id)
+    {
+        try {
+            $sql = 'DELETE FROM ' . $this->table . ' WHERE ' . $pk . '=?';
+            $qry = $this->db->prepare($sql);
+            $qry->execute(array($id));
+        } catch (Exception $e) {
+            throw new Exception(__CLASS__ . ' : ' . $e->getMessage());
+        }
+    }
 }
