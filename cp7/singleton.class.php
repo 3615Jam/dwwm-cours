@@ -108,7 +108,7 @@ class Singleton
      * @return string          Code HTML
      */
 
-    public static function getHtmlSelect(string $id, string $sql, array $vals = array())
+    public static function getHtmlSelect(string $id, string $sql, array $vals = array()): string
     {
         if (!self::hasConfiguration()) {
             throw new Exception(__CLASS__ . ' : aucune configuration définie (hôte, port, nom de BDD).');
@@ -142,7 +142,7 @@ class Singleton
      * @return  string           Code HTML
      */
 
-    public static function getHtmlTable(string $sql, array $vals = array())
+    public static function getHtmlTable(string $sql, array $vals = array()): string
     {
         if (!self::hasConfiguration()) {
             throw new Exception(__CLASS__ . ' : aucune configuration définie (hôte, port, nom de BDD).');
@@ -181,6 +181,26 @@ class Singleton
             } else {
                 throw new Exception(__CLASS__ . ' : la requête doit commencer par SELECT / SHOW.');
             }
+        }
+    }
+
+    /**
+     * Méthode qui renvoie le résultat d'une requête préparée SELECT/SHOW sous la forme d'un objet JSON
+     * 
+     * @param   string    $sql   Requête SQL préparée de type SELECT/SHOW
+     * @param   array     $vals  Tableau de paramètres (tableau vide par défaut)
+     * 
+     * @return  string           Code HTML
+     */
+
+    public static function getJson(string $sql, array $vals = array()): string
+    {
+        if (!self::hasConfiguration()) {
+            throw new Exception(__CLASS__ . ' : aucune configuration définie (hôte, port, nom de BDD).');
+        } else {
+            $qry = self::getPDO()->prepare($sql);
+            $qry->execute($vals);
+            return json_encode($qry->fetchAll());
         }
     }
 }

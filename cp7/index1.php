@@ -301,7 +301,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="index1.js"></script>
 
 </body>
 

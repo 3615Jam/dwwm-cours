@@ -80,7 +80,7 @@ class Model extends Singleton
 
 
     /**
-     * Méthode qui insère une ligne dans la table
+     * Méthode qui insère une ligne dans la table en cours 
      * 
      * @param array $post - tableau du type $_POST
      */
@@ -139,20 +139,23 @@ class Model extends Singleton
     }
 
     /**
-     * Méthode qui supprime une ligne dans la table 
+     * Méthode qui supprime une ligne de la table en cours  
      * 
      * @param   string  $pk     Colonne clé primaire
      * @param   string  $id     Valeur de la l'ID recherché
+     * 
+     * @return  int             Nombre de ligne supprimée (1 par défaut)
      */
 
-    public function delete(string $pk, string $id)
+    public function delete(string $pk, string $id): int
     {
         try {
             $sql = 'DELETE FROM ' . $this->table . ' WHERE ' . $pk . '=?';
             $qry = $this->db->prepare($sql);
             $qry->execute(array($id));
-        } catch (Exception $e) {
-            throw new Exception(__CLASS__ . ' : ' . $e->getMessage());
+            return $qry->rowCount();
+        } catch (PDOException $e) {
+            throw new PDOException(__CLASS__ . ' : ' . $e->getMessage());
         }
     }
 }

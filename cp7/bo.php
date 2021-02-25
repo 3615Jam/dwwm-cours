@@ -29,6 +29,13 @@ include_once('session_active.php');
 
     <div class="jumbotron mt-3 mb-3">
         <h1>Back-Office</h1>
+        <hr class="my-4">
+        <div class="text-center d-flex justify-content-around">
+            <a class="btn btn-info btn-lg" href="stats.php" role="button">Statistiques de ventes</a>
+            <div>
+                <a class="btn btn-success btn-lg" href="orders.php" role="button">Calendrier des commandes</a>
+            </div>
+        </div>
     </div>
 
     <nav aria-label="breadcrumb">

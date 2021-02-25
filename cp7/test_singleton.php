@@ -40,12 +40,12 @@ echo '<hr>';
 
 echo '<h2>test 7 : insert</h2>';
 $cat = new Model(HOST, 3306, DB, USER, PASS, 'categories');
-$cat->insert(array(
-    'CODE_CATEGORIE' => 777,
-    'NOM_CATEGORIE' => 'Model Test 7',
-    'DESCRIPTION' => 'Test INSERT dans table categories via class Model'
-));
-var_dump($cat->getRows());
+// $cat->insert(array(
+//     'CODE_CATEGORIE' => 777,
+//     'NOM_CATEGORIE' => 'Model Test 7',
+//     'DESCRIPTION' => 'Test INSERT dans table categories via class Model'
+// ));
+// var_dump($cat->getRows());
 echo "Ce test insère toujours la même valeur, il est commenté pour ne pas générer d'erreurs";
 echo '<hr>';
 
@@ -63,6 +63,6 @@ var_dump($cat->getRows());
 echo '<hr>';
 
 echo '<h2>test 9 : delete</h2>';
-$cat->delete('CODE_CATEGORIE', 567587);
+$cat->delete('CODE_CATEGORIE', 888);
 var_dump($cat->getRows());
 echo '<hr>';

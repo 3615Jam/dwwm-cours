@@ -46,14 +46,14 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
     <div class="jumbotron my-3">
         <h1>Consultation des tables</h1>
         <hr class="my-4">
-        <?php
-        echo '
         <div class="d-flex justify-content-between text-center">
-    
+
             <div class="card bg-light mb-3" style="width: 25rem;">
                 <div class="card-body">
-                    <p class="card-text">Base de données : <strong>' . DB . '</strong></p>
-                    <p class="card-text">Table : <strong>' . $table . '</strong></p>
+                    <?php
+                    echo '<p class="card-text">Base de données : <strong>' . DB . '</strong></p>
+                    <p class="card-text">Table : <strong>' . $table . '</strong></p>'
+                    ?>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-success" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">Nouvelle entrée</a>
@@ -65,16 +65,16 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                     <p class="card-text">Exportation des données : </p>
                 </div>
                 <div class="card-footer d-flex justify-content-around">
+                    <?php
+                    echo '
                     <a class="btn btn-danger" href="export_pdf.php?t=' . $table . '" target="_blank">PDF</a>
                     <a class="btn btn-warning" href="export_csv.php?t=' . $table . '">CSV</a>
                     <a class="btn btn-info" href="export_xml.php?t=' . $table . '">XML</a>
-                    <a class="btn btn-secondary" href="export_json.php?t=' . $table . '">JSON</a>
+                    <a class="btn btn-secondary" href="export_json.php?t=' . $table . '">JSON</a>'
+                    ?>
                 </div>
             </div>
-
         </div>
-        ';
-        ?>
     </div>
 
     <nav aria-label="breadcrumb">
@@ -188,7 +188,7 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                         $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
                     }
                 } else {
-                    for ($i = $pg; $i <= $pg + 10; $i++) {
+                    for ($i = $pg; $i <= $pg + 9; $i++) {
                         $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
                         $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
                     }
