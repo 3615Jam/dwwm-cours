@@ -181,16 +181,33 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                 $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . ($pg - 1) . '&nb=' . $nb;
                 $html .= '<li class="page-item ' . ($pg === 1 ? 'disabled' : '') . '"><a class="page-link" href="' . $href . '" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>';
 
-                // boutons de pagination (... test en cours : quand il nb de pages > 10 ...)
+                // boutons de pagination QUAND nb de pages < 10
                 if ($pgs < 10) {
                     for ($i = 1; $i <= $pgs; $i++) {
                         $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
                         $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
                     }
                 } else {
-                    for ($i = $pg; $i <= $pg + 9; $i++) {
-                        $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
-                        $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+                    // boutons de pagination QUAND nb pages > 10 
+                    // on affiche les 11 premières pages, on avance le "curseur" de page normalement, page après page, jusqu'à la page 5
+                    if ($pg < 6) {
+                        for ($i = 1; $i <= 11; $i++) {
+                            $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
+                            $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+                        }
+                        // à partir de la page 6, on peut afficher 5 pages avant et 5 pages après le "curseur" de page 
+                        // jusqu'à ce qu'on soit à moins de 5 pages du nb total de pages 
+                    } elseif ($pg <= $pgs - 5) {
+                        for ($i = $pg - 5; $i <= $pg + 5; $i++) {
+                            $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
+                            $html .= '<li class="page-item ' . ($pg === $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+                        }
+                        // quand le "curseur" de page arrive à moins de 5 pages du nb total de page 
+                    } else {
+                        for ($i = $pg - (10 - ($pgs - $pg)); $i <= $pgs; $i++) {
+                            $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
+                            $html .= '<li class="page-item ' . ($pg == $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
+                        }
                     }
                 }
 
