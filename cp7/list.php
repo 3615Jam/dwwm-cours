@@ -204,7 +204,7 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                         }
                         // quand le "curseur" de page arrive à moins de 5 pages du nb total de page 
                     } else {
-                        for ($i = $pg - (10 - ($pgs - $pg)); $i <= $pgs; $i++) {
+                        for ($i = $pgs - 10; $i <= $pgs; $i++) {
                             $href = $_SERVER['PHP_SELF'] . '?t=' . $table . '&k=' . $primkey . '&pg=' . $i  . '&nb=' . $nb;
                             $html .= '<li class="page-item ' . ($pg == $i ? 'active' : '') . '"><a class="page-link" href="' . $href . '">' . $i . '</a></li>';
                         }
