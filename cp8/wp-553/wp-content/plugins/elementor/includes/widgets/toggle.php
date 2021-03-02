@@ -79,10 +79,10 @@ class Widget_Toggle extends Widget_Base {
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
 	 *
-	 * @since 1.0.0
+	 * @since 3.1.0
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_toggle',
 			[
@@ -112,6 +112,9 @@ class Widget_Toggle extends Widget_Base {
 				'type' => Controls_Manager::WYSIWYG,
 				'default' => __( 'Toggle Content', 'elementor' ),
 				'show_label' => false,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -626,7 +629,7 @@ class Widget_Toggle extends Widget_Base {
 								<# } #>
 							</span>
 							<# } #>
-							<a href="">{{{ item.tab_title }}}</a>
+							<a href="" class="elementor-toggle-title">{{{ item.tab_title }}}</a>
 						</{{{ settings.title_html_tag }}}>
 						<div {{{ view.getRenderAttributeString( tabContentKey ) }}}>{{{ item.tab_content }}}</div>
 					</div>

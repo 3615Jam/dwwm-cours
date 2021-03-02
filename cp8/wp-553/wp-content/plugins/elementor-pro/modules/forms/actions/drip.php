@@ -4,7 +4,6 @@ namespace ElementorPro\Modules\Forms\Actions;
 use Elementor\Controls_Manager;
 use Elementor\Settings;
 use ElementorPro\Modules\Forms\Classes\Form_Record;
-use ElementorPro\Modules\Forms\Controls\Fields_Map;
 use ElementorPro\Modules\Forms\Classes\Integration_Base;
 use ElementorPro\Modules\Forms\Classes\Drip_Handler;
 use ElementorPro\Core\Utils;
@@ -101,27 +100,7 @@ class Drip extends Integration_Base {
 			]
 		);
 
-		$widget->add_control(
-			'drip_fields_map',
-			[
-				'label' => __( 'Email Field Mapping', 'elementor-pro' ),
-				'type' => Fields_Map::CONTROL_TYPE,
-				'separator' => 'before',
-				'fields' => [
-					[
-						'name' => 'remote_id',
-						'type' => Controls_Manager::HIDDEN,
-					],
-					[
-						'name' => 'local_id',
-						'type' => Controls_Manager::SELECT,
-					],
-				],
-				'condition' => [
-					'drip_account!' => '',
-				],
-			]
-		);
+		$this->register_fields_map_control( $widget );
 
 		$widget->add_control(
 			'drip_custom_field_heading',
@@ -233,46 +212,6 @@ class Drip extends Integration_Base {
 		$subscriber['custom_fields'] = $custom_fields;
 
 		return $subscriber;
-	}
-
-	/**
-	 * Gets submittion meta data
-	 *
-	 * @param $meta_data
-	 *
-	 * @return array
-	 */
-	private function get_meta_data( $meta_data ) {
-		$custom_fields = [];
-		foreach ( $meta_data as $meta_type ) {
-			switch ( $meta_type ) {
-				case 'date':
-					$custom_fields[ $meta_type ] = date_i18n( get_option( 'date_format' ) );
-					break;
-
-				case 'time':
-					$custom_fields[ $meta_type ] = date_i18n( get_option( 'time_format' ) );
-					break;
-
-				case 'page_url':
-					$custom_fields[ $meta_type ] = $_POST['referrer'];
-					break;
-
-				case 'user_agent':
-					$custom_fields[ $meta_type ] = $_SERVER['HTTP_USER_AGENT'];
-					break;
-
-				case 'remote_ip':
-					$custom_fields[ $meta_type ] = Utils::get_client_ip();
-					break;
-
-				case 'credit':
-					$custom_fields[ $meta_type ] = sprintf( __( 'Powered by %s', 'elementor-pro' ), 'https://elementor.com/pro/' );
-					break;
-			}
-		}
-
-		return $custom_fields;
 	}
 
 	/**
@@ -388,5 +327,13 @@ class Drip extends Integration_Base {
 			add_action( 'elementor/admin/after_create_settings/' . Settings::PAGE_ID, [ $this, 'register_admin_fields' ], 15 );
 		}
 		add_action( 'wp_ajax_' . self::OPTION_NAME_API_KEY . '_validate', [ $this, 'ajax_validate_api_token' ] );
+	}
+
+	protected function get_fields_map_control_options() {
+		return [
+			'condition' => [
+				'drip_account!' => '',
+			],
+		];
 	}
 }

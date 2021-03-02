@@ -23,6 +23,7 @@ abstract class Theme_Document extends Library_Document {
 		$properties['admin_tab_group'] = Module::ADMIN_LIBRARY_TAB_GROUP;
 		$properties['support_kit'] = true;
 		$properties['support_site_editor'] = true;
+		$properties['support_conditions'] = true;
 
 		return $properties;
 	}
@@ -104,7 +105,7 @@ abstract class Theme_Document extends Library_Document {
 		$document_config = static::get_properties();
 
 		if ( true === $document_config['support_site_editor'] ) {
-			$panel_config['messages']['publish_notification'] = __( 'Congrats! Your Global Site Part is Live', 'elementor-pro' );
+			$panel_config['messages']['publish_notification'] = __( 'Congrats! Your Site Part is Live', 'elementor-pro' );
 		}
 
 		return $panel_config;
@@ -120,7 +121,7 @@ abstract class Theme_Document extends Library_Document {
 		return parent::get_have_a_look_url();
 	}
 
-	protected static function get_create_url() {
+	public static function get_create_url() {
 		$base_create_url = Utils::get_create_new_post_url( Source_Local::CPT );
 
 		return add_query_arg( [ 'template_type' => static::get_site_editor_type_bc() ], $base_create_url );
@@ -236,8 +237,8 @@ abstract class Theme_Document extends Library_Document {
 
 	}
 
-	protected function _register_controls() {
-		parent::_register_controls();
+	protected function register_controls() {
+		parent::register_controls();
 
 		$this->start_controls_section(
 			'preview_settings',

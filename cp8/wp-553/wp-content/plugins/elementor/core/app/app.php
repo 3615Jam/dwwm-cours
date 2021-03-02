@@ -49,6 +49,11 @@ class App extends BaseApp {
 			return $menu;
 		}
 
+		// Non admin role / custom wp menu.
+		if ( empty( $submenu[ Source_Local::ADMIN_MENU_SLUG ] ) ) {
+			return $menu;
+		}
+
 		// Hack to add a link to sub menu.
 		foreach ( $submenu[ Source_Local::ADMIN_MENU_SLUG ] as &$item ) {
 			if ( self::PAGE_ID === $item[2] ) {
@@ -139,7 +144,7 @@ class App extends BaseApp {
 			'elementor-icons',
 			$this->get_css_assets_url( 'elementor-icons', 'assets/lib/eicons/css/' ),
 			[],
-			'5.6.2'
+			'5.10.0'
 		);
 
 		wp_register_style(

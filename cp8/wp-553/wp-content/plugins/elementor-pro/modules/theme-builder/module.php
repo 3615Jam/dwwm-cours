@@ -173,6 +173,10 @@ class Module extends Module_Base {
 			if ( $instance instanceof Theme_Document && 'section' !== $type ) {
 				$types[ $type ] .= $instance->get_location_label();
 			}
+
+			if ( Single::class === $document_type ) {
+				unset( $types[ $type ] );
+			}
 		}
 
 		return $types;
@@ -232,14 +236,7 @@ class Module extends Module_Base {
 						$doc_type = Plugin::elementor()->documents->get_document_type( $post_type );
 						$doc_class = new $doc_type();
 
-						// New: Core >=2.7.0
-						$is_base_page = class_exists( '\Elementor\Core\DocumentTypes\PageBase' ) && $doc_class instanceof \Elementor\Core\DocumentTypes\PageBase;
-
-						// Old: Core < 2.7.0. TODO: Remove on 2.7.0.
-						if ( ! $is_base_page ) {
-							$doc_name = $doc_class->get_name();
-							$is_base_page = in_array( $doc_name, [ 'post', 'page', 'wp-post', 'wp-page' ] );
-						}
+						$is_base_page = $doc_class instanceof \Elementor\Core\DocumentTypes\PageBase;
 
 						if ( $is_base_page ) {
 							$post_type_object = get_post_type_object( $post_type );
@@ -308,13 +305,6 @@ class Module extends Module_Base {
 	}
 
 	public function add_finder_items( array $categories ) {
-		$categories['general']['items']['theme-builder'] = [
-			'title' => __( 'Theme Builder', 'elementor-pro' ),
-			'icon' => 'library-save',
-			'url' => Plugin::elementor()->app->get_settings( 'menu_url' ),
-			'keywords' => [ 'template', 'header', 'footer', 'single', 'archive', 'search', '404', 'library' ],
-		];
-
 		$categories['create']['items']['theme-template'] = [
 			'title' => __( 'Add New Theme Template', 'elementor-pro' ),
 			'icon' => 'plus-circle-o',
@@ -350,13 +340,13 @@ class Module extends Module_Base {
 			$admin_notices = Plugin::elementor()->admin->get_component( 'admin-notices' );
 
 			$admin_notices->print_admin_notice( [
-				'title' => __( 'Meet the New Theme Builder: More Intuitive and Visual Than Ever', 'elementor' ),
-				'description' => __( 'With the new Theme Builder you can visually manage every part of your site intuitively, making the task of designing a complete website that much easier', 'elementor' ),
+				'title' => __( 'Meet the New Theme Builder: More Intuitive and Visual Than Ever', 'elementor-pro' ),
+				'description' => __( 'With the new Theme Builder you can visually manage every part of your site intuitively, making the task of designing a complete website that much easier', 'elementor-pro' ),
 				'button' => [
-					'text' => __( 'Try it Now', 'elementor' ),
+					'text' => __( 'Try it Now', 'elementor-pro' ),
 					'class' => 'elementor-button elementor-button-success',
 					'url' => Plugin::elementor()->app->get_settings( 'menu_url' ),
-				]
+				],
 			] );
 		}
 

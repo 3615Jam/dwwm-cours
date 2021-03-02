@@ -41,6 +41,7 @@ define( 'DB_CHARSET', 'utf8mb4' );
  * N’y touchez que si vous savez ce que vous faites.
  */
 define( 'DB_COLLATE', '' );
+define('FS_METHOD','direct');
 
 /**#@+
  * Clés uniques d’authentification et salage.
