@@ -11,7 +11,7 @@ if (isset($_SESSION['connected']) && ($_SESSION['connected'])) {
 }
 
 // connexion à la BDD via MYSQLI (avec verif) 
-$cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
+$cnn = mysqli_connect(HOST, USER, PASS, DB);
 if (mysqli_connect_errno()) {
     printf("Erreur de connexion : %s", mysqli_connect_error());
     exit();
