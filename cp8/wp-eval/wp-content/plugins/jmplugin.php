@@ -11,6 +11,8 @@ Author URI:
 
 function nytime()
 {
+	$timezone = 'America/New_York';
+	date_default_timezone_set($timezone);
     echo '<p id="nytime">Heure de New York : ' . date('h:i:s A') . '</p>';
 }
 
