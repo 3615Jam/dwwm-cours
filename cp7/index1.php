@@ -44,7 +44,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
         include_once('team.php');
         define("FNAME", $members[12][0]);
-        $diff = (strtotime(date('Y-m-d')) - strtotime('2020/11/02')) / 60 / 60 / 24;
+        $diff = floor((strtotime(date('Y-m-d')) - strtotime('2020-11-02')) / 60 / 60 / 24);
         echo '<p class="lead">Projet réalisé par ' . FNAME . ', Daron Codeur depuis ' . $diff . ' jours.</p>';
 
         ?>

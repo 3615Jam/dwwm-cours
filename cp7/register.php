@@ -45,7 +45,7 @@ if ($nb === 1) {
         // Envoi d'un mail pour confirmation si succès
         if ($res) {
             // Corps du mail
-            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/jam-web/cp7/register2.php?m=' . $mail;
+            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/dwwm-cours/cp7/register2.php?m=' . $mail;
             $html = '';
             $html .= '<h1>Inscription Darons Codeurs</h1>';
             $html .= '<p>Bonjour ' . $_POST['fname'] . ' ! Bienvenue chez les Darons Codeurs.';
