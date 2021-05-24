@@ -1,47 +1,40 @@
-
-
-
 /* Responsive Web Design - RWD Exemple 1 
--------------STANDARD -----------------*/ 
-
-
+-------------STANDARD -----------------*/
 
 @media screen and (max-width: 967px) {
-	body {
-		background-color: red;
-	}
+  body {
+    background-color: red;
+  }
 }
 
-
-
 @media screen and (min-width: 968px) {
-	body {
-		background-color: green;
-	} 
+  body {
+    background-color: green;
+  }
 }
 
 @media print {
-	body {
-		background-color: none;
-		font-size: 50px;
-	}
-	
+  body {
+    background-color: none;
+    font-size: 50px;
+  }
 }
 
-#div1, #div2 {
-	border: 1px solid red;
-	width: 200px;
-	height: 200px;
+#div1,
+#div2 {
+  border: 1px solid red;
+  width: 200px;
+  height: 200px;
 }
 
 p {
-	color: white;
-	text-align: center;
-	font-size: 4rem;
+  color: white;
+  text-align: center;
+  font-size: 4rem;
 }
 
 #div1 {
-	position: absolute;
-	top: 20px;
-	left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }

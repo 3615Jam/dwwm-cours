@@ -72,9 +72,16 @@ function getCity() {
 // puis on branche des écouteurs d'évènements sur "pays" et sur "code postal" :
 
 /* 
-quand on utilise 'addEventListener()', il y a 3 paramètres.
-pour le second, on peut utiliser une fonction nominative SANS les parenthèses (2eme partie, ci-dessous)
-OU bien mettre celle-ci à l'intérieur d'une fonction anonyme (1ere partie, ci-dessous)
+'.addEventListener()' possède 3 paramètres (le 3eme est optionnel) :
+	1) type : le type d'évènement à écouter 
+	2) listerner : fonction de rappel (callback) ou objet implémentant 'EventListener' 
+	3) useCapture : false par défaut. Aujourd'hui optionnel, cela n'a pas toujours été le cas ; 
+	il est recommandé de le conserver pour une compatibilité la plus large possible
+
+Pour le second paramètre, on peut : 
+	- mettre le callback à l'intérieur d'une fonction anonyme (1ere partie de l'exemple ci-dessous)
+ou bien 
+	- utiliser le callback SANS les parenthèses (2eme partie de l'exemple ci-dessous)
 */
 
 document.getElementById('land').addEventListener(
