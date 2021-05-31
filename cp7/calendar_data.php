@@ -9,7 +9,7 @@ include_once('model.class.php');
 // connexion BDD via Singleton 
 Singleton::setConfiguration(HOST, 3306, DB, USER, PASS);
 
-// requête SQL 
+// renvoie et affiche les commandes passées sous la forme JSON
 $sql = "SELECT CONCAT(co.NO_COMMANDE, ' - ',cl.SOCIETE) AS title,
 co.DATE_COMMANDE AS start, 
 IFNULL(co.DATE_ENVOI, co.DATE_COMMANDE) AS end

@@ -56,7 +56,10 @@ if (isset($_GET['nb']) && !empty($_GET['nb'])) {
                     ?>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-success" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">Nouvelle entrée</a>
+                    <?php
+                    echo '     
+                    <a class="btn btn-success" href="edit.php?t=' . $table . '&k=' . $primkey . '&id">Nouvelle entrée</a>'
+                    ?>
                 </div>
             </div>
 

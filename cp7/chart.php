@@ -57,20 +57,25 @@ try {
     // si data est vide (aucune donnée à afficher) on affiche un message d'alerte 
     if (!$data) {
         imagestring(
-            $img,
-            5,
-            $w / 3,
-            $h / 3,
-            'Aucune donnee a afficher',
-            $black
+            $img,                                              // image 
+            5,                                                 // font size 
+            $w / 3,                                            // x
+            $h / 3,                                            // y 
+            'Aucune donnee a afficher',                        // text 
+            $black                                             // font color 
         );
     } else {
 
         // variable de calcul 
+        // on crée un écart pour le positionnement 
         $gap = 50;
-        $wbar = ($w - ($gap * 2)) / count($data);   // on divise par le nb de colonnes pour que les barres soient correctement réparties
+        // largeur des barres 
+        // on divise par le nb de colonnes pour que les barres soient correctement réparties
+        $wbar = ($w - ($gap * 2)) / count($data);
+        // hauteur max des barres 
         $hmax = ($h - ($gap * 2));
-        $val_max = 150000;                          // CA max pour avoir le "haut" du graphique 
+        // CA max pour avoir le "haut" du graphique 
+        $val_max = 150000;
 
         // dessine l'histogramme via requête 
         for ($i = 0; $i < count($data); $i++) {
@@ -79,70 +84,65 @@ try {
             // on remplit la barre avec une couleur aléatoire 
             $alea = imagecolorallocatealpha($img, rand(0, 255), rand(0, 255), rand(0, 255), 31);
             imagefilledrectangle(
-                $img,
-                $gap + ($i * $wbar),
-                $hmax - $hbar,
-                $gap + ($i * $wbar) + $wbar,
-                $h - $gap,
-                $alea
+                $img,                                          // image 
+                $gap + ($i * $wbar),                           // x1
+                $hmax - $hbar,                                 // y1
+                $gap + ($i * $wbar) + $wbar,                   // x2 
+                $h - $gap,                                     // y2
+                $alea                                          // color 
             );
             // on fait un contour blanc autour de chaque barre
             imagerectangle(
-                $img,
-                $gap + ($i * $wbar),
-                $hmax - $hbar,
-                $gap + ($i * $wbar) + $wbar,
-                $h - $gap,
-                $white
+                $img,                                          // image 
+                $gap + ($i * $wbar),                           // x1
+                $hmax - $hbar,                                 // y1
+                $gap + ($i * $wbar) + $wbar,                   // x2
+                $h - $gap,                                     // y2
+                $white                                         // color
             );
             // on rajoute des labels 
             // imagestring($img, 5, $gap + ($i * $wbar) + 10, $h - $hbar - (3 * $gap), round($data[$i]['ca'] / 1000) . ' KE', $black);
             // on ne peut pas ajouter le symbole € avec la fonction précédente (pb de police), 
             // on utilise donc la fonction suivante qui gère les caractères spéciaux 
             imagettftext(
-                $img,                                   // image 
-                10,                                     // font size 
-                0,                                      // angle 
-                $gap + ($i * $wbar) + 10,               // x
-                // alternative à tester pour centrer 
-                // le texte par rapport à la colonne 
-                // $str_ca = round($data[$i]['ca'] / 1000) . ' K€';
-                // $wfont = imagefontwidth(10) * strlen($str_ca);
-                // ($w / 2) - ($wfont / 2)
-                $h - $hbar - (3 * $gap),                // y 
-                $black,                                 // font color 
-                'font/arial.ttf',                       // font file 
-                round($data[$i]['ca'] / 1000) . ' K€'   // text 
+                $img,                                          // image 
+                10,                                            // font size 
+                0,                                             // angle 
+                $gap + ($i * $wbar) + 10,                      // x
+                $h - $hbar - (3 * $gap),                       // y 
+                $black,                                        // font color 
+                'font/arial.ttf',                              // font file 
+                round($data[$i]['ca'] / 1000) . ' K€'          // text 
             );
             // graduation bas de barres 
             imagestring(
-                $img,
-                5,
-                $gap + ($i * $wbar) + $wbar / 2,
-                $h - ($gap / 2),
-                $data[$i]['mois'],
-                $black
+                $img,                                          // image 
+                5,                                             // font size 
+                $gap + ($i * $wbar) + $wbar / 2,               // x
+                $h - ($gap / 2),                               // y
+                $data[$i]['mois'],                             // text 
+                $black                                         // font color 
             );
         }
 
         // axe des abscisses 
         imageline(
-            $img,
-            $gap / 2,
-            $h - ($gap / 2),
-            $w - ($gap / 2),
-            $h - ($gap / 2),
-            $black
+            $img,                                              // image 
+            $gap / 2,                                          // x1 
+            $h - ($gap / 2),                                   // y1
+            $w - ($gap / 2),                                   // x2
+            $h - ($gap / 2),                                   // y2
+            $black                                             // font color 
         );
 
         // axe des ordonnées 
         imageline(
-            $img,
-            $gap / 2,
-            $h - ($gap / 2),
-            ($gap / 2),
-            ($gap / 2),
-            $black
+            $img,                                              // image 
+            $gap / 2,                                          // x1 
+            $h - ($gap / 2),                                   // y1
+            ($gap / 2),                                        // x2
+            ($gap / 2),                                        // y2
+            $black                                             // font color 
         );
     }
 

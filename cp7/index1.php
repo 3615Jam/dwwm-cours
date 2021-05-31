@@ -44,7 +44,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
 
         include_once('team.php');
         define("FNAME", $members[12][0]);
-        $diff = floor((strtotime(date('Y-m-d')) - strtotime('2020-11-02')) / 60 / 60 / 24);
+        $diff = (strtotime(date('Y-m-d')) - strtotime('2020-11-02')) / 60 / 60 / 24;
         echo '<p class="lead">Projet réalisé par ' . FNAME . ', Daron Codeur depuis ' . $diff . ' jours.</p>';
 
         ?>
@@ -59,9 +59,8 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
             echo '
             <div class="text-center d-flex justify-content-around">
                 <a class="btn btn-info btn-lg" href="bo.php" role="button">Back-Office</a>
-                <div>
-                    <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
-                </div>
+                <a class="btn btn-secondary btn-lg" href="gmail_list.php" role="button">Emails</a>
+                <a class="btn btn-danger btn-lg" href="logout.php" role="button">Déconnexion</a>
             </div>
             ';
         } else {

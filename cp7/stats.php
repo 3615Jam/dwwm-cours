@@ -32,19 +32,21 @@ Singleton::setConfiguration(HOST, 3306, DB, USER, PASS);
 
             <div class="card bg-light mb-3" style="width: 25rem;">
                 <div class="card-body">
-                    <p class="card-text"><strong>Année</strong></p>
+                    <label for="year" class="card-text"><strong>Année</strong></label>
                 </div>
                 <div class="card-footer">
-                    <?php echo Singleton::getHtmlSelect('year', 'SELECT DISTINCT YEAR(DATE_COMMANDE) FROM commandes'); ?>
+                    <?php
+                    echo Singleton::getHtmlSelect('year', 'SELECT DISTINCT YEAR(DATE_COMMANDE) AS annee FROM commandes');
+                    ?>
                 </div>
             </div>
 
             <div class="card bg-light mb-3" style="width: 25rem;">
                 <div class="card-body">
-                    <p class="card-text"><strong>Employé.e</strong></p>
+                    <label for="emp" class="card-text"><strong>Employé(e)</strong></label>
                 </div>
                 <div class="card-footer d-flex justify-content-around">
-                    <?php echo Singleton::getHtmlSelect('emp', 'SELECT NO_EMPLOYE, CONCAT(PRENOM,\' \', NOM) FROM employes'); ?>
+                    <?php echo Singleton::getHtmlSelect('emp', 'SELECT NO_EMPLOYE, CONCAT(PRENOM,\' \', NOM) AS employe FROM employes'); ?>
                 </div>
             </div>
         </div>
@@ -59,7 +61,7 @@ Singleton::setConfiguration(HOST, 3306, DB, USER, PASS);
     </nav>
 
     <div class="text-center">
-        <img src="chart.php" id="chart">
+        <img src="chart.php" id="chart" alt="statistiques des ventes">
     </div>
 
     <script src="stats.js"></script>

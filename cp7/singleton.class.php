@@ -1,6 +1,7 @@
 <?php
 
-// Mini framework perso pour gérer les connexions aux BDD 
+// Mini framework pour gérer les connexions à une BDD MySQL ou MariaDB
+// et travailler avec ses tables 
 
 class Singleton
 {
@@ -64,7 +65,9 @@ class Singleton
 
     public static function getPDO()
     {
+        // test si connextion active 
         if (self::$cnn === null) {
+            // test si config dispo 
             if (!self::hasConfiguration()) {
                 throw new Exception(__CLASS__ . ' : aucune configuration définie (hôte, port, nom de BDD).');
             } else {
@@ -99,7 +102,8 @@ class Singleton
     }
 
     /**
-     * Méthode qui renvoie les 2 premières colonnes d'une requête SELECT/SHOW sous la forme d'un composant HTML select
+     * Méthode qui renvoie les 2 premières colonnes d'une requête SELECT/SHOW 
+     * sous la forme d'un composant HTML 'select' (mis en forme avec Bootstrap)
      * 
      * @param string    $id    Attributs id et name du composant HTML select
      * @param string    $sql   Requête SQL préparée de type SELECT/SHOW
@@ -117,12 +121,12 @@ class Singleton
             if ($stmt[0] === 'select' || $stmt[0] === 'show') {
                 $qry = self::getPDO()->prepare($sql);
                 $qry->execute($vals);
-                $html = '<select id="' . $id . '" name="' . $id . '" class"form-control">';
+                $html = '<select id="' . $id . '" name="' . $id . '" class="form-control">';
                 while ($row = $qry->fetch(PDO::FETCH_NUM)) {
                     if ($qry->columnCount() === 1) {
-                        $html .= '<option value=' . $row[0] . '">' . $row[0] . '</option>';
+                        $html .= '<option value="' . $row[0] . '">' . $row[0] . '</option>';
                     } else {
-                        $html .= '<option value=' . $row[0] . '">' . $row[1] . '</option>';
+                        $html .= '<option value="' . $row[0] . '">' . $row[1] . '</option>';
                     }
                 }
                 $html .= '</select>';
@@ -134,7 +138,8 @@ class Singleton
     }
 
     /**
-     * Méthode qui renvoie le résultat d'une requête préparée SELECT/SHOW sous la forme d'un composant HTML table
+     * Méthode qui renvoie le résultat d'une requête préparée SELECT/SHOW 
+     * sous la forme d'un composant HTML 'table' (mis en forme avec Bootstrap)
      * 
      * @param   string    $sql   Requête SQL préparée de type SELECT/SHOW
      * @param   array     $vals  Tableau de paramètres (tableau vide par défaut)
@@ -147,37 +152,35 @@ class Singleton
         if (!self::hasConfiguration()) {
             throw new Exception(__CLASS__ . ' : aucune configuration définie (hôte, port, nom de BDD).');
         } else {
+            // on teste si la requête est bien du type SELECT/SHOW 
             $stmt = explode(' ', strtolower($sql));
             if ($stmt[0] === 'select' || $stmt[0] === 'show') {
-                $qry = self::getPDO()->prepare($sql);
-                $qry->execute($vals);
-                $html = '<table class"table table-dark table-striped table-hover"><thead><tr>';
-                for ($i = 0; $i < $qry->columnCount(); $i++) {
-                    $meta = $qry->getColumnMeta($i);
-                    $html .= '<th>' . $meta['name'] . '</th>';
-                }
-                $html .= '</tr></thead><tbody>';
-                while ($row = $qry->fetch()) {
-                    $html .= '<tr>';
-                    foreach ($row as $key => $val) {
-                        $html .= '<td>' . $val . '</td>';
+                try {
+                    // on prépare la requête et on l'execute 
+                    $qry = self::getPDO()->prepare($sql);
+                    $qry->execute($vals);
+                    // on affiche le noms des colonnes 
+                    $html = '<table class="table table-dark table-striped table-hover"><thead><tr>';
+                    for ($i = 0; $i < $qry->columnCount(); $i++) {
+                        $meta = $qry->getColumnMeta($i);
+                        $html .= '<th>' . $meta['name'] . '</th>';
                     }
-                    $html .= '</tr>';
-                }
-
-                $html .= '</tbody></table>';
-
-
-
-                while ($row = $qry->fetch(PDO::FETCH_NUM)) {
-                    if ($qry->columnCount() === 1) {
-                        $html .= '<option value=' . $row[0] . '">' . $row[0] . '</option>';
-                    } else {
-                        $html .= '<option value=' . $row[0] . '">' . $row[1] . '</option>';
+                    $html .= '</tr></thead><tbody>';
+                    // on affiche les données 
+                    while ($row = $qry->fetch()) {
+                        $html .= '<tr>';
+                        foreach ($row as $key => $val) {
+                            $html .= '<td>' . $val . '</td>';
+                        }
+                        $html .= '</tr>';
                     }
+                    // on referme le tableau html ...
+                    $html .= '</tbody></table>';
+                    // ... et on le renvoie 
+                    return $html;
+                } catch (PDOException $err) {
+                    throw new PDOException(__CLASS__ . ' : ' . $err->getMessage());
                 }
-                $html .= '</select>';
-                return $html;
             } else {
                 throw new Exception(__CLASS__ . ' : la requête doit commencer par SELECT / SHOW.');
             }
@@ -195,12 +198,13 @@ class Singleton
 
     public static function getJson(string $sql, array $vals = array()): string
     {
-        if (!self::hasConfiguration()) {
-            throw new Exception(__CLASS__ . ' : aucune configuration définie (hôte, port, nom de BDD).');
-        } else {
+        try {
+            // on prépare la requête et on l'execute 
             $qry = self::getPDO()->prepare($sql);
             $qry->execute($vals);
             return json_encode($qry->fetchAll());
+        } catch (PDOException $err) {
+            throw new PDOException(__CLASS__ . ' : ' . $err->getMessage());
         }
     }
 }

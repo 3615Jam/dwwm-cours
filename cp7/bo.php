@@ -32,9 +32,7 @@ include_once('session_active.php');
         <hr class="my-4">
         <div class="text-center d-flex justify-content-around">
             <a class="btn btn-info btn-lg" href="stats.php" role="button">Statistiques de ventes</a>
-            <div>
-                <a class="btn btn-success btn-lg" href="orders.php" role="button">Calendrier des commandes</a>
-            </div>
+            <a class="btn btn-success btn-lg" href="calendar.php" role="button">Calendrier des commandes</a>
         </div>
     </div>
 
