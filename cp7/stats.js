@@ -1,14 +1,8 @@
-// on branche un écouteur d'évènements de type 'change' sur 'year'
-document.getElementById('year').addEventListener(
-    'change',
-    redrawChart
-);
-
-// pareil sur 'emp'
-document.getElementById('emp').addEventListener(
-    'change',
-    redrawChart
-);
+// on branche un écouteur d'évènements de type 'change' sur 'emp'
+document.getElementById('emp').addEventListener('change', redrawChart);
+    
+// pareil sur 'year'
+document.getElementById('year').addEventListener('change', redrawChart);
 
 // on change la source de 'chart.php' avec les paramètres dans URL
 function redrawChart() {
