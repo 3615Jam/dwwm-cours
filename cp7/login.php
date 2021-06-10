@@ -34,7 +34,7 @@ try {
     $qry->execute($vals);
     // si 1 ligne est retournée --> match ok ! on se connecte
     if ($qry->rowCount() === 1) {
-        // démarrage (ou récupération si existe) de session 
+        // démarrage de session (ou récupération si existe)
         session_start();
         $_SESSION['connected'] = true;
         $_SESSION['session_id'] = session_id();

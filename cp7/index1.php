@@ -144,6 +144,7 @@ $res = mysqli_query($cnn, "SELECT table_name, table_rows FROM information_schema
                 break;
             case '4':
                 echo C4;
+                break;
             default:
                 echo 'Rien à signaler';
         }
