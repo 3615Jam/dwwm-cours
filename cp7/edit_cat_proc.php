@@ -14,7 +14,7 @@ foreach ($_POST as $key => $val) {
 
 
 // connexion à la BDD via MYSQLI (avec verif) 
-$cnn = mysqli_connect('localhost', 'root', 'greta', 'northwind');
+$cnn = mysqli_connect('localhost', 'root', 'root', 'northwind');
 if (mysqli_connect_errno()) {
     printf("Erreur de connexion : %s", mysqli_connect_error());
     exit();
